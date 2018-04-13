@@ -2,6 +2,7 @@
 db
 incremental_db
 simulation
+*.qsys_edit
 
 ### File Types
 *.bsf
