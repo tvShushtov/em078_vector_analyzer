@@ -8,6 +8,7 @@ simulation
 *.bsf
 *.log
 *.stp
+*.qws
 _OUTPUT_FILES/*
 !_OUTPUT_FILES/*.cof
 
