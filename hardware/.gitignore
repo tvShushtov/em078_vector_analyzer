@@ -1,0 +1,15 @@
+### Folders
+db
+incremental_db
+simulation
+
+### File Types
+*.bsf
+*.log
+*.stp
+_OUTPUT_FILES/*
+!_OUTPUT_FILES/*.cof
+
+### Files
+c5_pin_model_dump.txt
+
