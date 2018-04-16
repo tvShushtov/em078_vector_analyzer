@@ -20,9 +20,9 @@
 // Altera IRQ Mapper
 //
 // Parameters
-//   NUM_RCVRS        : 3
+//   NUM_RCVRS        : 0
 //   SENDER_IRW_WIDTH : 32
-//   IRQ_MAP          : 0:2,1:1,2:0
+//   IRQ_MAP          : 
 //
 // -------------------------------------------------------
 
@@ -39,9 +39,6 @@ module HPS_irq_mapper_001
     // -------------------
     // IRQ Receivers
     // -------------------
-    input                receiver0_irq,
-    input                receiver1_irq,
-    input                receiver2_irq,
 
     // -------------------
     // Command Source (Output)
@@ -49,13 +46,11 @@ module HPS_irq_mapper_001
     output reg [31 : 0] sender_irq
 );
 
+    initial sender_irq = 0;
 
     always @* begin
 	sender_irq = 0;
 
-        sender_irq[2] = receiver0_irq;
-        sender_irq[1] = receiver1_irq;
-        sender_irq[0] = receiver2_irq;
     end
 
 endmodule

@@ -39,27 +39,27 @@ module HPS_button_pio (
   input   [  1: 0] address;
   input            chipselect;
   input            clk;
-  input   [  1: 0] in_port;
+  input            in_port;
   input            reset_n;
   input            write_n;
   input   [ 31: 0] writedata;
 
   wire             clk_en;
-  reg     [  1: 0] d1_data_in;
-  reg     [  1: 0] d2_data_in;
-  wire    [  1: 0] data_in;
-  reg     [  1: 0] edge_capture;
+  reg              d1_data_in;
+  reg              d2_data_in;
+  wire             data_in;
+  reg              edge_capture;
   wire             edge_capture_wr_strobe;
-  wire    [  1: 0] edge_detect;
+  wire             edge_detect;
   wire             irq;
-  reg     [  1: 0] irq_mask;
-  wire    [  1: 0] read_mux_out;
+  reg              irq_mask;
+  wire             read_mux_out;
   reg     [ 31: 0] readdata;
   assign clk_en = 1;
   //s1, which is an e_avalon_slave
-  assign read_mux_out = ({2 {(address == 0)}} & data_in) |
-    ({2 {(address == 2)}} & irq_mask) |
-    ({2 {(address == 3)}} & edge_capture);
+  assign read_mux_out = ({1 {(address == 0)}} & data_in) |
+    ({1 {(address == 2)}} & irq_mask) |
+    ({1 {(address == 3)}} & edge_capture);
 
   always @(posedge clk or negedge reset_n)
     begin
@@ -76,7 +76,7 @@ module HPS_button_pio (
       if (reset_n == 0)
           irq_mask <= 0;
       else if (chipselect && ~write_n && (address == 2))
-          irq_mask <= writedata[1 : 0];
+          irq_mask <= writedata;
     end
 
 
@@ -85,24 +85,12 @@ module HPS_button_pio (
   always @(posedge clk or negedge reset_n)
     begin
       if (reset_n == 0)
-          edge_capture[0] <= 0;
+          edge_capture <= 0;
       else if (clk_en)
           if (edge_capture_wr_strobe && writedata[0])
-              edge_capture[0] <= 0;
-          else if (edge_detect[0])
-              edge_capture[0] <= -1;
-    end
-
-
-  always @(posedge clk or negedge reset_n)
-    begin
-      if (reset_n == 0)
-          edge_capture[1] <= 0;
-      else if (clk_en)
-          if (edge_capture_wr_strobe && writedata[1])
-              edge_capture[1] <= 0;
-          else if (edge_detect[1])
-              edge_capture[1] <= -1;
+              edge_capture <= 0;
+          else if (edge_detect)
+              edge_capture <= -1;
     end
 
 

@@ -9,32 +9,11 @@
    categories="System" />
  <parameter name="bonusData"><![CDATA[bonusData 
 {
-   element ILC
-   {
-      datum _sortIndex
-      {
-         value = "11";
-         type = "int";
-      }
-   }
-   element ILC.avalon_slave
-   {
-      datum _lockedAddress
-      {
-         value = "1";
-         type = "boolean";
-      }
-      datum baseAddress
-      {
-         value = "196608";
-         type = "String";
-      }
-   }
    element button_pio
    {
       datum _sortIndex
       {
-         value = "8";
+         value = "6";
          type = "int";
       }
       datum sopceditor_expanded
@@ -73,7 +52,7 @@
    {
       datum _sortIndex
       {
-         value = "9";
+         value = "7";
          type = "int";
       }
       datum sopceditor_expanded
@@ -101,14 +80,6 @@
       {
          value = "16384";
          type = "String";
-      }
-   }
-   element f2sdram_only_master
-   {
-      datum _sortIndex
-      {
-         value = "5";
-         type = "int";
       }
    }
    element fpga_only_master
@@ -162,7 +133,7 @@
    {
       datum _sortIndex
       {
-         value = "7";
+         value = "5";
          type = "int";
       }
       datum sopceditor_expanded
@@ -188,7 +159,7 @@
    {
       datum _sortIndex
       {
-         value = "10";
+         value = "8";
          type = "int";
       }
       datum sopceditor_expanded
@@ -208,22 +179,6 @@
       {
          value = "12288";
          type = "String";
-      }
-   }
-   element mm_bridge_0
-   {
-      datum _sortIndex
-      {
-         value = "6";
-         type = "int";
-      }
-   }
-   element mm_bridge_0.s0
-   {
-      datum _lockedAddress
-      {
-         value = "1";
-         type = "boolean";
       }
    }
    element sysid_qsys
@@ -284,31 +239,10 @@
    internal="dipsw_pio.external_connection"
    type="conduit"
    dir="end" />
- <interface
-   name="hps_0_f2h_cold_reset_req"
-   internal="hps_0.f2h_cold_reset_req"
-   type="reset"
-   dir="end" />
- <interface
-   name="hps_0_f2h_debug_reset_req"
-   internal="hps_0.f2h_debug_reset_req"
-   type="reset"
-   dir="end" />
- <interface
-   name="hps_0_f2h_stm_hw_events"
-   internal="hps_0.f2h_stm_hw_events"
-   type="conduit"
-   dir="end" />
- <interface
-   name="hps_0_f2h_warm_reset_req"
-   internal="hps_0.f2h_warm_reset_req"
-   type="reset"
-   dir="end" />
- <interface
-   name="hps_0_h2f_reset"
-   internal="hps_0.h2f_reset"
-   type="reset"
-   dir="start" />
+ <interface name="hps_0_f2h_cold_reset_req" internal="hps_0.f2h_cold_reset_req" />
+ <interface name="hps_0_f2h_debug_reset_req" internal="hps_0.f2h_debug_reset_req" />
+ <interface name="hps_0_f2h_stm_hw_events" internal="hps_0.f2h_stm_hw_events" />
+ <interface name="hps_0_f2h_warm_reset_req" internal="hps_0.f2h_warm_reset_req" />
  <interface name="hps_0_h2f_user0_clock" internal="hps_0.h2f_user0_clock" />
  <interface name="hps_0_hps_io" internal="hps_0.hps_io" type="conduit" dir="end" />
  <interface
@@ -318,15 +252,6 @@
    dir="end" />
  <interface name="memory" internal="hps_0.memory" type="conduit" dir="end" />
  <interface name="reset" internal="clk_0.clk_in_reset" type="reset" dir="end" />
- <module
-   name="ILC"
-   kind="interrupt_latency_counter"
-   version="16.0"
-   enabled="1">
-  <parameter name="CLOCK_RATE" value="50000000" />
-  <parameter name="INTR_TYPE" value="0" />
-  <parameter name="IRQ_PORT_CNT" value="3" />
- </module>
  <module name="button_pio" kind="altera_avalon_pio" version="16.0" enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="true" />
   <parameter name="bitModifyingOutReg" value="false" />
@@ -339,7 +264,7 @@
   <parameter name="resetValue" value="0" />
   <parameter name="simDoTestBenchWiring" value="false" />
   <parameter name="simDrivenValue" value="0" />
-  <parameter name="width" value="2" />
+  <parameter name="width" value="1" />
  </module>
  <module name="clk_0" kind="clock_source" version="16.0" enabled="1">
   <parameter name="clockFrequency" value="50000000" />
@@ -360,20 +285,6 @@
   <parameter name="simDoTestBenchWiring" value="false" />
   <parameter name="simDrivenValue" value="0" />
   <parameter name="width" value="4" />
- </module>
- <module
-   name="f2sdram_only_master"
-   kind="altera_jtag_avalon_master"
-   version="16.0"
-   enabled="1">
-  <parameter name="AUTO_DEVICE" value="5CSEBA6U23I7" />
-  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
-  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
-  <parameter name="COMPONENT_CLOCK" value="0" />
-  <parameter name="FAST_VER" value="0" />
-  <parameter name="FIFO_DEPTHS" value="2" />
-  <parameter name="PLI_PORT" value="50000" />
-  <parameter name="USE_PLI" value="0" />
  </module>
  <module
    name="fpga_only_master"
@@ -492,15 +403,15 @@
   <parameter name="F2H_SDRAM3_CLOCK_FREQ" value="100" />
   <parameter name="F2H_SDRAM4_CLOCK_FREQ" value="100" />
   <parameter name="F2H_SDRAM5_CLOCK_FREQ" value="100" />
-  <parameter name="F2SCLK_COLDRST_Enable" value="true" />
-  <parameter name="F2SCLK_DBGRST_Enable" value="true" />
+  <parameter name="F2SCLK_COLDRST_Enable" value="false" />
+  <parameter name="F2SCLK_DBGRST_Enable" value="false" />
   <parameter name="F2SCLK_PERIPHCLK_Enable" value="false" />
   <parameter name="F2SCLK_PERIPHCLK_FREQ" value="0" />
   <parameter name="F2SCLK_SDRAMCLK_Enable" value="false" />
   <parameter name="F2SCLK_SDRAMCLK_FREQ" value="0" />
-  <parameter name="F2SCLK_WARMRST_Enable" value="true" />
+  <parameter name="F2SCLK_WARMRST_Enable" value="false" />
   <parameter name="F2SDRAM_Type">Avalon-MM Bidirectional</parameter>
-  <parameter name="F2SDRAM_Width" value="256" />
+  <parameter name="F2SDRAM_Width" value="64" />
   <parameter name="F2SINTERRUPT_Enable" value="true" />
   <parameter name="F2S_Width" value="2" />
   <parameter name="FIX_READ_LATENCY" value="8" />
@@ -539,7 +450,7 @@
   <parameter name="FPGA_PERIPHERAL_OUTPUT_CLOCK_FREQ_SDIO_CCLK" value="100" />
   <parameter name="FPGA_PERIPHERAL_OUTPUT_CLOCK_FREQ_SPIM0_SCLK_OUT" value="100" />
   <parameter name="FPGA_PERIPHERAL_OUTPUT_CLOCK_FREQ_SPIM1_SCLK_OUT" value="100" />
-  <parameter name="GPIO_Enable">No,No,No,No,No,No,No,No,No,Yes,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Yes,No,No,No,No,Yes,No,No,No,No,No,No,No,No,No,No,No,No,Yes,Yes,No,No,No,No,No,No,Yes,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No</parameter>
+  <parameter name="GPIO_Enable">No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Yes,Yes,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No</parameter>
   <parameter name="GP_Enable" value="false" />
   <parameter name="H2F_AXI_CLOCK_FREQ" value="50000000" />
   <parameter name="H2F_CTI_CLOCK_FREQ" value="100" />
@@ -553,10 +464,10 @@
   <parameter name="HHP_HPS_VERIFICATION" value="false" />
   <parameter name="HLGPI_Enable" value="false" />
   <parameter name="HPS_PROTOCOL" value="DDR3" />
-  <parameter name="I2C0_Mode" value="I2C" />
-  <parameter name="I2C0_PinMuxing" value="HPS I/O Set 0" />
-  <parameter name="I2C1_Mode" value="I2C" />
-  <parameter name="I2C1_PinMuxing" value="HPS I/O Set 0" />
+  <parameter name="I2C0_Mode" value="N/A" />
+  <parameter name="I2C0_PinMuxing" value="Unused" />
+  <parameter name="I2C1_Mode" value="N/A" />
+  <parameter name="I2C1_PinMuxing" value="Unused" />
   <parameter name="I2C2_Mode" value="N/A" />
   <parameter name="I2C2_PinMuxing" value="Unused" />
   <parameter name="I2C3_Mode" value="N/A" />
@@ -772,14 +683,14 @@
   <parameter name="SPEED_GRADE" value="7" />
   <parameter name="SPIM0_Mode" value="N/A" />
   <parameter name="SPIM0_PinMuxing" value="Unused" />
-  <parameter name="SPIM1_Mode" value="Single Slave Select" />
-  <parameter name="SPIM1_PinMuxing" value="HPS I/O Set 0" />
+  <parameter name="SPIM1_Mode" value="N/A" />
+  <parameter name="SPIM1_PinMuxing" value="Unused" />
   <parameter name="SPIS0_Mode" value="N/A" />
   <parameter name="SPIS0_PinMuxing" value="Unused" />
   <parameter name="SPIS1_Mode" value="N/A" />
   <parameter name="SPIS1_PinMuxing" value="Unused" />
   <parameter name="STARVE_LIMIT" value="10" />
-  <parameter name="STM_Enable" value="true" />
+  <parameter name="STM_Enable" value="false" />
   <parameter name="SYS_INFO_DEVICE_FAMILY" value="Cyclone V" />
   <parameter name="TEST_Enable" value="false" />
   <parameter name="TIMING_BOARD_AC_EYE_REDUCTION_H" value="0.0" />
@@ -965,25 +876,7 @@
   <parameter name="resetValue" value="127" />
   <parameter name="simDoTestBenchWiring" value="false" />
   <parameter name="simDrivenValue" value="0" />
-  <parameter name="width" value="7" />
- </module>
- <module
-   name="mm_bridge_0"
-   kind="altera_avalon_mm_bridge"
-   version="16.0"
-   enabled="1">
-  <parameter name="ADDRESS_UNITS" value="SYMBOLS" />
-  <parameter name="ADDRESS_WIDTH" value="10" />
-  <parameter name="DATA_WIDTH" value="32" />
-  <parameter name="LINEWRAPBURSTS" value="0" />
-  <parameter name="MAX_BURST_SIZE" value="1" />
-  <parameter name="MAX_PENDING_RESPONSES" value="4" />
-  <parameter name="PIPELINE_COMMAND" value="1" />
-  <parameter name="PIPELINE_RESPONSE" value="1" />
-  <parameter name="SYMBOL_WIDTH" value="8" />
-  <parameter name="SYSINFO_ADDR_WIDTH" value="18" />
-  <parameter name="USE_AUTO_ADDRESS_WIDTH" value="1" />
-  <parameter name="USE_RESPONSE" value="0" />
+  <parameter name="width" value="8" />
  </module>
  <module
    name="sysid_qsys"
@@ -995,78 +888,10 @@
  <connection
    kind="avalon"
    version="16.0"
-   start="hps_0.h2f_lw_axi_master"
-   end="mm_bridge_0.s0">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0000" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="16.0"
-   start="mm_bridge_0.m0"
-   end="jtag_uart.avalon_jtag_slave">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x2000" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="16.0"
-   start="mm_bridge_0.m0"
-   end="ILC.avalon_slave">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00030000" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="16.0"
-   start="mm_bridge_0.m0"
-   end="sysid_qsys.control_slave">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x1000" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection kind="avalon" version="16.0" start="mm_bridge_0.m0" end="led_pio.s1">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x3000" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="16.0"
-   start="mm_bridge_0.m0"
-   end="dipsw_pio.s1">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x4000" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="16.0"
-   start="mm_bridge_0.m0"
-   end="button_pio.s1">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x5000" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="16.0"
    start="fpga_only_master.master"
    end="jtag_uart.avalon_jtag_slave">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x2000" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="16.0"
-   start="fpga_only_master.master"
-   end="ILC.avalon_slave">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00030000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1083,15 +908,6 @@
    version="16.0"
    start="hps_only_master.master"
    end="hps_0.f2h_axi_slave">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0000" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="16.0"
-   start="f2sdram_only_master.master"
-   end="hps_0.f2h_sdram0_data">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x0000" />
   <parameter name="defaultConnection" value="false" />
@@ -1142,13 +958,6 @@
    kind="clock"
    version="16.0"
    start="clk_0.clk"
-   end="f2sdram_only_master.clk" />
- <connection kind="clock" version="16.0" start="clk_0.clk" end="mm_bridge_0.clk" />
- <connection kind="clock" version="16.0" start="clk_0.clk" end="ILC.clk" />
- <connection
-   kind="clock"
-   version="16.0"
-   start="clk_0.clk"
    end="hps_0.f2h_axi_clock" />
  <connection
    kind="clock"
@@ -1170,7 +979,7 @@
    version="16.0"
    start="hps_0.f2h_irq0"
    end="jtag_uart.irq">
-  <parameter name="irqNumber" value="2" />
+  <parameter name="irqNumber" value="0" />
  </connection>
  <connection
    kind="interrupt"
@@ -1184,16 +993,7 @@
    version="16.0"
    start="hps_0.f2h_irq0"
    end="dipsw_pio.irq">
-  <parameter name="irqNumber" value="0" />
- </connection>
- <connection kind="interrupt" version="16.0" start="ILC.irq" end="jtag_uart.irq">
   <parameter name="irqNumber" value="2" />
- </connection>
- <connection kind="interrupt" version="16.0" start="ILC.irq" end="button_pio.irq">
-  <parameter name="irqNumber" value="1" />
- </connection>
- <connection kind="interrupt" version="16.0" start="ILC.irq" end="dipsw_pio.irq">
-  <parameter name="irqNumber" value="0" />
  </connection>
  <connection
    kind="reset"
@@ -1205,11 +1005,6 @@
    version="16.0"
    start="clk_0.clk_reset"
    end="fpga_only_master.clk_reset" />
- <connection
-   kind="reset"
-   version="16.0"
-   start="clk_0.clk_reset"
-   end="f2sdram_only_master.clk_reset" />
  <connection
    kind="reset"
    version="16.0"
@@ -1235,12 +1030,6 @@
    version="16.0"
    start="clk_0.clk_reset"
    end="jtag_uart.reset" />
- <connection
-   kind="reset"
-   version="16.0"
-   start="clk_0.clk_reset"
-   end="mm_bridge_0.reset" />
- <connection kind="reset" version="16.0" start="clk_0.clk_reset" end="ILC.reset_n" />
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
  <interconnectRequirement for="$system" name="qsys_mm.maxAdditionalLatency" value="1" />
 </system>

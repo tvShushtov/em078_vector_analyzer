@@ -2,33 +2,16 @@
 		.button_pio_external_connection_export (<connected-to-button_pio_external_connection_export>), // button_pio_external_connection.export
 		.clk_clk                               (<connected-to-clk_clk>),                               //                            clk.clk
 		.dipsw_pio_external_connection_export  (<connected-to-dipsw_pio_external_connection_export>),  //  dipsw_pio_external_connection.export
-		.hps_0_f2h_cold_reset_req_reset_n      (<connected-to-hps_0_f2h_cold_reset_req_reset_n>),      //       hps_0_f2h_cold_reset_req.reset_n
-		.hps_0_f2h_debug_reset_req_reset_n     (<connected-to-hps_0_f2h_debug_reset_req_reset_n>),     //      hps_0_f2h_debug_reset_req.reset_n
-		.hps_0_f2h_stm_hw_events_stm_hwevents  (<connected-to-hps_0_f2h_stm_hw_events_stm_hwevents>),  //        hps_0_f2h_stm_hw_events.stm_hwevents
-		.hps_0_f2h_warm_reset_req_reset_n      (<connected-to-hps_0_f2h_warm_reset_req_reset_n>),      //       hps_0_f2h_warm_reset_req.reset_n
-		.hps_0_h2f_reset_reset_n               (<connected-to-hps_0_h2f_reset_reset_n>),               //                hps_0_h2f_reset.reset_n
 		.hps_0_hps_io_hps_io_sdio_inst_CMD     (<connected-to-hps_0_hps_io_hps_io_sdio_inst_CMD>),     //                   hps_0_hps_io.hps_io_sdio_inst_CMD
 		.hps_0_hps_io_hps_io_sdio_inst_D0      (<connected-to-hps_0_hps_io_hps_io_sdio_inst_D0>),      //                               .hps_io_sdio_inst_D0
 		.hps_0_hps_io_hps_io_sdio_inst_D1      (<connected-to-hps_0_hps_io_hps_io_sdio_inst_D1>),      //                               .hps_io_sdio_inst_D1
 		.hps_0_hps_io_hps_io_sdio_inst_CLK     (<connected-to-hps_0_hps_io_hps_io_sdio_inst_CLK>),     //                               .hps_io_sdio_inst_CLK
 		.hps_0_hps_io_hps_io_sdio_inst_D2      (<connected-to-hps_0_hps_io_hps_io_sdio_inst_D2>),      //                               .hps_io_sdio_inst_D2
 		.hps_0_hps_io_hps_io_sdio_inst_D3      (<connected-to-hps_0_hps_io_hps_io_sdio_inst_D3>),      //                               .hps_io_sdio_inst_D3
-		.hps_0_hps_io_hps_io_spim1_inst_CLK    (<connected-to-hps_0_hps_io_hps_io_spim1_inst_CLK>),    //                               .hps_io_spim1_inst_CLK
-		.hps_0_hps_io_hps_io_spim1_inst_MOSI   (<connected-to-hps_0_hps_io_hps_io_spim1_inst_MOSI>),   //                               .hps_io_spim1_inst_MOSI
-		.hps_0_hps_io_hps_io_spim1_inst_MISO   (<connected-to-hps_0_hps_io_hps_io_spim1_inst_MISO>),   //                               .hps_io_spim1_inst_MISO
-		.hps_0_hps_io_hps_io_spim1_inst_SS0    (<connected-to-hps_0_hps_io_hps_io_spim1_inst_SS0>),    //                               .hps_io_spim1_inst_SS0
 		.hps_0_hps_io_hps_io_uart0_inst_RX     (<connected-to-hps_0_hps_io_hps_io_uart0_inst_RX>),     //                               .hps_io_uart0_inst_RX
 		.hps_0_hps_io_hps_io_uart0_inst_TX     (<connected-to-hps_0_hps_io_hps_io_uart0_inst_TX>),     //                               .hps_io_uart0_inst_TX
-		.hps_0_hps_io_hps_io_i2c0_inst_SDA     (<connected-to-hps_0_hps_io_hps_io_i2c0_inst_SDA>),     //                               .hps_io_i2c0_inst_SDA
-		.hps_0_hps_io_hps_io_i2c0_inst_SCL     (<connected-to-hps_0_hps_io_hps_io_i2c0_inst_SCL>),     //                               .hps_io_i2c0_inst_SCL
-		.hps_0_hps_io_hps_io_i2c1_inst_SDA     (<connected-to-hps_0_hps_io_hps_io_i2c1_inst_SDA>),     //                               .hps_io_i2c1_inst_SDA
-		.hps_0_hps_io_hps_io_i2c1_inst_SCL     (<connected-to-hps_0_hps_io_hps_io_i2c1_inst_SCL>),     //                               .hps_io_i2c1_inst_SCL
-		.hps_0_hps_io_hps_io_gpio_inst_GPIO09  (<connected-to-hps_0_hps_io_hps_io_gpio_inst_GPIO09>),  //                               .hps_io_gpio_inst_GPIO09
-		.hps_0_hps_io_hps_io_gpio_inst_GPIO35  (<connected-to-hps_0_hps_io_hps_io_gpio_inst_GPIO35>),  //                               .hps_io_gpio_inst_GPIO35
-		.hps_0_hps_io_hps_io_gpio_inst_GPIO40  (<connected-to-hps_0_hps_io_hps_io_gpio_inst_GPIO40>),  //                               .hps_io_gpio_inst_GPIO40
 		.hps_0_hps_io_hps_io_gpio_inst_GPIO53  (<connected-to-hps_0_hps_io_hps_io_gpio_inst_GPIO53>),  //                               .hps_io_gpio_inst_GPIO53
 		.hps_0_hps_io_hps_io_gpio_inst_GPIO54  (<connected-to-hps_0_hps_io_hps_io_gpio_inst_GPIO54>),  //                               .hps_io_gpio_inst_GPIO54
-		.hps_0_hps_io_hps_io_gpio_inst_GPIO61  (<connected-to-hps_0_hps_io_hps_io_gpio_inst_GPIO61>),  //                               .hps_io_gpio_inst_GPIO61
 		.led_pio_external_connection_export    (<connected-to-led_pio_external_connection_export>),    //    led_pio_external_connection.export
 		.memory_mem_a                          (<connected-to-memory_mem_a>),                          //                         memory.mem_a
 		.memory_mem_ba                         (<connected-to-memory_mem_ba>),                         //                               .mem_ba
