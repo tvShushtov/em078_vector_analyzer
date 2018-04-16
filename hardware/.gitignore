@@ -9,6 +9,7 @@ simulation
 *.log
 *.stp
 *.qws
+*.rpt
 _OUTPUT_FILES/*
 !_OUTPUT_FILES/*.cof
 
