@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>va</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.cdt.managedbuilder.core.genmakebuilder</name>
+			<triggers>clean,full,incremental,</triggers>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>org.eclipse.cdt.managedbuilder.core.ScannerConfigBuilder</name>
+			<triggers>full,incremental,</triggers>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.cdt.core.cnature</nature>
+		<nature>org.eclipse.cdt.managedbuilder.core.managedBuildNature</nature>
+		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>hwlib</name>
+			<type>2</type>
+			<locationURI>$%7BHWLIB_SRC_LOC%7D</locationURI>
+		</link>
+	</linkedResources>
+	<variableList>
+		<variable>
+			<name>HWLIB_SRC_LOC</name>
+			<value>$%7BPARENT-3-ECLIPSE_HOME%7D/ip/altera/hps/altera_hps/hwlib</value>
+		</variable>
+		<variable>
+			<name>SPL_BSP_GEN_LOC</name>
+			<value>$%7BPARENT-1-PROJECT_LOC%7D/spl_bsp/generated</value>
+		</variable>
+	</variableList>
+</projectDescription>

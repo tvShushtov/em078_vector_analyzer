@@ -1,0 +1,137 @@
+18:29:00 **** Build of configuration Debug for project va ****
+make all 
+Building file: ../src/va.c
+Invoking: GCC C Compiler
+arm-altera-eabi-gcc -mcpu=Cortex-A9 -Dsoc_cv_av -I"C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include" -I"C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include\soc_cv_av" -I"D:/PShuklin/projectAltera/projectsLesson/em078_vector_analyzer_v1/software/va/../spl_bsp/generated/" -O0 -g -Wall -MMD -MP -MF"src/va.d" -MT"src/va.d" -c -o "src/va.o" "../src/va.c"
+Finished building: ../src/va.c
+ 
+Building file: C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/soc_cv_av/alt_bridge_manager.c
+Invoking: GCC C Compiler
+arm-altera-eabi-gcc -mcpu=Cortex-A9 -Dsoc_cv_av -I"C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include" -I"C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include\soc_cv_av" -I"D:/PShuklin/projectAltera/projectsLesson/em078_vector_analyzer_v1/software/va/../spl_bsp/generated/" -O0 -g -Wall -MMD -MP -MF"hwlib/src/hwmgr/soc_cv_av/alt_bridge_manager.d" -MT"hwlib/src/hwmgr/soc_cv_av/alt_bridge_manager.d" -c -o "hwlib/src/hwmgr/soc_cv_av/alt_bridge_manager.o" "C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/soc_cv_av/alt_bridge_manager.c"
+Finished building: C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/soc_cv_av/alt_bridge_manager.c
+ 
+Building file: C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/soc_cv_av/alt_clock_manager.c
+Invoking: GCC C Compiler
+arm-altera-eabi-gcc -mcpu=Cortex-A9 -Dsoc_cv_av -I"C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include" -I"C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include\soc_cv_av" -I"D:/PShuklin/projectAltera/projectsLesson/em078_vector_analyzer_v1/software/va/../spl_bsp/generated/" -O0 -g -Wall -MMD -MP -MF"hwlib/src/hwmgr/soc_cv_av/alt_clock_manager.d" -MT"hwlib/src/hwmgr/soc_cv_av/alt_clock_manager.d" -c -o "hwlib/src/hwmgr/soc_cv_av/alt_clock_manager.o" "C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/soc_cv_av/alt_clock_manager.c"
+Finished building: C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/soc_cv_av/alt_clock_manager.c
+ 
+Building file: C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/soc_cv_av/alt_clock_manager_init.c
+Invoking: GCC C Compiler
+arm-altera-eabi-gcc -mcpu=Cortex-A9 -Dsoc_cv_av -I"C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include" -I"C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include\soc_cv_av" -I"D:/PShuklin/projectAltera/projectsLesson/em078_vector_analyzer_v1/software/va/../spl_bsp/generated/" -O0 -g -Wall -MMD -MP -MF"hwlib/src/hwmgr/soc_cv_av/alt_clock_manager_init.d" -MT"hwlib/src/hwmgr/soc_cv_av/alt_clock_manager_init.d" -c -o "hwlib/src/hwmgr/soc_cv_av/alt_clock_manager_init.o" "C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/soc_cv_av/alt_clock_manager_init.c"
+Finished building: C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/soc_cv_av/alt_clock_manager_init.c
+ 
+Building file: C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/soc_cv_av/alt_ecc.c
+Invoking: GCC C Compiler
+arm-altera-eabi-gcc -mcpu=Cortex-A9 -Dsoc_cv_av -I"C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include" -I"C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include\soc_cv_av" -I"D:/PShuklin/projectAltera/projectsLesson/em078_vector_analyzer_v1/software/va/../spl_bsp/generated/" -O0 -g -Wall -MMD -MP -MF"hwlib/src/hwmgr/soc_cv_av/alt_ecc.d" -MT"hwlib/src/hwmgr/soc_cv_av/alt_ecc.d" -c -o "hwlib/src/hwmgr/soc_cv_av/alt_ecc.o" "C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/soc_cv_av/alt_ecc.c"
+Finished building: C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/soc_cv_av/alt_ecc.c
+ 
+Building file: C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/soc_cv_av/alt_fpga_manager.c
+Invoking: GCC C Compiler
+arm-altera-eabi-gcc -mcpu=Cortex-A9 -Dsoc_cv_av -I"C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include" -I"C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include\soc_cv_av" -I"D:/PShuklin/projectAltera/projectsLesson/em078_vector_analyzer_v1/software/va/../spl_bsp/generated/" -O0 -g -Wall -MMD -MP -MF"hwlib/src/hwmgr/soc_cv_av/alt_fpga_manager.d" -MT"hwlib/src/hwmgr/soc_cv_av/alt_fpga_manager.d" -c -o "hwlib/src/hwmgr/soc_cv_av/alt_fpga_manager.o" "C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/soc_cv_av/alt_fpga_manager.c"
+Finished building: C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/soc_cv_av/alt_fpga_manager.c
+ 
+Building file: C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/soc_cv_av/alt_reset_manager.c
+Invoking: GCC C Compiler
+arm-altera-eabi-gcc -mcpu=Cortex-A9 -Dsoc_cv_av -I"C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include" -I"C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include\soc_cv_av" -I"D:/PShuklin/projectAltera/projectsLesson/em078_vector_analyzer_v1/software/va/../spl_bsp/generated/" -O0 -g -Wall -MMD -MP -MF"hwlib/src/hwmgr/soc_cv_av/alt_reset_manager.d" -MT"hwlib/src/hwmgr/soc_cv_av/alt_reset_manager.d" -c -o "hwlib/src/hwmgr/soc_cv_av/alt_reset_manager.o" "C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/soc_cv_av/alt_reset_manager.c"
+Finished building: C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/soc_cv_av/alt_reset_manager.c
+ 
+Building file: C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/soc_cv_av/alt_sdram.c
+Invoking: GCC C Compiler
+arm-altera-eabi-gcc -mcpu=Cortex-A9 -Dsoc_cv_av -I"C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include" -I"C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include\soc_cv_av" -I"D:/PShuklin/projectAltera/projectsLesson/em078_vector_analyzer_v1/software/va/../spl_bsp/generated/" -O0 -g -Wall -MMD -MP -MF"hwlib/src/hwmgr/soc_cv_av/alt_sdram.d" -MT"hwlib/src/hwmgr/soc_cv_av/alt_sdram.d" -c -o "hwlib/src/hwmgr/soc_cv_av/alt_sdram.o" "C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/soc_cv_av/alt_sdram.c"
+Finished building: C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/soc_cv_av/alt_sdram.c
+ 
+Building file: C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/soc_cv_av/alt_system_manager.c
+Invoking: GCC C Compiler
+arm-altera-eabi-gcc -mcpu=Cortex-A9 -Dsoc_cv_av -I"C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include" -I"C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include\soc_cv_av" -I"D:/PShuklin/projectAltera/projectsLesson/em078_vector_analyzer_v1/software/va/../spl_bsp/generated/" -O0 -g -Wall -MMD -MP -MF"hwlib/src/hwmgr/soc_cv_av/alt_system_manager.d" -MT"hwlib/src/hwmgr/soc_cv_av/alt_system_manager.d" -c -o "hwlib/src/hwmgr/soc_cv_av/alt_system_manager.o" "C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/soc_cv_av/alt_system_manager.c"
+Finished building: C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/soc_cv_av/alt_system_manager.c
+ 
+Building file: C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/alt_16550_uart.c
+Invoking: GCC C Compiler
+arm-altera-eabi-gcc -mcpu=Cortex-A9 -Dsoc_cv_av -I"C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include" -I"C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include\soc_cv_av" -I"D:/PShuklin/projectAltera/projectsLesson/em078_vector_analyzer_v1/software/va/../spl_bsp/generated/" -O0 -g -Wall -MMD -MP -MF"hwlib/src/hwmgr/alt_16550_uart.d" -MT"hwlib/src/hwmgr/alt_16550_uart.d" -c -o "hwlib/src/hwmgr/alt_16550_uart.o" "C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/alt_16550_uart.c"
+Finished building: C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/alt_16550_uart.c
+ 
+Building file: C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/alt_address_space.c
+Invoking: GCC C Compiler
+arm-altera-eabi-gcc -mcpu=Cortex-A9 -Dsoc_cv_av -I"C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include" -I"C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include\soc_cv_av" -I"D:/PShuklin/projectAltera/projectsLesson/em078_vector_analyzer_v1/software/va/../spl_bsp/generated/" -O0 -g -Wall -MMD -MP -MF"hwlib/src/hwmgr/alt_address_space.d" -MT"hwlib/src/hwmgr/alt_address_space.d" -c -o "hwlib/src/hwmgr/alt_address_space.o" "C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/alt_address_space.c"
+Finished building: C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/alt_address_space.c
+ 
+Building file: C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/alt_cache.c
+Invoking: GCC C Compiler
+arm-altera-eabi-gcc -mcpu=Cortex-A9 -Dsoc_cv_av -I"C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include" -I"C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include\soc_cv_av" -I"D:/PShuklin/projectAltera/projectsLesson/em078_vector_analyzer_v1/software/va/../spl_bsp/generated/" -O0 -g -Wall -MMD -MP -MF"hwlib/src/hwmgr/alt_cache.d" -MT"hwlib/src/hwmgr/alt_cache.d" -c -o "hwlib/src/hwmgr/alt_cache.o" "C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/alt_cache.c"
+Finished building: C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/alt_cache.c
+ 
+Building file: C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/alt_can.c
+Invoking: GCC C Compiler
+arm-altera-eabi-gcc -mcpu=Cortex-A9 -Dsoc_cv_av -I"C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include" -I"C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include\soc_cv_av" -I"D:/PShuklin/projectAltera/projectsLesson/em078_vector_analyzer_v1/software/va/../spl_bsp/generated/" -O0 -g -Wall -MMD -MP -MF"hwlib/src/hwmgr/alt_can.d" -MT"hwlib/src/hwmgr/alt_can.d" -c -o "hwlib/src/hwmgr/alt_can.o" "C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/alt_can.c"
+Finished building: C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/alt_can.c
+ 
+Building file: C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/alt_dma.c
+Invoking: GCC C Compiler
+arm-altera-eabi-gcc -mcpu=Cortex-A9 -Dsoc_cv_av -I"C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include" -I"C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include\soc_cv_av" -I"D:/PShuklin/projectAltera/projectsLesson/em078_vector_analyzer_v1/software/va/../spl_bsp/generated/" -O0 -g -Wall -MMD -MP -MF"hwlib/src/hwmgr/alt_dma.d" -MT"hwlib/src/hwmgr/alt_dma.d" -c -o "hwlib/src/hwmgr/alt_dma.o" "C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/alt_dma.c"
+Finished building: C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/alt_dma.c
+ 
+Building file: C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/alt_dma_program.c
+Invoking: GCC C Compiler
+arm-altera-eabi-gcc -mcpu=Cortex-A9 -Dsoc_cv_av -I"C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include" -I"C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include\soc_cv_av" -I"D:/PShuklin/projectAltera/projectsLesson/em078_vector_analyzer_v1/software/va/../spl_bsp/generated/" -O0 -g -Wall -MMD -MP -MF"hwlib/src/hwmgr/alt_dma_program.d" -MT"hwlib/src/hwmgr/alt_dma_program.d" -c -o "hwlib/src/hwmgr/alt_dma_program.o" "C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/alt_dma_program.c"
+Finished building: C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/alt_dma_program.c
+ 
+Building file: C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/alt_generalpurpose_io.c
+Invoking: GCC C Compiler
+arm-altera-eabi-gcc -mcpu=Cortex-A9 -Dsoc_cv_av -I"C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include" -I"C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include\soc_cv_av" -I"D:/PShuklin/projectAltera/projectsLesson/em078_vector_analyzer_v1/software/va/../spl_bsp/generated/" -O0 -g -Wall -MMD -MP -MF"hwlib/src/hwmgr/alt_generalpurpose_io.d" -MT"hwlib/src/hwmgr/alt_generalpurpose_io.d" -c -o "hwlib/src/hwmgr/alt_generalpurpose_io.o" "C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/alt_generalpurpose_io.c"
+Finished building: C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/alt_generalpurpose_io.c
+ 
+Building file: C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/alt_globaltmr.c
+Invoking: GCC C Compiler
+arm-altera-eabi-gcc -mcpu=Cortex-A9 -Dsoc_cv_av -I"C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include" -I"C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include\soc_cv_av" -I"D:/PShuklin/projectAltera/projectsLesson/em078_vector_analyzer_v1/software/va/../spl_bsp/generated/" -O0 -g -Wall -MMD -MP -MF"hwlib/src/hwmgr/alt_globaltmr.d" -MT"hwlib/src/hwmgr/alt_globaltmr.d" -c -o "hwlib/src/hwmgr/alt_globaltmr.o" "C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/alt_globaltmr.c"
+Finished building: C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/alt_globaltmr.c
+ 
+Building file: C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/alt_i2c.c
+Invoking: GCC C Compiler
+arm-altera-eabi-gcc -mcpu=Cortex-A9 -Dsoc_cv_av -I"C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include" -I"C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include\soc_cv_av" -I"D:/PShuklin/projectAltera/projectsLesson/em078_vector_analyzer_v1/software/va/../spl_bsp/generated/" -O0 -g -Wall -MMD -MP -MF"hwlib/src/hwmgr/alt_i2c.d" -MT"hwlib/src/hwmgr/alt_i2c.d" -c -o "hwlib/src/hwmgr/alt_i2c.o" "C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/alt_i2c.c"
+Finished building: C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/alt_i2c.c
+ 
+Building file: C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/alt_interrupt.c
+Invoking: GCC C Compiler
+arm-altera-eabi-gcc -mcpu=Cortex-A9 -Dsoc_cv_av -I"C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include" -I"C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include\soc_cv_av" -I"D:/PShuklin/projectAltera/projectsLesson/em078_vector_analyzer_v1/software/va/../spl_bsp/generated/" -O0 -g -Wall -MMD -MP -MF"hwlib/src/hwmgr/alt_interrupt.d" -MT"hwlib/src/hwmgr/alt_interrupt.d" -c -o "hwlib/src/hwmgr/alt_interrupt.o" "C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/alt_interrupt.c"
+Finished building: C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/alt_interrupt.c
+ 
+Building file: C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/alt_mmu.c
+Invoking: GCC C Compiler
+arm-altera-eabi-gcc -mcpu=Cortex-A9 -Dsoc_cv_av -I"C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include" -I"C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include\soc_cv_av" -I"D:/PShuklin/projectAltera/projectsLesson/em078_vector_analyzer_v1/software/va/../spl_bsp/generated/" -O0 -g -Wall -MMD -MP -MF"hwlib/src/hwmgr/alt_mmu.d" -MT"hwlib/src/hwmgr/alt_mmu.d" -c -o "hwlib/src/hwmgr/alt_mmu.o" "C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/alt_mmu.c"
+Finished building: C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/alt_mmu.c
+ 
+Building file: C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/alt_nand.c
+Invoking: GCC C Compiler
+arm-altera-eabi-gcc -mcpu=Cortex-A9 -Dsoc_cv_av -I"C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include" -I"C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include\soc_cv_av" -I"D:/PShuklin/projectAltera/projectsLesson/em078_vector_analyzer_v1/software/va/../spl_bsp/generated/" -O0 -g -Wall -MMD -MP -MF"hwlib/src/hwmgr/alt_nand.d" -MT"hwlib/src/hwmgr/alt_nand.d" -c -o "hwlib/src/hwmgr/alt_nand.o" "C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/alt_nand.c"
+Finished building: C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/alt_nand.c
+ 
+Building file: C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/alt_qspi.c
+Invoking: GCC C Compiler
+arm-altera-eabi-gcc -mcpu=Cortex-A9 -Dsoc_cv_av -I"C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include" -I"C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include\soc_cv_av" -I"D:/PShuklin/projectAltera/projectsLesson/em078_vector_analyzer_v1/software/va/../spl_bsp/generated/" -O0 -g -Wall -MMD -MP -MF"hwlib/src/hwmgr/alt_qspi.d" -MT"hwlib/src/hwmgr/alt_qspi.d" -c -o "hwlib/src/hwmgr/alt_qspi.o" "C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/alt_qspi.c"
+Finished building: C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/alt_qspi.c
+ 
+Building file: C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/alt_sdmmc.c
+Invoking: GCC C Compiler
+arm-altera-eabi-gcc -mcpu=Cortex-A9 -Dsoc_cv_av -I"C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include" -I"C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include\soc_cv_av" -I"D:/PShuklin/projectAltera/projectsLesson/em078_vector_analyzer_v1/software/va/../spl_bsp/generated/" -O0 -g -Wall -MMD -MP -MF"hwlib/src/hwmgr/alt_sdmmc.d" -MT"hwlib/src/hwmgr/alt_sdmmc.d" -c -o "hwlib/src/hwmgr/alt_sdmmc.o" "C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/alt_sdmmc.c"
+Finished building: C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/alt_sdmmc.c
+ 
+Building file: C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/alt_spi.c
+Invoking: GCC C Compiler
+arm-altera-eabi-gcc -mcpu=Cortex-A9 -Dsoc_cv_av -I"C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include" -I"C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include\soc_cv_av" -I"D:/PShuklin/projectAltera/projectsLesson/em078_vector_analyzer_v1/software/va/../spl_bsp/generated/" -O0 -g -Wall -MMD -MP -MF"hwlib/src/hwmgr/alt_spi.d" -MT"hwlib/src/hwmgr/alt_spi.d" -c -o "hwlib/src/hwmgr/alt_spi.o" "C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/alt_spi.c"
+Finished building: C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/alt_spi.c
+ 
+Building file: C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/alt_timers.c
+Invoking: GCC C Compiler
+arm-altera-eabi-gcc -mcpu=Cortex-A9 -Dsoc_cv_av -I"C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include" -I"C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include\soc_cv_av" -I"D:/PShuklin/projectAltera/projectsLesson/em078_vector_analyzer_v1/software/va/../spl_bsp/generated/" -O0 -g -Wall -MMD -MP -MF"hwlib/src/hwmgr/alt_timers.d" -MT"hwlib/src/hwmgr/alt_timers.d" -c -o "hwlib/src/hwmgr/alt_timers.o" "C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/alt_timers.c"
+Finished building: C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/alt_timers.c
+ 
+Building file: C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/alt_watchdog.c
+Invoking: GCC C Compiler
+arm-altera-eabi-gcc -mcpu=Cortex-A9 -Dsoc_cv_av -I"C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include" -I"C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include\soc_cv_av" -I"D:/PShuklin/projectAltera/projectsLesson/em078_vector_analyzer_v1/software/va/../spl_bsp/generated/" -O0 -g -Wall -MMD -MP -MF"hwlib/src/hwmgr/alt_watchdog.d" -MT"hwlib/src/hwmgr/alt_watchdog.d" -c -o "hwlib/src/hwmgr/alt_watchdog.o" "C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/alt_watchdog.c"
+Finished building: C:/altera/16.0/embedded/ip/altera/hps/altera_hps/hwlib/src/hwmgr/alt_watchdog.c
+ 
+Building target: va.axf
+Invoking: GCC C Linker
+arm-altera-eabi-gcc -T "C:\altera\16.0\embedded\host_tools\mentor\gnu\arm\baremetal\arm-altera-eabi\lib\cycloneV-dk-ram-hosted.ld" -o "va.axf"  ./src/va.o  ./hwlib/src/hwmgr/soc_cv_av/alt_bridge_manager.o ./hwlib/src/hwmgr/soc_cv_av/alt_clock_manager.o ./hwlib/src/hwmgr/soc_cv_av/alt_clock_manager_init.o ./hwlib/src/hwmgr/soc_cv_av/alt_ecc.o ./hwlib/src/hwmgr/soc_cv_av/alt_fpga_manager.o ./hwlib/src/hwmgr/soc_cv_av/alt_reset_manager.o ./hwlib/src/hwmgr/soc_cv_av/alt_sdram.o ./hwlib/src/hwmgr/soc_cv_av/alt_system_manager.o  ./hwlib/src/hwmgr/alt_16550_uart.o ./hwlib/src/hwmgr/alt_address_space.o ./hwlib/src/hwmgr/alt_cache.o ./hwlib/src/hwmgr/alt_can.o ./hwlib/src/hwmgr/alt_dma.o ./hwlib/src/hwmgr/alt_dma_program.o ./hwlib/src/hwmgr/alt_generalpurpose_io.o ./hwlib/src/hwmgr/alt_globaltmr.o ./hwlib/src/hwmgr/alt_i2c.o ./hwlib/src/hwmgr/alt_interrupt.o ./hwlib/src/hwmgr/alt_mmu.o ./hwlib/src/hwmgr/alt_nand.o ./hwlib/src/hwmgr/alt_qspi.o ./hwlib/src/hwmgr/alt_sdmmc.o ./hwlib/src/hwmgr/alt_spi.o ./hwlib/src/hwmgr/alt_timers.o ./hwlib/src/hwmgr/alt_watchdog.o   
+Finished building target: va.axf
+ 

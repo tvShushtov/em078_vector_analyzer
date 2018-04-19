@@ -1,5 +1,9 @@
-### Folders
+### SPL_BSP
+/spl_bsp/*
+!/spl_bsp/settings.bsp
+!/spl_bsp/generated
+!/spl_bsp/generated/*
 
-### File Types
-
-### Files
+### VA
+/va/Debug
+/va/Release
