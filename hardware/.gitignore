@@ -2,6 +2,7 @@
 db
 incremental_db
 simulation
+greybox_tmp
 *.qsys_edit
 
 ### File Types
@@ -15,4 +16,5 @@ _OUTPUT_FILES/*
 
 ### Files
 c5_pin_model_dump.txt
-
+hps_sdram_p0_summary.csv
+HPS.sopcinfo

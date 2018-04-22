@@ -1,0 +1,63 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity nco_control is
+	generic(
+		ACCUM_WIDTH : integer := 30;
+		CLK_NCO	 	: integer := 50000000
+		
+	);
+	port(
+		clk      : in  std_logic; -- 50 MHz
+		reset    : in  std_logic;
+		run      : in  std_logic;
+		f_sino	: in signed(12 downto 0);
+		freq_in	: in unsigned(19 downto 0);
+
+		nco_clken 	: out std_logic;
+		ph_value		: out std_logic_vector(ACCUM_WIDTH-1 downto 0);
+		meandr0ph	: out std_logic;
+		meandr90ph	: out std_logic
+	);
+end entity;
+
+architecture rtl of nco_control is
+	
+	constant N : integer :=1073741824; --2**30
+	signal f_sino_pr : signed(12 downto 0);
+	signal freq 	: integer;
+begin
+	freq <= to_integer(freq_in);
+	process(clk, reset) is
+	begin
+		if reset = '1' then
+			ph_value <= (others => '0');
+			f_sino_pr <= (others => '0');
+			nco_clken <= '0';
+			meandr0ph <= '0';
+			meandr90ph <= '0';
+		elsif rising_edge(clk) then
+			f_sino_pr <= f_sino;
+			if f_sino_pr > f_sino then
+				meandr90ph <= '1';
+			else
+				meandr90ph <= '0';
+			end if;
+			
+			if run = '1' then
+				ph_value <= std_logic_vector(to_unsigned(N/CLK_NCO*freq, ACCUM_WIDTH));
+				nco_clken <= '1';
+			else 
+				nco_clken <= '0';	
+			end if;
+			
+			if ((f_sino_pr < 0) and (f_sino >= 0)) then
+				meandr0ph <= '1';
+			end if;
+			if ((f_sino_pr > 0) and (f_sino <= 0)) then
+				meandr0ph <= '0';
+			end if;
+		end if;
+	end process;
+end architecture rtl;

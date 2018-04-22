@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<system name="$${FILENAME}">
+ <component
+   name="$${FILENAME}"
+   displayName="$${FILENAME}"
+   version="1.0"
+   description=""
+   tags="INTERNAL_COMPONENT=true"
+   categories="" />
+ <parameter name="bonusData"><![CDATA[bonusData 
+{
+   element CORDIC_0
+   {
+      datum _sortIndex
+      {
+         value = "0";
+         type = "int";
+      }
+   }
+}
+]]></parameter>
+ <parameter name="clockCrossingAdapter" value="HANDSHAKE" />
+ <parameter name="device" value="5CSEBA6U23I7" />
+ <parameter name="deviceFamily" value="Cyclone V" />
+ <parameter name="deviceSpeedGrade" value="7" />
+ <parameter name="fabricMode" value="QSYS" />
+ <parameter name="generateLegacySim" value="false" />
+ <parameter name="generationId" value="0" />
+ <parameter name="globalResetBus" value="false" />
+ <parameter name="hdlLanguage" value="VERILOG" />
+ <parameter name="hideFromIPCatalog" value="true" />
+ <parameter name="lockedInterfaceDefinition" value="" />
+ <parameter name="maxAdditionalLatency" value="1" />
+ <parameter name="projectName" value="" />
+ <parameter name="sopcBorderPoints" value="false" />
+ <parameter name="systemHash" value="0" />
+ <parameter name="testBenchDutName" value="" />
+ <parameter name="timeStamp" value="0" />
+ <parameter name="useTestBenchNamingPattern" value="false" />
+ <instanceScript></instanceScript>
+ <interface name="a" internal="CORDIC_0.a" />
+ <interface name="areset" internal="CORDIC_0.areset" type="reset" dir="end">
+  <port name="areset" internal="areset" />
+ </interface>
+ <interface name="c" internal="CORDIC_0.c" />
+ <interface name="clk" internal="CORDIC_0.clk" type="clock" dir="end">
+  <port name="clk" internal="clk" />
+ </interface>
+ <interface name="q" internal="CORDIC_0.q" type="conduit" dir="end">
+  <port name="q" internal="q" />
+ </interface>
+ <interface name="r" internal="CORDIC_0.r" type="conduit" dir="end">
+  <port name="r" internal="r" />
+ </interface>
+ <interface name="s" internal="CORDIC_0.s" />
+ <interface name="x" internal="CORDIC_0.x" type="conduit" dir="end">
+  <port name="x" internal="x" />
+ </interface>
+ <interface name="y" internal="CORDIC_0.y" type="conduit" dir="end">
+  <port name="y" internal="y" />
+ </interface>
+ <module
+   name="CORDIC_0"
+   kind="altera_CORDIC"
+   version="16.0"
+   enabled="1"
+   autoexport="1">
+  <parameter name="ALL_function" value="VECTRANSLATE" />
+  <parameter name="FUNCTION_FAMILY" value="ALL" />
+  <parameter name="LUTSize" value="6" />
+  <parameter name="SFCompensation" value="false" />
+  <parameter name="frequency_target" value="100" />
+  <parameter name="fxpt_in_fraction" value="0" />
+  <parameter name="fxpt_in_sign" value="1" />
+  <parameter name="fxpt_in_width" value="12" />
+  <parameter name="fxpt_out_fraction" value="15" />
+  <parameter name="fxpt_out_width" value="32" />
+  <parameter name="gen_enable" value="false" />
+  <parameter name="latency_target" value="2" />
+  <parameter name="performance_goal" value="frequency" />
+  <parameter name="report_resources_to_xml" value="false" />
+  <parameter name="selected_device_family" value="Cyclone V" />
+  <parameter name="selected_device_speedgrade" value="7" />
+  <parameter name="specifyLUTs" value="false" />
+  <parameter name="useLUTs" value="false" />
+ </module>
+ <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
+ <interconnectRequirement for="$system" name="qsys_mm.enableEccProtection" value="FALSE" />
+ <interconnectRequirement for="$system" name="qsys_mm.insertDefaultSlave" value="FALSE" />
+ <interconnectRequirement for="$system" name="qsys_mm.maxAdditionalLatency" value="1" />
+</system>

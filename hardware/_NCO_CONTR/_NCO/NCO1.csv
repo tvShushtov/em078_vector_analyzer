@@ -1,0 +1,48 @@
+# system info NCO1 on 2018.04.22.19:08:41
+system_info:
+name,value
+DEVICE,5CSEBA6U23I7
+DEVICE_FAMILY,Cyclone V
+GENERATION_ID,1524409719
+#
+#
+# Files generated for NCO1 on 2018.04.22.19:08:41
+files:
+filepath,kind,attributes,module,is_top
+simulation/NCO1.vhd,VHDL,,NCO1,true
+simulation/submodules/mentor/sid_2c_1p.v,VERILOG_ENCRYPT,MENTOR_SPECIFIC,NCO1_nco_ii_0,false
+simulation/submodules/aldec/sid_2c_1p.v,VERILOG_ENCRYPT,ALDEC_SPECIFIC,NCO1_nco_ii_0,false
+simulation/submodules/mentor/asj_nco_mob_rw.v,VERILOG_ENCRYPT,MENTOR_SPECIFIC,NCO1_nco_ii_0,false
+simulation/submodules/aldec/asj_nco_mob_rw.v,VERILOG_ENCRYPT,ALDEC_SPECIFIC,NCO1_nco_ii_0,false
+simulation/submodules/mentor/asj_gar.v,VERILOG_ENCRYPT,MENTOR_SPECIFIC,NCO1_nco_ii_0,false
+simulation/submodules/aldec/asj_gar.v,VERILOG_ENCRYPT,ALDEC_SPECIFIC,NCO1_nco_ii_0,false
+simulation/submodules/mentor/asj_nco_isdr.v,VERILOG_ENCRYPT,MENTOR_SPECIFIC,NCO1_nco_ii_0,false
+simulation/submodules/aldec/asj_nco_isdr.v,VERILOG_ENCRYPT,ALDEC_SPECIFIC,NCO1_nco_ii_0,false
+simulation/submodules/mentor/asj_nco_apr_dxx.v,VERILOG_ENCRYPT,MENTOR_SPECIFIC,NCO1_nco_ii_0,false
+simulation/submodules/aldec/asj_nco_apr_dxx.v,VERILOG_ENCRYPT,ALDEC_SPECIFIC,NCO1_nco_ii_0,false
+simulation/submodules/mentor/segment_arr_tdl.v,VERILOG_ENCRYPT,MENTOR_SPECIFIC,NCO1_nco_ii_0,false
+simulation/submodules/aldec/segment_arr_tdl.v,VERILOG_ENCRYPT,ALDEC_SPECIFIC,NCO1_nco_ii_0,false
+simulation/submodules/mentor/segment_sel.v,VERILOG_ENCRYPT,MENTOR_SPECIFIC,NCO1_nco_ii_0,false
+simulation/submodules/aldec/segment_sel.v,VERILOG_ENCRYPT,ALDEC_SPECIFIC,NCO1_nco_ii_0,false
+simulation/submodules/mentor/asj_dxx_g.v,VERILOG_ENCRYPT,MENTOR_SPECIFIC,NCO1_nco_ii_0,false
+simulation/submodules/aldec/asj_dxx_g.v,VERILOG_ENCRYPT,ALDEC_SPECIFIC,NCO1_nco_ii_0,false
+simulation/submodules/mentor/asj_dxx.v,VERILOG_ENCRYPT,MENTOR_SPECIFIC,NCO1_nco_ii_0,false
+simulation/submodules/aldec/asj_dxx.v,VERILOG_ENCRYPT,ALDEC_SPECIFIC,NCO1_nco_ii_0,false
+simulation/submodules/mentor/asj_xnqg.v,VERILOG_ENCRYPT,MENTOR_SPECIFIC,NCO1_nco_ii_0,false
+simulation/submodules/aldec/asj_xnqg.v,VERILOG_ENCRYPT,ALDEC_SPECIFIC,NCO1_nco_ii_0,false
+simulation/submodules/mentor/asj_nco_as_m_cen.v,VERILOG_ENCRYPT,MENTOR_SPECIFIC,NCO1_nco_ii_0,false
+simulation/submodules/aldec/asj_nco_as_m_cen.v,VERILOG_ENCRYPT,ALDEC_SPECIFIC,NCO1_nco_ii_0,false
+simulation/submodules/mentor/asj_altqmcpipe.v,VERILOG_ENCRYPT,MENTOR_SPECIFIC,NCO1_nco_ii_0,false
+simulation/submodules/aldec/asj_altqmcpipe.v,VERILOG_ENCRYPT,ALDEC_SPECIFIC,NCO1_nco_ii_0,false
+simulation/submodules/NCO1_nco_ii_0_sin.hex,HEX,,NCO1_nco_ii_0,false
+simulation/submodules/NCO1_nco_ii_0_cos.hex,HEX,,NCO1_nco_ii_0,false
+simulation/submodules/NCO1_nco_ii_0.v,VERILOG,,NCO1_nco_ii_0,false
+simulation/submodules/NCO1_nco_ii_0_tb.vhd,OTHER,,NCO1_nco_ii_0,false
+simulation/submodules/c_model/model_wrapper.cpp,OTHER,,NCO1_nco_ii_0,false
+simulation/submodules/c_model/nco_model.cpp,OTHER,,NCO1_nco_ii_0,false
+simulation/submodules/c_model/nco_model.h,OTHER,,NCO1_nco_ii_0,false
+#
+# Map from instance-path to kind of module
+instances:
+instancePath,module
+NCO1.nco_ii_0,NCO1_nco_ii_0
