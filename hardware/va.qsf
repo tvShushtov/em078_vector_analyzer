@@ -732,6 +732,7 @@ set_global_assignment -name SEARCH_PATH _nco_contr/
 set_global_assignment -name SEARCH_PATH _datagen/
 set_global_assignment -name SEARCH_PATH _datagen/atan2/
 set_global_assignment -name SEARCH_PATH _datagen/sqrtsum/
+set_global_assignment -name SEARCH_PATH _va_sm/
 
 #============================================================
 # FILES
@@ -746,6 +747,7 @@ set_global_assignment -name QIP_FILE _DATAGEN/ATAN2/ATAN2/synthesis/ATAN2.qip
 set_global_assignment -name QSYS_FILE _HPS/HPS.qsys
 set_global_assignment -name QIP_FILE _NCO_CONTR/_NCO/synthesis/NCO1.qip
 set_global_assignment -name VHDL_FILE _NCO_CONTR/nco_control.vhd
+set_global_assignment -name VHDL_FILE _VA_SM/va_sm.vhd
 
 #============================================================
 # FILES

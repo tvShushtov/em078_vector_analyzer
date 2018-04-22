@@ -3,19 +3,13 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 entity nco_control is
-	generic(
-		ACCUM_WIDTH : integer := 30;
-		CLK_NCO	 	: integer := 50000000
-		
-	);
 	port(
-		f_sino	: in signed(13 downto 0);
-		clk      : in  std_logic; -- 50 MHz
-		reset    : in  std_logic;
-		run      : in  std_logic;
+		f_sino	  : in signed(13 downto 0);
+		clk        : in  std_logic; -- 50 MHz
+		reset      : in  std_logic;
+		sw_dataout : in  std_logic;
 	
 		f_sino_up	: out unsigned(13 downto 0);
-		nco_clken 	: out std_logic;
 		meandr0ph	: out std_logic;
 		meandr90ph	: out std_logic
 	);
@@ -43,11 +37,9 @@ begin
 				meandr90ph <= '0';
 			end if;
 			
-			if run = '1' then
-				nco_clken <= '1';
+			if sw_dataout = '1' then
 				f_sino_up <= unsigned(f_sino + to_signed(8192, 14));
 			else 
-				nco_clken <= '0';
 				f_sino_up <= (others => '0');
 			end if;
 			

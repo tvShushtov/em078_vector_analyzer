@@ -13,7 +13,7 @@
    {
       datum _sortIndex
       {
-         value = "6";
+         value = "4";
          type = "int";
       }
       datum sopceditor_expanded
@@ -52,7 +52,7 @@
    {
       datum _sortIndex
       {
-         value = "7";
+         value = "5";
          type = "int";
       }
       datum sopceditor_expanded
@@ -86,7 +86,7 @@
    {
       datum _sortIndex
       {
-         value = "4";
+         value = "8";
          type = "int";
       }
       datum sopceditor_expanded
@@ -120,7 +120,7 @@
    {
       datum _sortIndex
       {
-         value = "3";
+         value = "9";
          type = "int";
       }
       datum sopceditor_expanded
@@ -133,7 +133,7 @@
    {
       datum _sortIndex
       {
-         value = "5";
+         value = "7";
          type = "int";
       }
       datum sopceditor_expanded
@@ -159,7 +159,7 @@
    {
       datum _sortIndex
       {
-         value = "8";
+         value = "6";
          type = "int";
       }
       datum sopceditor_expanded
@@ -204,6 +204,22 @@
       datum baseAddress
       {
          value = "4096";
+         type = "String";
+      }
+   }
+   element va_gen_sm
+   {
+      datum _sortIndex
+      {
+         value = "3";
+         type = "int";
+      }
+   }
+   element va_gen_sm.s1
+   {
+      datum baseAddress
+      {
+         value = "0";
          type = "String";
       }
    }
@@ -252,6 +268,11 @@
    dir="end" />
  <interface name="memory" internal="hps_0.memory" type="conduit" dir="end" />
  <interface name="reset" internal="clk_0.clk_in_reset" type="reset" dir="end" />
+ <interface
+   name="va_gen_sm_external_connection"
+   internal="va_gen_sm.external_connection"
+   type="conduit"
+   dir="end" />
  <module name="button_pio" kind="altera_avalon_pio" version="16.0" enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="true" />
   <parameter name="bitModifyingOutReg" value="false" />
@@ -885,6 +906,56 @@
    enabled="1">
   <parameter name="id" value="-1395322110" />
  </module>
+ <module name="va_gen_sm" kind="altera_avalon_pio" version="16.0" enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="50000000" />
+  <parameter name="direction" value="Output" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="32" />
+ </module>
+ <connection
+   kind="avalon"
+   version="16.0"
+   start="hps_0.h2f_lw_axi_master"
+   end="va_gen_sm.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="16.0"
+   start="hps_0.h2f_lw_axi_master"
+   end="button_pio.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x5000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="16.0"
+   start="hps_0.h2f_lw_axi_master"
+   end="dipsw_pio.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x4000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="16.0"
+   start="hps_0.h2f_lw_axi_master"
+   end="led_pio.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x3000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
  <connection
    kind="avalon"
    version="16.0"
@@ -940,6 +1011,15 @@
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
+   kind="avalon"
+   version="16.0"
+   start="fpga_only_master.master"
+   end="va_gen_sm.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
    kind="clock"
    version="16.0"
    start="clk_0.clk"
@@ -954,6 +1034,7 @@
  <connection kind="clock" version="16.0" start="clk_0.clk" end="dipsw_pio.clk" />
  <connection kind="clock" version="16.0" start="clk_0.clk" end="button_pio.clk" />
  <connection kind="clock" version="16.0" start="clk_0.clk" end="jtag_uart.clk" />
+ <connection kind="clock" version="16.0" start="clk_0.clk" end="va_gen_sm.clk" />
  <connection
    kind="clock"
    version="16.0"
@@ -1030,6 +1111,11 @@
    version="16.0"
    start="clk_0.clk_reset"
    end="jtag_uart.reset" />
+ <connection
+   kind="reset"
+   version="16.0"
+   start="clk_0.clk_reset"
+   end="va_gen_sm.reset" />
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
  <interconnectRequirement for="$system" name="qsys_mm.maxAdditionalLatency" value="1" />
 </system>

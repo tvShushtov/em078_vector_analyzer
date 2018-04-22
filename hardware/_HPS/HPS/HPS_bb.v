@@ -30,7 +30,8 @@ module HPS (
 	memory_mem_odt,
 	memory_mem_dm,
 	memory_oct_rzqin,
-	reset_reset_n);	
+	reset_reset_n,
+	va_gen_sm_external_connection_export);	
 
 	input		button_pio_external_connection_export;
 	input		clk_clk;
@@ -63,4 +64,5 @@ module HPS (
 	output	[3:0]	memory_mem_dm;
 	input		memory_oct_rzqin;
 	input		reset_reset_n;
+	output	[31:0]	va_gen_sm_external_connection_export;
 endmodule

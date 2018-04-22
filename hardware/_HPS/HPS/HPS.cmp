@@ -30,7 +30,8 @@
 			memory_mem_odt                        : out   std_logic;                                        -- mem_odt
 			memory_mem_dm                         : out   std_logic_vector(3 downto 0);                     -- mem_dm
 			memory_oct_rzqin                      : in    std_logic                     := 'X';             -- oct_rzqin
-			reset_reset_n                         : in    std_logic                     := 'X'              -- reset_n
+			reset_reset_n                         : in    std_logic                     := 'X';             -- reset_n
+			va_gen_sm_external_connection_export  : out   std_logic_vector(31 downto 0)                     -- export
 		);
 	end component HPS;
 

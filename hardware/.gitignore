@@ -11,6 +11,7 @@ greybox_tmp
 *.stp
 *.qws
 *.rpt
+*.bak
 _OUTPUT_FILES/*
 !_OUTPUT_FILES/*.cof
 
