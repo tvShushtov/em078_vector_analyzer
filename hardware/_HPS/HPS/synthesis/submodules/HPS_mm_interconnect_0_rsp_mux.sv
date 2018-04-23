@@ -39,13 +39,13 @@
 // ------------------------------------------
 // Generation parameters:
 //   output_name:         HPS_mm_interconnect_0_rsp_mux
-//   NUM_INPUTS:          4
-//   ARBITRATION_SHARES:  1 1 1 1
+//   NUM_INPUTS:          8
+//   ARBITRATION_SHARES:  1 1 1 1 1 1 1 1
 //   ARBITRATION_SCHEME   "no-arb"
 //   PIPELINE_ARB:        0
-//   PKT_TRANS_LOCK:      72 (arbitration locking enabled)
-//   ST_DATA_W:           127
-//   ST_CHANNEL_W:        6
+//   PKT_TRANS_LOCK:      61 (arbitration locking enabled)
+//   ST_DATA_W:           116
+//   ST_CHANNEL_W:        8
 // ------------------------------------------
 
 module HPS_mm_interconnect_0_rsp_mux
@@ -54,40 +54,68 @@ module HPS_mm_interconnect_0_rsp_mux
     // Sinks
     // ----------------------
     input                       sink0_valid,
-    input [127-1   : 0]  sink0_data,
-    input [6-1: 0]  sink0_channel,
+    input [116-1   : 0]  sink0_data,
+    input [8-1: 0]  sink0_channel,
     input                       sink0_startofpacket,
     input                       sink0_endofpacket,
     output                      sink0_ready,
 
     input                       sink1_valid,
-    input [127-1   : 0]  sink1_data,
-    input [6-1: 0]  sink1_channel,
+    input [116-1   : 0]  sink1_data,
+    input [8-1: 0]  sink1_channel,
     input                       sink1_startofpacket,
     input                       sink1_endofpacket,
     output                      sink1_ready,
 
     input                       sink2_valid,
-    input [127-1   : 0]  sink2_data,
-    input [6-1: 0]  sink2_channel,
+    input [116-1   : 0]  sink2_data,
+    input [8-1: 0]  sink2_channel,
     input                       sink2_startofpacket,
     input                       sink2_endofpacket,
     output                      sink2_ready,
 
     input                       sink3_valid,
-    input [127-1   : 0]  sink3_data,
-    input [6-1: 0]  sink3_channel,
+    input [116-1   : 0]  sink3_data,
+    input [8-1: 0]  sink3_channel,
     input                       sink3_startofpacket,
     input                       sink3_endofpacket,
     output                      sink3_ready,
+
+    input                       sink4_valid,
+    input [116-1   : 0]  sink4_data,
+    input [8-1: 0]  sink4_channel,
+    input                       sink4_startofpacket,
+    input                       sink4_endofpacket,
+    output                      sink4_ready,
+
+    input                       sink5_valid,
+    input [116-1   : 0]  sink5_data,
+    input [8-1: 0]  sink5_channel,
+    input                       sink5_startofpacket,
+    input                       sink5_endofpacket,
+    output                      sink5_ready,
+
+    input                       sink6_valid,
+    input [116-1   : 0]  sink6_data,
+    input [8-1: 0]  sink6_channel,
+    input                       sink6_startofpacket,
+    input                       sink6_endofpacket,
+    output                      sink6_ready,
+
+    input                       sink7_valid,
+    input [116-1   : 0]  sink7_data,
+    input [8-1: 0]  sink7_channel,
+    input                       sink7_startofpacket,
+    input                       sink7_endofpacket,
+    output                      sink7_ready,
 
 
     // ----------------------
     // Source
     // ----------------------
     output                      src_valid,
-    output [127-1    : 0] src_data,
-    output [6-1 : 0] src_channel,
+    output [116-1    : 0] src_data,
+    output [8-1 : 0] src_channel,
     output                      src_startofpacket,
     output                      src_endofpacket,
     input                       src_ready,
@@ -98,13 +126,13 @@ module HPS_mm_interconnect_0_rsp_mux
     input clk,
     input reset
 );
-    localparam PAYLOAD_W        = 127 + 6 + 2;
-    localparam NUM_INPUTS       = 4;
+    localparam PAYLOAD_W        = 116 + 8 + 2;
+    localparam NUM_INPUTS       = 8;
     localparam SHARE_COUNTER_W  = 1;
     localparam PIPELINE_ARB     = 0;
-    localparam ST_DATA_W        = 127;
-    localparam ST_CHANNEL_W     = 6;
-    localparam PKT_TRANS_LOCK   = 72;
+    localparam ST_DATA_W        = 116;
+    localparam ST_CHANNEL_W     = 8;
+    localparam PKT_TRANS_LOCK   = 61;
 
     // ------------------------------------------
     // Signals
@@ -123,11 +151,19 @@ module HPS_mm_interconnect_0_rsp_mux
     wire [PAYLOAD_W - 1 : 0] sink1_payload;
     wire [PAYLOAD_W - 1 : 0] sink2_payload;
     wire [PAYLOAD_W - 1 : 0] sink3_payload;
+    wire [PAYLOAD_W - 1 : 0] sink4_payload;
+    wire [PAYLOAD_W - 1 : 0] sink5_payload;
+    wire [PAYLOAD_W - 1 : 0] sink6_payload;
+    wire [PAYLOAD_W - 1 : 0] sink7_payload;
 
     assign valid[0] = sink0_valid;
     assign valid[1] = sink1_valid;
     assign valid[2] = sink2_valid;
     assign valid[3] = sink3_valid;
+    assign valid[4] = sink4_valid;
+    assign valid[5] = sink5_valid;
+    assign valid[6] = sink6_valid;
+    assign valid[7] = sink7_valid;
 
 
     // ------------------------------------------
@@ -137,10 +173,14 @@ module HPS_mm_interconnect_0_rsp_mux
     // ------------------------------------------
     reg [NUM_INPUTS - 1 : 0] lock;
     always @* begin
-      lock[0] = sink0_data[72];
-      lock[1] = sink1_data[72];
-      lock[2] = sink2_data[72];
-      lock[3] = sink3_data[72];
+      lock[0] = sink0_data[61];
+      lock[1] = sink1_data[61];
+      lock[2] = sink2_data[61];
+      lock[3] = sink3_data[61];
+      lock[4] = sink4_data[61];
+      lock[5] = sink5_data[61];
+      lock[6] = sink6_data[61];
+      lock[7] = sink7_data[61];
     end
 
     assign last_cycle = src_valid & src_ready & src_endofpacket & ~(|(lock & grant));
@@ -175,10 +215,18 @@ module HPS_mm_interconnect_0_rsp_mux
     // 1      |      1       |  0
     // 2      |      1       |  0
     // 3      |      1       |  0
+    // 4      |      1       |  0
+    // 5      |      1       |  0
+    // 6      |      1       |  0
+    // 7      |      1       |  0
      wire [SHARE_COUNTER_W - 1 : 0] share_0 = 1'd0;
      wire [SHARE_COUNTER_W - 1 : 0] share_1 = 1'd0;
      wire [SHARE_COUNTER_W - 1 : 0] share_2 = 1'd0;
      wire [SHARE_COUNTER_W - 1 : 0] share_3 = 1'd0;
+     wire [SHARE_COUNTER_W - 1 : 0] share_4 = 1'd0;
+     wire [SHARE_COUNTER_W - 1 : 0] share_5 = 1'd0;
+     wire [SHARE_COUNTER_W - 1 : 0] share_6 = 1'd0;
+     wire [SHARE_COUNTER_W - 1 : 0] share_7 = 1'd0;
 
     // ------------------------------------------
     // Choose the share value corresponding to the grant.
@@ -189,7 +237,11 @@ module HPS_mm_interconnect_0_rsp_mux
     share_0 & { SHARE_COUNTER_W {next_grant[0]} } |
     share_1 & { SHARE_COUNTER_W {next_grant[1]} } |
     share_2 & { SHARE_COUNTER_W {next_grant[2]} } |
-    share_3 & { SHARE_COUNTER_W {next_grant[3]} };
+    share_3 & { SHARE_COUNTER_W {next_grant[3]} } |
+    share_4 & { SHARE_COUNTER_W {next_grant[4]} } |
+    share_5 & { SHARE_COUNTER_W {next_grant[5]} } |
+    share_6 & { SHARE_COUNTER_W {next_grant[6]} } |
+    share_7 & { SHARE_COUNTER_W {next_grant[7]} };
     end
 
     // ------------------------------------------
@@ -259,11 +311,23 @@ module HPS_mm_interconnect_0_rsp_mux
 
     wire final_packet_3 = 1'b1;
 
+    wire final_packet_4 = 1'b1;
+
+    wire final_packet_5 = 1'b1;
+
+    wire final_packet_6 = 1'b1;
+
+    wire final_packet_7 = 1'b1;
+
 
     // ------------------------------------------
     // Concatenate all final_packet signals (wire or reg) into a handy vector.
     // ------------------------------------------
     wire [NUM_INPUTS - 1 : 0] final_packet = {
+    final_packet_7,
+    final_packet_6,
+    final_packet_5,
+    final_packet_4,
     final_packet_3,
     final_packet_2,
     final_packet_1,
@@ -355,6 +419,10 @@ module HPS_mm_interconnect_0_rsp_mux
     assign sink1_ready = src_ready && grant[1];
     assign sink2_ready = src_ready && grant[2];
     assign sink3_ready = src_ready && grant[3];
+    assign sink4_ready = src_ready && grant[4];
+    assign sink5_ready = src_ready && grant[5];
+    assign sink6_ready = src_ready && grant[6];
+    assign sink7_ready = src_ready && grant[7];
 
     assign src_valid = |(grant & valid);
 
@@ -363,7 +431,11 @@ module HPS_mm_interconnect_0_rsp_mux
       sink0_payload & {PAYLOAD_W {grant[0]} } |
       sink1_payload & {PAYLOAD_W {grant[1]} } |
       sink2_payload & {PAYLOAD_W {grant[2]} } |
-      sink3_payload & {PAYLOAD_W {grant[3]} };
+      sink3_payload & {PAYLOAD_W {grant[3]} } |
+      sink4_payload & {PAYLOAD_W {grant[4]} } |
+      sink5_payload & {PAYLOAD_W {grant[5]} } |
+      sink6_payload & {PAYLOAD_W {grant[6]} } |
+      sink7_payload & {PAYLOAD_W {grant[7]} };
     end
 
     // ------------------------------------------
@@ -378,6 +450,14 @@ module HPS_mm_interconnect_0_rsp_mux
     sink2_startofpacket,sink2_endofpacket};
     assign sink3_payload = {sink3_channel,sink3_data,
     sink3_startofpacket,sink3_endofpacket};
+    assign sink4_payload = {sink4_channel,sink4_data,
+    sink4_startofpacket,sink4_endofpacket};
+    assign sink5_payload = {sink5_channel,sink5_data,
+    sink5_startofpacket,sink5_endofpacket};
+    assign sink6_payload = {sink6_channel,sink6_data,
+    sink6_startofpacket,sink6_endofpacket};
+    assign sink7_payload = {sink7_channel,sink7_data,
+    sink7_startofpacket,sink7_endofpacket};
 
     assign {src_channel,src_data,src_startofpacket,src_endofpacket} = src_payload;
 endmodule

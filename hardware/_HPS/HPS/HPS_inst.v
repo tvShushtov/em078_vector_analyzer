@@ -1,7 +1,14 @@
 	HPS u0 (
 		.button_pio_external_connection_export (<connected-to-button_pio_external_connection_export>), // button_pio_external_connection.export
-		.clk_clk                               (<connected-to-clk_clk>),                               //                            clk.clk
+		.clk_lw_clk                            (<connected-to-clk_lw_clk>),                            //                         clk_lw.clk
+		.clk_sdram_clk                         (<connected-to-clk_sdram_clk>),                         //                      clk_sdram.clk
 		.dipsw_pio_external_connection_export  (<connected-to-dipsw_pio_external_connection_export>),  //  dipsw_pio_external_connection.export
+		.hps_0_f2h_sdram0_data_address         (<connected-to-hps_0_f2h_sdram0_data_address>),         //          hps_0_f2h_sdram0_data.address
+		.hps_0_f2h_sdram0_data_burstcount      (<connected-to-hps_0_f2h_sdram0_data_burstcount>),      //                               .burstcount
+		.hps_0_f2h_sdram0_data_waitrequest     (<connected-to-hps_0_f2h_sdram0_data_waitrequest>),     //                               .waitrequest
+		.hps_0_f2h_sdram0_data_readdata        (<connected-to-hps_0_f2h_sdram0_data_readdata>),        //                               .readdata
+		.hps_0_f2h_sdram0_data_readdatavalid   (<connected-to-hps_0_f2h_sdram0_data_readdatavalid>),   //                               .readdatavalid
+		.hps_0_f2h_sdram0_data_read            (<connected-to-hps_0_f2h_sdram0_data_read>),            //                               .read
 		.hps_0_hps_io_hps_io_sdio_inst_CMD     (<connected-to-hps_0_hps_io_hps_io_sdio_inst_CMD>),     //                   hps_0_hps_io.hps_io_sdio_inst_CMD
 		.hps_0_hps_io_hps_io_sdio_inst_D0      (<connected-to-hps_0_hps_io_hps_io_sdio_inst_D0>),      //                               .hps_io_sdio_inst_D0
 		.hps_0_hps_io_hps_io_sdio_inst_D1      (<connected-to-hps_0_hps_io_hps_io_sdio_inst_D1>),      //                               .hps_io_sdio_inst_D1
@@ -29,7 +36,12 @@
 		.memory_mem_odt                        (<connected-to-memory_mem_odt>),                        //                               .mem_odt
 		.memory_mem_dm                         (<connected-to-memory_mem_dm>),                         //                               .mem_dm
 		.memory_oct_rzqin                      (<connected-to-memory_oct_rzqin>),                      //                               .oct_rzqin
-		.reset_reset_n                         (<connected-to-reset_reset_n>),                         //                          reset.reset_n
-		.va_gen_sm_external_connection_export  (<connected-to-va_gen_sm_external_connection_export>)   //  va_gen_sm_external_connection.export
+		.reset_lw_reset_n                      (<connected-to-reset_lw_reset_n>),                      //                       reset_lw.reset_n
+		.reset_sdram_reset_n                   (<connected-to-reset_sdram_reset_n>),                   //                    reset_sdram.reset_n
+		.va_gen_sm_external_connection_export  (<connected-to-va_gen_sm_external_connection_export>),  //  va_gen_sm_external_connection.export
+		.hdmi_pio_ready_export                 (<connected-to-hdmi_pio_ready_export>),                 //                 hdmi_pio_ready.export
+		.hdmi_pio_videoaddress_export          (<connected-to-hdmi_pio_videoaddress_export>),          //          hdmi_pio_videoaddress.export
+		.va_dataout_export                     (<connected-to-va_dataout_export>),                     //                     va_dataout.export
+		.va_data_ready_export                  (<connected-to-va_data_ready_export>)                   //                  va_data_ready.export
 	);
 

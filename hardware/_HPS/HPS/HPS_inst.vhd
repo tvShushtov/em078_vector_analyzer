@@ -1,8 +1,15 @@
 	component HPS is
 		port (
 			button_pio_external_connection_export : in    std_logic                     := 'X';             -- export
-			clk_clk                               : in    std_logic                     := 'X';             -- clk
+			clk_lw_clk                            : in    std_logic                     := 'X';             -- clk
+			clk_sdram_clk                         : in    std_logic                     := 'X';             -- clk
 			dipsw_pio_external_connection_export  : in    std_logic_vector(3 downto 0)  := (others => 'X'); -- export
+			hps_0_f2h_sdram0_data_address         : in    std_logic_vector(28 downto 0) := (others => 'X'); -- address
+			hps_0_f2h_sdram0_data_burstcount      : in    std_logic_vector(7 downto 0)  := (others => 'X'); -- burstcount
+			hps_0_f2h_sdram0_data_waitrequest     : out   std_logic;                                        -- waitrequest
+			hps_0_f2h_sdram0_data_readdata        : out   std_logic_vector(63 downto 0);                    -- readdata
+			hps_0_f2h_sdram0_data_readdatavalid   : out   std_logic;                                        -- readdatavalid
+			hps_0_f2h_sdram0_data_read            : in    std_logic                     := 'X';             -- read
 			hps_0_hps_io_hps_io_sdio_inst_CMD     : inout std_logic                     := 'X';             -- hps_io_sdio_inst_CMD
 			hps_0_hps_io_hps_io_sdio_inst_D0      : inout std_logic                     := 'X';             -- hps_io_sdio_inst_D0
 			hps_0_hps_io_hps_io_sdio_inst_D1      : inout std_logic                     := 'X';             -- hps_io_sdio_inst_D1
@@ -30,16 +37,28 @@
 			memory_mem_odt                        : out   std_logic;                                        -- mem_odt
 			memory_mem_dm                         : out   std_logic_vector(3 downto 0);                     -- mem_dm
 			memory_oct_rzqin                      : in    std_logic                     := 'X';             -- oct_rzqin
-			reset_reset_n                         : in    std_logic                     := 'X';             -- reset_n
-			va_gen_sm_external_connection_export  : out   std_logic_vector(31 downto 0)                     -- export
+			reset_lw_reset_n                      : in    std_logic                     := 'X';             -- reset_n
+			reset_sdram_reset_n                   : in    std_logic                     := 'X';             -- reset_n
+			va_gen_sm_external_connection_export  : out   std_logic_vector(31 downto 0);                    -- export
+			hdmi_pio_ready_export                 : out   std_logic;                                        -- export
+			hdmi_pio_videoaddress_export          : out   std_logic_vector(31 downto 0);                    -- export
+			va_dataout_export                     : in    std_logic_vector(31 downto 0) := (others => 'X'); -- export
+			va_data_ready_export                  : in    std_logic                     := 'X'              -- export
 		);
 	end component HPS;
 
 	u0 : component HPS
 		port map (
 			button_pio_external_connection_export => CONNECTED_TO_button_pio_external_connection_export, -- button_pio_external_connection.export
-			clk_clk                               => CONNECTED_TO_clk_clk,                               --                            clk.clk
+			clk_lw_clk                            => CONNECTED_TO_clk_lw_clk,                            --                         clk_lw.clk
+			clk_sdram_clk                         => CONNECTED_TO_clk_sdram_clk,                         --                      clk_sdram.clk
 			dipsw_pio_external_connection_export  => CONNECTED_TO_dipsw_pio_external_connection_export,  --  dipsw_pio_external_connection.export
+			hps_0_f2h_sdram0_data_address         => CONNECTED_TO_hps_0_f2h_sdram0_data_address,         --          hps_0_f2h_sdram0_data.address
+			hps_0_f2h_sdram0_data_burstcount      => CONNECTED_TO_hps_0_f2h_sdram0_data_burstcount,      --                               .burstcount
+			hps_0_f2h_sdram0_data_waitrequest     => CONNECTED_TO_hps_0_f2h_sdram0_data_waitrequest,     --                               .waitrequest
+			hps_0_f2h_sdram0_data_readdata        => CONNECTED_TO_hps_0_f2h_sdram0_data_readdata,        --                               .readdata
+			hps_0_f2h_sdram0_data_readdatavalid   => CONNECTED_TO_hps_0_f2h_sdram0_data_readdatavalid,   --                               .readdatavalid
+			hps_0_f2h_sdram0_data_read            => CONNECTED_TO_hps_0_f2h_sdram0_data_read,            --                               .read
 			hps_0_hps_io_hps_io_sdio_inst_CMD     => CONNECTED_TO_hps_0_hps_io_hps_io_sdio_inst_CMD,     --                   hps_0_hps_io.hps_io_sdio_inst_CMD
 			hps_0_hps_io_hps_io_sdio_inst_D0      => CONNECTED_TO_hps_0_hps_io_hps_io_sdio_inst_D0,      --                               .hps_io_sdio_inst_D0
 			hps_0_hps_io_hps_io_sdio_inst_D1      => CONNECTED_TO_hps_0_hps_io_hps_io_sdio_inst_D1,      --                               .hps_io_sdio_inst_D1
@@ -67,7 +86,12 @@
 			memory_mem_odt                        => CONNECTED_TO_memory_mem_odt,                        --                               .mem_odt
 			memory_mem_dm                         => CONNECTED_TO_memory_mem_dm,                         --                               .mem_dm
 			memory_oct_rzqin                      => CONNECTED_TO_memory_oct_rzqin,                      --                               .oct_rzqin
-			reset_reset_n                         => CONNECTED_TO_reset_reset_n,                         --                          reset.reset_n
-			va_gen_sm_external_connection_export  => CONNECTED_TO_va_gen_sm_external_connection_export   --  va_gen_sm_external_connection.export
+			reset_lw_reset_n                      => CONNECTED_TO_reset_lw_reset_n,                      --                       reset_lw.reset_n
+			reset_sdram_reset_n                   => CONNECTED_TO_reset_sdram_reset_n,                   --                    reset_sdram.reset_n
+			va_gen_sm_external_connection_export  => CONNECTED_TO_va_gen_sm_external_connection_export,  --  va_gen_sm_external_connection.export
+			hdmi_pio_ready_export                 => CONNECTED_TO_hdmi_pio_ready_export,                 --                 hdmi_pio_ready.export
+			hdmi_pio_videoaddress_export          => CONNECTED_TO_hdmi_pio_videoaddress_export,          --          hdmi_pio_videoaddress.export
+			va_dataout_export                     => CONNECTED_TO_va_dataout_export,                     --                     va_dataout.export
+			va_data_ready_export                  => CONNECTED_TO_va_data_ready_export                   --                  va_data_ready.export
 		);
 

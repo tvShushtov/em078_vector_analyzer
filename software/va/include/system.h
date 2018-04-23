@@ -10,8 +10,7 @@
 
 /*
  * This file contains macros for module 'hps_0' and devices
- * connected to the following masters:
- *   h2f_axi_master
+ * connected to the following master:
  *   h2f_lw_axi_master
  * 
  * Do not include this header file and another header file created for a
@@ -21,15 +20,112 @@
  */
 
 /*
+ * Macros for device 'va_data_ready', class 'altera_avalon_pio'
+ * The macros are prefixed with 'VA_DATA_READY_'.
+ * The prefix is the slave descriptor.
+ */
+#define VA_DATA_READY_COMPONENT_TYPE altera_avalon_pio
+#define VA_DATA_READY_COMPONENT_NAME va_data_ready
+#define VA_DATA_READY_BASE 0x0
+#define VA_DATA_READY_SPAN 16
+#define VA_DATA_READY_END 0xf
+#define VA_DATA_READY_IRQ 1
+#define VA_DATA_READY_BIT_CLEARING_EDGE_REGISTER 0
+#define VA_DATA_READY_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define VA_DATA_READY_CAPTURE 1
+#define VA_DATA_READY_DATA_WIDTH 1
+#define VA_DATA_READY_DO_TEST_BENCH_WIRING 0
+#define VA_DATA_READY_DRIVEN_SIM_VALUE 0
+#define VA_DATA_READY_EDGE_TYPE RISING
+#define VA_DATA_READY_FREQ 50000000
+#define VA_DATA_READY_HAS_IN 1
+#define VA_DATA_READY_HAS_OUT 0
+#define VA_DATA_READY_HAS_TRI 0
+#define VA_DATA_READY_IRQ_TYPE EDGE
+#define VA_DATA_READY_RESET_VALUE 0
+
+/*
+ * Macros for device 'va_dataout', class 'altera_avalon_pio'
+ * The macros are prefixed with 'VA_DATAOUT_'.
+ * The prefix is the slave descriptor.
+ */
+#define VA_DATAOUT_COMPONENT_TYPE altera_avalon_pio
+#define VA_DATAOUT_COMPONENT_NAME va_dataout
+#define VA_DATAOUT_BASE 0x10
+#define VA_DATAOUT_SPAN 16
+#define VA_DATAOUT_END 0x1f
+#define VA_DATAOUT_BIT_CLEARING_EDGE_REGISTER 0
+#define VA_DATAOUT_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define VA_DATAOUT_CAPTURE 0
+#define VA_DATAOUT_DATA_WIDTH 32
+#define VA_DATAOUT_DO_TEST_BENCH_WIRING 0
+#define VA_DATAOUT_DRIVEN_SIM_VALUE 0
+#define VA_DATAOUT_EDGE_TYPE NONE
+#define VA_DATAOUT_FREQ 50000000
+#define VA_DATAOUT_HAS_IN 1
+#define VA_DATAOUT_HAS_OUT 0
+#define VA_DATAOUT_HAS_TRI 0
+#define VA_DATAOUT_IRQ_TYPE NONE
+#define VA_DATAOUT_RESET_VALUE 0
+
+/*
+ * Macros for device 'hdmi_pio_ready', class 'altera_avalon_pio'
+ * The macros are prefixed with 'HDMI_PIO_READY_'.
+ * The prefix is the slave descriptor.
+ */
+#define HDMI_PIO_READY_COMPONENT_TYPE altera_avalon_pio
+#define HDMI_PIO_READY_COMPONENT_NAME hdmi_pio_ready
+#define HDMI_PIO_READY_BASE 0x20
+#define HDMI_PIO_READY_SPAN 16
+#define HDMI_PIO_READY_END 0x2f
+#define HDMI_PIO_READY_BIT_CLEARING_EDGE_REGISTER 0
+#define HDMI_PIO_READY_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define HDMI_PIO_READY_CAPTURE 0
+#define HDMI_PIO_READY_DATA_WIDTH 1
+#define HDMI_PIO_READY_DO_TEST_BENCH_WIRING 0
+#define HDMI_PIO_READY_DRIVEN_SIM_VALUE 0
+#define HDMI_PIO_READY_EDGE_TYPE NONE
+#define HDMI_PIO_READY_FREQ 50000000
+#define HDMI_PIO_READY_HAS_IN 0
+#define HDMI_PIO_READY_HAS_OUT 1
+#define HDMI_PIO_READY_HAS_TRI 0
+#define HDMI_PIO_READY_IRQ_TYPE NONE
+#define HDMI_PIO_READY_RESET_VALUE 0
+
+/*
+ * Macros for device 'hdmi_pio', class 'altera_avalon_pio'
+ * The macros are prefixed with 'HDMI_PIO_'.
+ * The prefix is the slave descriptor.
+ */
+#define HDMI_PIO_COMPONENT_TYPE altera_avalon_pio
+#define HDMI_PIO_COMPONENT_NAME hdmi_pio
+#define HDMI_PIO_BASE 0x30
+#define HDMI_PIO_SPAN 16
+#define HDMI_PIO_END 0x3f
+#define HDMI_PIO_BIT_CLEARING_EDGE_REGISTER 0
+#define HDMI_PIO_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define HDMI_PIO_CAPTURE 0
+#define HDMI_PIO_DATA_WIDTH 32
+#define HDMI_PIO_DO_TEST_BENCH_WIRING 0
+#define HDMI_PIO_DRIVEN_SIM_VALUE 0
+#define HDMI_PIO_EDGE_TYPE NONE
+#define HDMI_PIO_FREQ 50000000
+#define HDMI_PIO_HAS_IN 0
+#define HDMI_PIO_HAS_OUT 1
+#define HDMI_PIO_HAS_TRI 0
+#define HDMI_PIO_IRQ_TYPE NONE
+#define HDMI_PIO_RESET_VALUE 0
+
+/*
  * Macros for device 'va_gen_sm', class 'altera_avalon_pio'
  * The macros are prefixed with 'VA_GEN_SM_'.
  * The prefix is the slave descriptor.
  */
 #define VA_GEN_SM_COMPONENT_TYPE altera_avalon_pio
 #define VA_GEN_SM_COMPONENT_NAME va_gen_sm
-#define VA_GEN_SM_BASE 0x0
+#define VA_GEN_SM_BASE 0x40
 #define VA_GEN_SM_SPAN 16
-#define VA_GEN_SM_END 0xf
+#define VA_GEN_SM_END 0x4f
 #define VA_GEN_SM_BIT_CLEARING_EDGE_REGISTER 0
 #define VA_GEN_SM_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define VA_GEN_SM_CAPTURE 0
@@ -78,8 +174,7 @@
 #define DIPSW_PIO_BASE 0x4000
 #define DIPSW_PIO_SPAN 16
 #define DIPSW_PIO_END 0x400f
-#define DIPSW_PIO_IRQ 2
-#define DIPSW_PIO_BIT_CLEARING_EDGE_REGISTER 1
+#define DIPSW_PIO_BIT_CLEARING_EDGE_REGISTER 0
 #define DIPSW_PIO_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define DIPSW_PIO_CAPTURE 1
 #define DIPSW_PIO_DATA_WIDTH 4
@@ -90,7 +185,7 @@
 #define DIPSW_PIO_HAS_IN 1
 #define DIPSW_PIO_HAS_OUT 0
 #define DIPSW_PIO_HAS_TRI 0
-#define DIPSW_PIO_IRQ_TYPE EDGE
+#define DIPSW_PIO_IRQ_TYPE NONE
 #define DIPSW_PIO_RESET_VALUE 0
 
 /*
@@ -103,7 +198,7 @@
 #define BUTTON_PIO_BASE 0x5000
 #define BUTTON_PIO_SPAN 16
 #define BUTTON_PIO_END 0x500f
-#define BUTTON_PIO_IRQ 1
+#define BUTTON_PIO_IRQ 0
 #define BUTTON_PIO_BIT_CLEARING_EDGE_REGISTER 1
 #define BUTTON_PIO_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define BUTTON_PIO_CAPTURE 1

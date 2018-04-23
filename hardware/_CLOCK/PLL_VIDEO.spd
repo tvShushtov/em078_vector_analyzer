@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simPackage>
+ <file path="PLL_VIDEO_sim/PLL_VIDEO.vho" type="VHDL" />
+ <topLevel name="PLL_VIDEO" />
+ <deviceFamily name="cyclonev" />
+</simPackage>
