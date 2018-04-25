@@ -17,7 +17,13 @@
 					<folderInfo id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.config.exe.debug.var.com.altera.ds5ae.toolchain.gcc.baremetal.811715882." name="/" resourcePath="">
 						<toolChain id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.toolchain.exe.debug.var.com.altera.ds5ae.toolchain.gcc.baremetal.2017018673" name="Altera Baremetal GCC" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.toolchain.exe.debug.var.com.altera.ds5ae.toolchain.gcc.baremetal">
 							<targetPlatform id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.config.exe.debug.var.com.altera.ds5ae.toolchain.gcc.baremetal.811715882..2133520090" name=""/>
-							<builder buildPath="${workspace_loc:/va}/Debug" id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.target.builder.1845275992" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Gnu Make Builder" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.target.builder"/>
+							<builder buildPath="${workspace_loc:/va}/Debug" id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.target.builder.1845275992" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Gnu Make Builder" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.target.builder">
+								<outputEntries>
+									<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="outputPath" name="Debug"/>
+									<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="outputPath" name="Release"/>
+									<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="outputPath" name="ARM5"/>
+								</outputEntries>
+							</builder>
 							<tool id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.cpp.compiler.var.com.altera.ds5ae.toolchain.gcc.baremetal.522224462" name="GCC C++ Compiler" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.cpp.compiler.var.com.altera.ds5ae.toolchain.gcc.baremetal">
 								<option defaultValue="gnu.c.optimization.level.none" id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.option.opt.913144343" name="Optimization Level" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.option.opt" valueType="enumerated"/>
 								<option id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.option.debug.1642045394" name="Debug Level" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.option.debug"/>
@@ -26,10 +32,10 @@
 								<option defaultValue="gnu.c.optimization.level.none" id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.option.opt.286501543" name="Optimization Level" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.option.opt" valueType="enumerated"/>
 								<option id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.option.debug.1496109946" name="Debug Level" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.option.debug"/>
 								<option id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.option.includepath.612755097" name="Include paths (-I)" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.option.includepath" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/va/hwlib/include}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/va/hwlib/include/soc_cv_av}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/va/hwlib/include/soc_cv_av/socal}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/../spl_bsp/generated/&quot;"/>
+									<listOptionValue builtIn="false" value="../va/hwlib/include"/>
+									<listOptionValue builtIn="false" value="../va/hwlib/include/soc_cv_av"/>
+									<listOptionValue builtIn="false" value="../va/hwlib/include/soc_cv_av/socal"/>
+									<listOptionValue builtIn="false" value="C:/GitInnovate/em078_vector_analyzer/software/spl_bsp/generated"/>
 								</option>
 								<option id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.option.defsym.1983216304" name="Defined symbols (-D)" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.option.defsym" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="soc_cv_av"/>
@@ -40,10 +46,10 @@
 							<tool id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.assembler.var.com.altera.ds5ae.toolchain.gcc.baremetal.668696540" name="GCC Assembler" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.assembler.var.com.altera.ds5ae.toolchain.gcc.baremetal">
 								<option defaultValue="true" id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.assembler.option.debug.1515555277" name="Generate debugging information (-g)" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.assembler.option.debug" valueType="boolean"/>
 								<option id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.assembler.option.includes.1060024366" name="Include paths (-I)" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.assembler.option.includes" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/va/hwlib/include}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/va/hwlib/include/soc_cv_av}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/../spl_bsp/generated/&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/va/hwlib/include/soc_cv_av/socal}&quot;"/>
+									<listOptionValue builtIn="false" value="../va/hwlib/include"/>
+									<listOptionValue builtIn="false" value="../va/hwlib/include/soc_cv_av"/>
+									<listOptionValue builtIn="false" value="../va/hwlib/include/soc_cv_av/socal"/>
+									<listOptionValue builtIn="false" value="C:/GitInnovate/em078_vector_analyzer/software/spl_bsp/generated"/>
 								</option>
 								<option id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.assembler.option.defsym.2028279205" name="Defined symbols (-D)" superClass="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.assembler.option.defsym" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="soc_cv_av"/>
@@ -63,7 +69,6 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="include/|src/utils/|src/hwmgr/soc_a10/|src/hwmgr/soc_cv_av/*.s|src/hwmgr/*.s" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="hwlib"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
 					</sourceEntries>
 				</configuration>
@@ -130,12 +135,111 @@
 			</storageModule>
 			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
 		</cconfiguration>
+		<cconfiguration id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.config.exe.debug.var.com.altera.ds5ae.toolchain.gcc.baremetal.1731538707.216772927.183470272">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.config.exe.debug.var.com.altera.ds5ae.toolchain.gcc.baremetal.1731538707.216772927.183470272" moduleId="org.eclipse.cdt.core.settings" name="Arm5">
+				<externalSettings/>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="com.arm.eclipse.builder.armcc.error" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactExtension="axf" artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="clean" description="" errorParsers="org.eclipse.cdt.core.GASErrorParser;org.eclipse.cdt.core.GmakeErrorParser;org.eclipse.cdt.core.GLDErrorParser;org.eclipse.cdt.core.CWDLocator;org.eclipse.cdt.core.GCCErrorParser;com.arm.eclipse.builder.armcc.error" id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.config.exe.debug.var.com.altera.ds5ae.toolchain.gcc.baremetal.1731538707.216772927.183470272" name="Arm5" parent="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.config.exe.debug.var.com.altera.ds5ae.toolchain.gcc.baremetal" postannouncebuildStep="" postbuildStep="" preannouncebuildStep="" prebuildStep="">
+					<folderInfo id="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.config.exe.debug.var.com.altera.ds5ae.toolchain.gcc.baremetal.1731538707.216772927.183470272." name="/" resourcePath="">
+						<toolChain errorParsers="com.arm.eclipse.builder.armcc.error" id="com.arm.toolchain.baremetal.347890830" name="ARM Compiler 5 (DS-5 built-in)" superClass="com.arm.toolchain.baremetal">
+							<option id="com.arm.toolchain.ac5.option.target.cpu_fpu.868493970" superClass="com.arm.toolchain.ac5.option.target.cpu_fpu" value="Cortex-A9.VFPv3_FP16.Neon" valueType="string"/>
+							<option id="com.arm.toolchain.ac5.option.fppcs.1929112208" name="Floating-point PCS" superClass="com.arm.toolchain.ac5.option.fppcs" value="com.arm.tool.c.compiler.option.fppcs.hard" valueType="enumerated"/>
+							<option id="com.arm.toolchain.ac5.option.inst.363711083" name="Instruction set" superClass="com.arm.toolchain.ac5.option.inst" value="com.arm.tool.c.compiler.option.inst.arm" valueType="enumerated"/>
+							<option id="com.arm.toolchain.ac5.option.inter.827865682" name="Interworking" superClass="com.arm.toolchain.ac5.option.inter" value="true" valueType="boolean"/>
+							<targetPlatform binaryParser="" id="com.arm.toolchain.baremetal.347890830.1764963839" name=""/>
+							<builder buildPath="${workspace_loc:/Innovate2018}/ARMCompiler" errorParsers="" id="org.eclipse.cdt.build.core.internal.builder.208069383" keepEnvironmentInBuildfile="false" name="CDT Internal Builder" superClass="org.eclipse.cdt.build.core.internal.builder"/>
+							<tool command="armcc" commandLinePattern="${COMMAND} ${FLAGS} ${OUTPUT_FLAG} ${OUTPUT_PREFIX}${OUTPUT} ${INPUTS}" errorParsers="" id="com.arm.tool.c.compiler.962458129" name="ARM C Compiler 5" superClass="com.arm.tool.c.compiler">
+								<option id="com.arm.tool.c.compiler.option.implicit.incpath.557290944" name="Implicit Include paths" superClass="com.arm.tool.c.compiler.option.implicit.incpath"/>
+								<option id="com.arm.tool.c.compiler.option.implicit.defmac.2054583671" name="Implicit Define macros" superClass="com.arm.tool.c.compiler.option.implicit.defmac"/>
+								<option defaultValue="com.arm.tool.c.compiler.option.optlevel.min" id="com.arm.tool.c.compiler.option.optlevel.1865582215" name="Optimization level" superClass="com.arm.tool.c.compiler.option.optlevel" value="com.arm.tool.c.compiler.option.optlevel.high" valueType="enumerated"/>
+								<option id="com.arm.tool.c.compiler.option.target.enableToolSpecificSettings.1579792169" name="Enable tool specific settings" superClass="com.arm.tool.c.compiler.option.target.enableToolSpecificSettings" value="false" valueType="boolean"/>
+								<option id="com.arm.tool.c.compiler.option.targetcpu.1883158949" name="Target CPU (--cpu)" superClass="com.arm.tool.c.compiler.option.targetcpu" value="Cortex-A9" valueType="string"/>
+								<option id="com.arm.tool.c.compiler.option.targetfpu.1111103039" name="Target FPU (--fpu)" superClass="com.arm.tool.c.compiler.option.targetfpu" value="" valueType="string"/>
+								<option id="com.arm.tool.c.compiler.option.inst.566271480" name="Instruction set" superClass="com.arm.tool.c.compiler.option.inst" value="com.arm.tool.c.compiler.option.inst.arm" valueType="enumerated"/>
+								<option id="com.arm.tool.c.compiler.option.fppcs.822229821" name="Floating-point PCS (--apcs)" superClass="com.arm.tool.c.compiler.option.fppcs" value="com.arm.tool.c.compiler.option.fppcs.hard" valueType="enumerated"/>
+								<option id="com.arm.tool.c.compiler.option.inter.601587406" name="Interworking (--apcs=/interwork)" superClass="com.arm.tool.c.compiler.option.inter" value="true" valueType="boolean"/>
+								<option id="com.arm.tool.c.compiler.option.gnu.22351047" name="Enable GNU extensions (--gnu)" superClass="com.arm.tool.c.compiler.option.gnu" value="true" valueType="boolean"/>
+								<option id="com.arm.tool.c.compiler.option.defmac.1734838466" name="Define macro (-D)" superClass="com.arm.tool.c.compiler.option.defmac" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="ALT_INT_PROVISION_CPU_COUNT=(1)"/>
+									<listOptionValue builtIn="false" value="ALT_BRIDGE_PROVISION_F2S_SUPPORT"/>
+									<listOptionValue builtIn="false" value="soc_cv_av"/>
+								</option>
+								<option id="com.arm.tool.c.compiler.option.vector.1877923220" name="Vectorization (--vectorize)" superClass="com.arm.tool.c.compiler.option.vector" value="true" valueType="boolean"/>
+								<option id="com.arm.tool.c.compiler.option.optfor.89302236" name="Optimize for" superClass="com.arm.tool.c.compiler.option.optfor" value="com.arm.tool.c.compiler.option.optfor.time" valueType="enumerated"/>
+								<option id="com.arm.tool.c.compiler.option.loopopt.2091173186" name="Loop Optimization (--loop_optimization_level)" superClass="com.arm.tool.c.compiler.option.loopopt" value="com.arm.tool.c.compiler.option.loopopt.high" valueType="enumerated"/>
+								<option id="com.arm.tool.c.compiler.option.incpath.832719886" name="Include path (-I)" superClass="com.arm.tool.c.compiler.option.incpath" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include/soc_cv_av&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include/soc_cv_av/socal&quot;"/>
+								</option>
+								<option id="com.arm.tool.c.compiler.option.debug.enableToolSpecificSettings.1828986645" name="Enable tool specific settings" superClass="com.arm.tool.c.compiler.option.debug.enableToolSpecificSettings" value="true" valueType="boolean"/>
+								<option id="com.arm.tool.c.compiler.option.flags.746282787" name="Other flags" superClass="com.arm.tool.c.compiler.option.flags"/>
+								<inputType id="com.arm.tool.c.compiler.input.1771009506" superClass="com.arm.tool.c.compiler.input"/>
+								<inputType id="com.arm.tool.cpp.compiler.input.1672194637" superClass="com.arm.tool.cpp.compiler.input"/>
+							</tool>
+							<tool id="com.arm.tool.cpp.compiler.304123464" name="ARM C++ Compiler 5" superClass="com.arm.tool.cpp.compiler">
+								<option defaultValue="com.arm.tool.c.compiler.option.optlevel.min" id="com.arm.tool.c.compiler.option.optlevel.802153923" name="Optimization level" superClass="com.arm.tool.c.compiler.option.optlevel" valueType="enumerated"/>
+							</tool>
+							<tool command="armasm" commandLinePattern="${COMMAND} ${FLAGS} ${OUTPUT_FLAG} ${OUTPUT_PREFIX}${OUTPUT} ${INPUTS}" errorParsers="" id="com.arm.tool.assembler.658689151" name="ARM Assembler 5" superClass="com.arm.tool.assembler">
+								<option id="com.arm.tool.assembler.option.target.enableToolSpecificSettings.350017271" name="Enable tool specific settings" superClass="com.arm.tool.assembler.option.target.enableToolSpecificSettings" value="false" valueType="boolean"/>
+								<option id="com.arm.tool.assembler.option.cpu.539935297" name="Target CPU (--cpu)" superClass="com.arm.tool.assembler.option.cpu" value="Cortex-A9" valueType="string"/>
+								<option id="com.arm.tool.assembler.option.fpu.1203704124" name="Target FPU (--fpu)" superClass="com.arm.tool.assembler.option.fpu" value="" valueType="string"/>
+								<option id="com.arm.tool.assembler.option.inst.1019746284" name="Instruction set" superClass="com.arm.tool.assembler.option.inst" value="com.arm.tool.c.compiler.option.inst.arm" valueType="enumerated"/>
+								<option id="com.arm.tool.assembler.option.fppcs.236014170" name="Floating-point PCS (--apcs)" superClass="com.arm.tool.assembler.option.fppcs" value="com.arm.tool.c.compiler.option.fppcs.hard" valueType="enumerated"/>
+								<option id="com.arm.tool.assembler.option.inter.2041696393" name="Interworking (--apcs=/interwork)" superClass="com.arm.tool.assembler.option.inter" value="true" valueType="boolean"/>
+								<option id="com.arm.tool.assembler.option.debug.enableToolSpecificSettings.1533419716" name="Enable tool specific settings" superClass="com.arm.tool.assembler.option.debug.enableToolSpecificSettings" value="true" valueType="boolean"/>
+								<inputType id="com.arm.tool.assembler.input.606144583" superClass="com.arm.tool.assembler.input"/>
+							</tool>
+							<tool command="armlink" commandLinePattern="${COMMAND} ${FLAGS} ${OUTPUT_FLAG} ${OUTPUT_PREFIX}${OUTPUT} ${INPUTS}" errorParsers="" id="com.arm.tool.c.linker.352604526" name="ARM Linker 5" superClass="com.arm.tool.c.linker">
+								<option id="com.arm.tool.c.linker.implicit.libs.271955946" name="Implicit other library files" superClass="com.arm.tool.c.linker.implicit.libs"/>
+								<option id="com.arm.tool.c.linker.option.scatter.1571430837" name="Scatter file (--scatter)" superClass="com.arm.tool.c.linker.option.scatter" value="&quot;${workspace_loc:/${ProjName}/scatter.scat}&quot;" valueType="string"/>
+								<option id="com.arm.tool.c.linker.option.libs.1544013712" name="Libraries (--library)" superClass="com.arm.tool.c.linker.option.libs"/>
+								<option id="com.arm.tool.c.linker.option.cpu.516045756" name="Target CPU (--cpu)" superClass="com.arm.tool.c.linker.option.cpu" value="Cortex-A9" valueType="string"/>
+								<option id="com.arm.tool.c.linker.option.libsearch.1340028053" name="Library search path (--userlibpath)" superClass="com.arm.tool.c.linker.option.libsearch" valueType="stringList">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}}&quot;"/>
+								</option>
+								<option id="com.arm.tool.c.linker.option.syslibs.1633557244" name="Standard library search path (--libpath)" superClass="com.arm.tool.c.linker.option.syslibs"/>
+								<option id="com.arm.tool.c.linker.option.entry.1108974457" name="Image entry point (--entry)" superClass="com.arm.tool.c.linker.option.entry" value="" valueType="string"/>
+								<option id="com.arm.tool.c.linker.option.imagemap.1691294735" name="Generate image map (--map)" superClass="com.arm.tool.c.linker.option.imagemap" value="false" valueType="boolean"/>
+								<option id="com.arm.tool.c.linker.option.flags.369487806" name="Other flags" superClass="com.arm.tool.c.linker.option.flags" valueType="stringList">
+									<listOptionValue builtIn="false" value="--entry=alt_interrupt_vector"/>
+								</option>
+								<option id="com.arm.tool.c.linker.option.sizes.1992581113" name="List code and data sizes of output image (--info=sizes)" superClass="com.arm.tool.c.linker.option.sizes" value="false" valueType="boolean"/>
+								<option id="com.arm.tool.c.linker.option.eleminate.342822520" name="Eliminate unused sections (--remove)" superClass="com.arm.tool.c.linker.option.eleminate" value="false" valueType="boolean"/>
+								<option id="com.arm.tool.c.linker.option.target.enableToolSpecificSettings.1260854289" name="Enable tool specific settings" superClass="com.arm.tool.c.linker.option.target.enableToolSpecificSettings" value="true" valueType="boolean"/>
+							</tool>
+							<tool id="com.arm.tool.librarian.324121263" name="ARM Librarian 5" superClass="com.arm.tool.librarian"/>
+						</toolChain>
+					</folderInfo>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
 	</storageModule>
 	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
 		<project id="va.com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.target.exe.var.com.altera.ds5ae.toolchain.gcc.baremetal.1104597853" name="Executable" projectType="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.target.exe.var.com.altera.ds5ae.toolchain.gcc.baremetal"/>
 	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
-	<storageModule moduleId="refreshScope"/>
+	<storageModule moduleId="refreshScope" versionNumber="2">
+		<configuration configurationName="ARM5">
+			<resource resourceType="PROJECT" workspacePath="/va"/>
+		</configuration>
+		<configuration configurationName="Debug">
+			<resource resourceType="PROJECT" workspacePath="/va"/>
+		</configuration>
+		<configuration configurationName="Release">
+			<resource resourceType="PROJECT" workspacePath="/va"/>
+		</configuration>
+	</storageModule>
 	<storageModule moduleId="scannerConfiguration">
 		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
 		<scannerConfigBuildInfo instanceId="com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.config.exe.debug.var.com.altera.ds5ae.toolchain.gcc.baremetal.811715882;com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.config.exe.debug.var.com.altera.ds5ae.toolchain.gcc.baremetal.811715882.;com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.var.com.altera.ds5ae.toolchain.gcc.baremetal.1650529008;com.arm.eclipse.cdt.managedbuild.ds5.gcc.baremetal.tool.c.compiler.input.1448736100">

@@ -1,0 +1,16 @@
+SDRAM 0x100000 0x3FF00000
+{
+    VECTORS +0
+    {
+        *(VECTORS, +FIRST)
+    }
+
+    APP_CODE +0
+    {
+        *(+RO, +RW, +ZI)
+    }
+
+    ARM_LIB_STACKHEAP +0 EMPTY (0x3FF00000 - ImageLimit(APP_CODE) - 0x40)
+    {}
+
+}
