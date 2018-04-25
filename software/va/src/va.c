@@ -1,6 +1,5 @@
 // c / cpp
 #include <assert.h>
-//#include <malloc.h>
 #include <math.h>
 #include <stdbool.h>
 #include <stdint.h>
@@ -341,25 +340,30 @@ void videoinit(void) {
 }
 
 void setup_fpga_leds() {
-	// Switch on first LED only
 	alt_write_word(fpga_leds, 0x1);
 }
 
 void handle_fpga_leds() {
 	uint32_t leds_mask = alt_read_word(fpga_leds);
-
 	if (leds_mask != (0x01 << (LED_PIO_DATA_WIDTH - 1))) {
-		// rotate leds
 		leds_mask <<= 1;
 	} else {
-		// reset leds
 		leds_mask = 0x1;
 	}
-
 	alt_write_word(fpga_leds, leds_mask);
 }
 
 int main(void) {
+
+	// Calculations
+	int32_t *data_arr;
+	int32_t data_len;
+	int32_t data_cnt;
+	uint32_t freq_low = 10000;
+	uint32_t freq_high = 100000;
+	uint32_t freq_step = 1000;
+
+	// ???
 	ALT_STATUS_CODE ALT_RESULT = ALT_E_SUCCESS;
 	ALT_STATUS_CODE ALT_RESULT2 = ALT_E_SUCCESS;
 
@@ -421,15 +425,6 @@ int main(void) {
 
 	ALT_RESULT = alt_16550_fifo_write_safe(&uart, "Ready to go!\n\r", 14, true);
 
-	// NOW WE READY
-	setup_fpga_leds();
-	va_sm_init();
-
-	va_sm_set_reg(VASM_ADDR_FREQ, 0xAABBCCDD);
-	va_sm_set_reg(VASM_ADDR_LATENCY, 0x12345678);
-	va_sm_set_reg(VASM_ADDR_RAVERAGE, 0xF0F0F0F0);
-	va_sm_run();
-
 	i = 0;
 
 	frames = 0;
@@ -437,8 +432,43 @@ int main(void) {
 
 	secstart = alt_globaltmr_get64();
 
+	setup_fpga_leds();
+	va_sm_init();
+
 	for (;;) {
 		//main loop
+
+		// -----------------------------------------------------------------------
+		// Start calculations
+		data_len = ((freq_high - freq_low) / freq_step);
+		data_len = 2 * (data_len + 1);
+		data_cnt = 0;
+
+		data_arr = (int32_t*) malloc(data_len * sizeof(int32_t));
+
+		for (uint32_t freq = freq_low; freq <= freq_high;
+				freq = freq + freq_step) {
+			va_nco_meas(data_arr + data_cnt, freq, 30000);
+			data_cnt = data_cnt + 2;
+		}
+		data_cnt--;
+		// End calculations
+
+		// Start printing
+		for (int i = 0; i <= data_cnt; i = i + 2) {
+			printf("%li, %li\n", data_arr[i], data_arr[i + 1]);
+		}
+
+		free(data_arr);
+		// End printing
+
+		// Indication
+		handle_fpga_leds();
+
+		// Delay
+		// for (int j = 0; j < 950000; j++) {}
+
+		// -----------------------------------------------------------------------
 
 		//do something
 		//delay_us(25);
