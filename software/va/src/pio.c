@@ -29,7 +29,7 @@
 ******************************************************************************/
 
 #include "../include/pio.h"
-#include "socal/socal.h"
+#include <socal.h>
 
 #define PIO_DATA_OFFS 		(0 * sizeof(uint32_t))
 #define PIO_DIR_OFFS 		(1 * sizeof(uint32_t))

@@ -31,7 +31,7 @@
 #ifndef ___ALT_PT_H___
 #define ___ALT_PT_H___
 
-#include "hwlib.h"
+#include <hwlib.h>
 
 /* Initialize MMU page tables */
 ALT_STATUS_CODE alt_pt_init (void);

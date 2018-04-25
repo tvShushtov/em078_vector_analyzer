@@ -1,0 +1,33 @@
+src/diskio.d: ../src/diskio.c ../src/../include/diskio.h \
+ ../src/../include/../include/integer.h \
+ C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include\soc_cv_av\socal/socal.h \
+ C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include/alt_sdmmc.h \
+ C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include/hwlib.h \
+ C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include/alt_globaltmr.h \
+ C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include\soc_cv_av\socal/hps.h \
+ C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include\soc_cv_av/alt_clock_manager.h \
+ C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include/hwlib.h \
+ C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include\soc_cv_av/alt_clock_group.h \
+ C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include\soc_cv_av/socal/alt_clkmgr.h
+
+../src/../include/diskio.h:
+
+../src/../include/../include/integer.h:
+
+C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include\soc_cv_av\socal/socal.h:
+
+C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include/alt_sdmmc.h:
+
+C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include/hwlib.h:
+
+C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include/alt_globaltmr.h:
+
+C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include\soc_cv_av\socal/hps.h:
+
+C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include\soc_cv_av/alt_clock_manager.h:
+
+C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include/hwlib.h:
+
+C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include\soc_cv_av/alt_clock_group.h:
+
+C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include\soc_cv_av/socal/alt_clkmgr.h:

@@ -1,0 +1,14 @@
+src/ff.d: ../src/ff.c ../src/../include/ff.h \
+ ../src/../include/../include/integer.h \
+ C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include\soc_cv_av\socal/socal.h \
+ ../src/../include/../include/ffconf.h ../src/../include/diskio.h
+
+../src/../include/ff.h:
+
+../src/../include/../include/integer.h:
+
+C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include\soc_cv_av\socal/socal.h:
+
+../src/../include/../include/ffconf.h:
+
+../src/../include/diskio.h:

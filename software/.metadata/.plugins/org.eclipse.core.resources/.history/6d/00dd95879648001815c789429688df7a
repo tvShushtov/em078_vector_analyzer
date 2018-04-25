@@ -1,0 +1,6 @@
+src/pio.d: ../src/pio.c ../src/../include/pio.h \
+ C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include\soc_cv_av\socal/socal.h
+
+../src/../include/pio.h:
+
+C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include\soc_cv_av\socal/socal.h:
