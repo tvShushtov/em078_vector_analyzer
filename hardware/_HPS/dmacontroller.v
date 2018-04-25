@@ -116,7 +116,7 @@ begin
 						
 							if (sdram0_readdatavalid)
 							begin
-											data <= {sdram0_readdata[55:48],sdram0_readdata[47:40],sdram0_readdata[39:32]};	
+											data <= {sdram0_readdata[23:16],sdram0_readdata[15:8],sdram0_readdata[7:0]};	
 											
 											if (addr_cnt<baseaddr+MAX_ADDR) 
 											begin

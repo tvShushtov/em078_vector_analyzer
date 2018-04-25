@@ -756,6 +756,7 @@ set_global_assignment -name SOURCE_FILE HDMI/vpg.h
 set_global_assignment -name VERILOG_FILE _HDMI/vpg.v
 set_global_assignment -name VERILOG_FILE _HDMI/I2C_WRITE_WDATA.v
 set_global_assignment -name VERILOG_FILE _HPS/dmacontroller.v
+set_global_assignment -name VHDL_FILE _HPS/lw2dma_sync.vhd
 set_global_assignment -name QSYS_FILE _HPS/HPS.qsys
 set_global_assignment -name QIP_FILE _NCO_CONTR/_NCO/synthesis/NCO1.qip
 set_global_assignment -name VHDL_FILE _NCO_CONTR/nco_control.vhd
