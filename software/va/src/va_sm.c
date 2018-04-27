@@ -1,3 +1,5 @@
+#pragma O0
+
 #include <hwlib.h>
 #include <socal.h>
 #include <hps.h>

@@ -61,7 +61,7 @@ ALT_16550_HANDLE_t uart;
 #define VERLINES 5
 
 extern volatile uint16_t screen[1024 * 768 * 4 + 4];
-int speed;
+double coeff;
 
 //extern volatile uint8_t font[256][64];
 
@@ -108,7 +108,10 @@ void fpga_pb_isr_callback(uint32_t icciar, void *context) {
 	/* Increase blinking speed if requested */
 	if (edges & 0x1) {
 		alt_16550_fifo_write_safe(&uart, "INTERRUPT!\n\r", 12, true);
-		speed = speed * -1;
+		if (coeff<10)
+			coeff += 1.0;
+		else
+			coeff = 1.0;
 	}
 
 }
@@ -194,9 +197,9 @@ int main(void) {
 	int32_t *data_arr;
 	int32_t data_len;
 	int32_t data_cnt;
-	uint32_t freq_low = 800000;
-	uint32_t freq_high = 923000;
-	uint32_t freq_step = 1000;
+	uint32_t freq_low = 1000;
+	uint32_t freq_high = 1000000;
+	uint32_t freq_step = 100;
 
 	// ???
 
@@ -222,7 +225,7 @@ int main(void) {
 	double MAXYVAL1, MINYVAL1;
 	double MAXYVAL2, MINYVAL2;
 	double khz;
-
+	double coeff;
 	uint32_t freq;
 	uint64_t secstart;
 	uint64_t secend;
@@ -251,7 +254,7 @@ int main(void) {
 
 	alt_16550_fifo_write_safe(&uart, "Ready to go!\n\r", 14, true);
 
-	speed = 1;
+
 	i = 0;
 	angle = 0;
 	frames = 0;
@@ -268,7 +271,7 @@ int main(void) {
 		// -----------------------------------------------------------------------
 		// Start calculations
 
-		angle = (angle + speed + 360) % 360;
+		//angle = (angle + speed +360) % 360;
 		data_len = ((freq_high - freq_low) / freq_step);
 		data_len = 2 * (data_len + 1);
 		data_cnt = 0;
@@ -276,7 +279,7 @@ int main(void) {
 		data_arr = (int32_t*) malloc(data_len * sizeof(int32_t));
 
 		for (freq = freq_low; freq <= freq_high; freq = freq + freq_step) {
-			//va_nco_meas(data_arr + data_cnt, freq, 30000);
+			va_nco_meas(data_arr + data_cnt, freq, 640000);
 			data_cnt = data_cnt + 2;
 		}
 		data_cnt--;
@@ -287,17 +290,18 @@ int main(void) {
 
 		// -----------------------------------------------------------------------
 
-		for (i = 0; i <= data_cnt; i = i + 2) {
-			data_arr[i] = floor(
-					200
-							* cos( angle*1.0/360.0* 8*PI)* sin(
-									(i * 0.5 - 0.0) / (0.5 * data_cnt - 0) * 4
-											* PI + angle * 1.0 / 360 * 2 * PI)) + 305*sin ( (i * 0.5 - 0.0) / (0.5 * data_cnt - 0) * 8
-													* PI + angle * 1.0 / 360 * 12*PI  ) ;
-			data_arr[i + 1] = floor(
-					150 * cos((i * 0.5 - 0.0) / (0.5 * data_cnt - 0) * 4 * PI)
-							+ 50);
-		}
+//		for (i = 0; i <= data_cnt; i = i + 2) {
+//			data_arr[i] = floor(
+//					200
+//							* cos( angle*1.0/360.0* 8*PI)* sin(
+//									(i * 0.5 - 0.0) / (0.5 * data_cnt - 0) * 4
+//											* PI + angle * 1.0 / 360 * 2 * PI)) + 305*sin ( (i * 0.5 - 0.0) / (0.5 * data_cnt - 0) * 8
+//													* PI + angle * 1.0 / 360 * 12*PI  ) ;
+//			data_arr[i + 1] = floor(
+//					150 * cos((i * 0.5 - 0.0) / (0.5 * data_cnt - 0) * 4 * PI)
+//							+ 50);
+//		}
+
 		//do something
 		//delay_us(25);
 
@@ -319,11 +323,17 @@ int main(void) {
 //
 //		}
 
-		MINYVAL1 = -1000;
-		MINYVAL2 = -500;
+		MINYVAL1 = 0;
+		MAXYVAL1 = 262143/coeff ; // 2^18 - 1
 
-		MAXYVAL1 = 1000;
-		MAXYVAL2 = 500;
+		MINYVAL1 = -PI/2*65536;
+		MAXYVAL2 = PI/2*65536;
+
+//		MINYVAL1 = -262144;
+//		MAXYVAL1 = 262143;
+//
+//		MINYVAL2 = -262144;
+//		MAXYVAL2 = 262143;
 		clrscr();
 
 		setcolor(220, 220, 200);

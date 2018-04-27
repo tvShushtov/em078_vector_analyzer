@@ -189,7 +189,7 @@ void videoinit(void) {
 							+ i + (char_y * 8 + j) * 256];
 		}
 
-	memset((void *) screen, 65535, 1024 * 768 * 4 * sizeof(uint16_t));
+	memset((void *) screen, 0, 1024 * 768 * 4 * sizeof(uint16_t));
 	memset((void *) buffer, 0, 1024 * 768 * 4 * sizeof(uint16_t));
 }
 
