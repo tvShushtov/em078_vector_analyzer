@@ -64,7 +64,7 @@ DSTATUS disk_status (
 	BYTE pdrv		/* Physical drive nmuber to identify the drive */
 )
 {
-	DSTATUS stat;
+	//DSTATUS stat;
 	if (pdrv != 0) return STA_NOINIT;
 
 
@@ -87,7 +87,7 @@ DSTATUS disk_initialize (
 	ALT_STATUS_CODE status;
 
 
-	int stat;
+	//int stat;
 	int size;
 	 int fat;
 	 int sd_base;
@@ -95,13 +95,12 @@ DSTATUS disk_initialize (
 		 uint64_t Sdmmc_Device_Size;
 
 	 // SD/MMC Block size
- uint32_t Sdmmc_Block_Size;
+// uint32_t Sdmmc_Block_Size;
 
 		 ALT_SDMMC_CARD_MISC_t card_misc_cfg;
 
 BYTE buff[512];
-	    			    	int i,j;
-
+int i;
 status = alt_clk_is_enabled(ALT_CLK_L4_SP);
 	if (status == ALT_E_FALSE) status = alt_clk_clock_enable(ALT_CLK_L4_SP);
 
@@ -112,29 +111,29 @@ status = alt_clk_is_enabled(ALT_CLK_L4_SP);
        }
 
    // Setting up SD/MMC
-       status = alt_sdmmc_init();
-       status = alt_sdmmc_card_pwr_on();
+       alt_sdmmc_init();
+       alt_sdmmc_card_pwr_on();
 
-   	   stat = alt_sdmmc_card_identify(&Card_Info);
+   	   alt_sdmmc_card_identify(&Card_Info);
 
 		    			       // case ALT_SDMMC_CARD_TYPE_MMC:
 		    			       //     print("INFO: MMC Card detected.\n");
 
-		    			        stat = alt_sdmmc_card_bus_width_set(&Card_Info, ALT_SDMMC_BUS_WIDTH_4);
+		    			        alt_sdmmc_card_bus_width_set(&Card_Info, ALT_SDMMC_BUS_WIDTH_4);
 		    			    //    alt_sdmmc_fifo_param_set((ALT_SDMMC_FIFO_NUM_ENTRIES >> 3) - 1,  (ALT_SDMMC_FIFO_NUM_ENTRIES >> 3), ALT_SDMMC_MULT_TRANS_TXMSIZE1);
 		    			        alt_sdmmc_card_misc_get(&card_misc_cfg);
 
-		    			        Sdmmc_Block_Size = card_misc_cfg.block_size;
+		    			  //      Sdmmc_Block_Size = card_misc_cfg.block_size;
 		    			        Sdmmc_Device_Size = ((uint64_t)Card_Info.blk_number_high << 32) + Card_Info.blk_number_low;
 		    			        Sdmmc_Device_Size *= Card_Info.max_r_blkln;
 		    			      //  stat = alt_sdmmc_dma_enable();
 
-		    			    	printf("SD/MMC block size %d; ",Sdmmc_Block_Size);
-		    			    	printf("device size %ll;\n\r",Sdmmc_Device_Size);
+		    			    	//printf("SD/MMC block size %d; ",Sdmmc_Block_Size);
+		    			    //	printf("device size %ll;\n\r",Sdmmc_Device_Size);
 
 
 
-		    			    	stat = alt_sdmmc_read(&Card_Info, buff, (void*)(0), 512);
+		    			    	alt_sdmmc_read(&Card_Info, buff, (void*)(0), 512);
 		    			    	if (alt_read_hword(&buff[MBR_SIG_ADDR]) == MBR_SIGNATURE)
 		    			    	        printf("MBR Table Found\n\r");
 		    			    	fat = -1;
@@ -189,7 +188,7 @@ DRESULT disk_read (
 {
 
 
-	DRESULT res;
+	//DRESULT res;
 
 	//printf("read...\r\n");
 	  //printf("start sector %d; number of sectors %d",sector,count);
@@ -197,9 +196,10 @@ DRESULT disk_read (
 		return RES_PARERR;
 	else
 	{
-    res = alt_sdmmc_read(&Card_Info, buff, (void*)((fat_sd_base+sector)*512), count*512);
+		alt_sdmmc_read(&Card_Info, buff, (void*)((fat_sd_base+sector)*512), (size_t)count*512);
+
    // printf("read end \r\n");
-    return 0;
+    return RES_OK;
 	}
 
 }
@@ -217,17 +217,17 @@ DRESULT disk_write (
 	UINT count			/* Number of sectors to write */
 )
 {
-	DRESULT res;
+	//DRESULT res;
 
 	//printf("write...\n\r");
 	if (pdrv != 0)
 		return RES_PARERR;
 	else
 	{
-    res = alt_sdmmc_write(&Card_Info,  (void*)((fat_sd_base+sector)*512), (void*)buff, count*512);
+		alt_sdmmc_write(&Card_Info,  (void*)((fat_sd_base+sector)*512), (void*)buff, (size_t)count*512);
 
 
-    return 0;
+    return RES_OK;
 	}
 
 }

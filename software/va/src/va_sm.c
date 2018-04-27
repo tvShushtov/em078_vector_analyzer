@@ -8,9 +8,9 @@
 uint64_t NCO_BITS = 2 << (30 - 1);
 uint64_t NCO_CLK = 5e7;
 
-void *va_sm = ALT_LWFPGASLVS_ADDR + VA_GEN_SM_BASE;
-void *va_data_ready = ALT_LWFPGASLVS_ADDR + VA_DATA_READY_BASE;
-void *va_data = ALT_LWFPGASLVS_ADDR + VA_DATAOUT_BASE;
+#define va_sm (void*)((uint32_t)ALT_LWFPGASLVS_ADDR + (uint32_t)VA_GEN_SM_BASE)
+#define va_data_ready (void*)((uint32_t)ALT_LWFPGASLVS_ADDR + (uint32_t)VA_DATA_READY_BASE)
+#define va_data  (void*)((uint32_t) ALT_LWFPGASLVS_ADDR +(uint32_t) VA_DATAOUT_BASE)
 
 void va_sm_set_reg(uint8_t addr, uint32_t data) {
 	alt_write_word(va_sm, (addr << 24) | (0x0000FFFF & data));

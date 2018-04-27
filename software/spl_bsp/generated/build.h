@@ -54,7 +54,7 @@
 #endif
 
 /* Enable FAT partition support when booting from SDMMC. */
-#define CONFIG_PRELOADER_FAT_SUPPORT		(0)
+#define CONFIG_PRELOADER_FAT_SUPPORT		(1)
 
 /*
  * When FAT partition support is enabled, this specifies the

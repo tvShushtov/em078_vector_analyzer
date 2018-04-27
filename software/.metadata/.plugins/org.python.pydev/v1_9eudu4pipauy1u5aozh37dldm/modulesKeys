@@ -58,12 +58,6 @@ _sre
 _systemrestart
 _threading
 _weakref
-arm_ds.__init__|C:\altera\16.0\embedded\ds-5\sw\eclipse\dropins\plugins\com.arm.debug.interpreter.jython.api_5.23.1.20151215_184710\arm_ds\__init__.py
-arm_ds.debugger_v1|C:\altera\16.0\embedded\ds-5\sw\eclipse\dropins\plugins\com.arm.debug.interpreter.jython.api_5.23.1.20151215_184710\arm_ds\debugger_v1.py
-arm_ds.internal|C:\altera\16.0\embedded\ds-5\sw\eclipse\dropins\plugins\com.arm.debug.interpreter.jython.api_5.23.1.20151215_184710\arm_ds\internal.py
-arm_ds.usecase_script|C:\altera\16.0\embedded\ds-5\sw\eclipse\dropins\plugins\com.arm.debug.interpreter.jython.api_5.23.1.20151215_184710\arm_ds\usecase_script.py
-arm_ds_launcher.__init__|C:\Users\pshuklin\AppData\Roaming\ARM\DS-5_v5.23.1\workbench\configuration\org.eclipse.osgi\352\0\.cp\arm_ds_launcher\__init__.py
-arm_ds_launcher.targetcontrol|C:\Users\pshuklin\AppData\Roaming\ARM\DS-5_v5.23.1\workbench\configuration\org.eclipse.osgi\352\0\.cp\arm_ds_launcher\targetcontrol.py
 array
 binascii
 cPickle

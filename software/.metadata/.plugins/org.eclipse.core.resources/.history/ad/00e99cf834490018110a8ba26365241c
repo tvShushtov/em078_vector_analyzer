@@ -1,0 +1,15 @@
+/*
+ * video.h
+ *
+ *  Created on: 26 апр. 2018 г.
+ *      Author: user
+ */
+
+#ifndef VIDEO_H_
+#define VIDEO_H_
+
+void setcolor(uint8_t r, uint8_t g, uint8_t b);
+
+
+
+#endif /* VIDEO_H_ */

@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>spl</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>23.04.2018 20:46:03</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1524501963507</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>26.04.2018 14:34:00</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1524738840270</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>.\</BspGeneratedLocation>
         <BspSettingsFile>software\spl_bsp\settings.bsp</BspSettingsFile>
         <HpsSettingsPath>..\..\hardware\hps_isw_handoff\HPS_hps_0</HpsSettingsPath>
@@ -266,7 +266,7 @@
                 <SettingName>spl.boot.FAT_SUPPORT</SettingName>
                 <Identifier>none</Identifier>
                 <Type>Boolean</Type>
-                <Value>0</Value>
+                <Value>1</Value>
                 <DefaultValue>0</DefaultValue>
                 <DestinationFile>public_mk_define</DestinationFile>
                 <Description>Enable FAT partition support when booting from SDMMC.</Description>

@@ -104,6 +104,7 @@
 							<option id="com.arm.toolchain.ac5.option.fppcs.1929112208" name="Floating-point PCS" superClass="com.arm.toolchain.ac5.option.fppcs" value="com.arm.tool.c.compiler.option.fppcs.hard" valueType="enumerated"/>
 							<option id="com.arm.toolchain.ac5.option.inst.363711083" name="Instruction set" superClass="com.arm.toolchain.ac5.option.inst" value="com.arm.tool.c.compiler.option.inst.arm" valueType="enumerated"/>
 							<option id="com.arm.toolchain.ac5.option.inter.827865682" name="Interworking" superClass="com.arm.toolchain.ac5.option.inter" value="true" valueType="boolean"/>
+							<option id="com.arm.toolchain.ac5.option.enum.437533625" superClass="com.arm.toolchain.ac5.option.enum" value="true" valueType="boolean"/>
 							<targetPlatform binaryParser="" id="com.arm.toolchain.baremetal.347890830.1764963839" name=""/>
 							<builder buildPath="${workspace_loc:/va}/Arm5" id="cdt.managedbuild.target.gnu.builder.base.1710739483" keepEnvironmentInBuildfile="false" name="Gnu Make Builder" superClass="cdt.managedbuild.target.gnu.builder.base"/>
 							<tool command="armcc" commandLinePattern="${COMMAND} ${FLAGS} ${OUTPUT_FLAG} ${OUTPUT_PREFIX}${OUTPUT} ${INPUTS}" errorParsers="" id="com.arm.tool.c.compiler.962458129" name="ARM C Compiler 5" superClass="com.arm.tool.c.compiler">
@@ -133,6 +134,7 @@
 								</option>
 								<option id="com.arm.tool.c.compiler.option.debug.enableToolSpecificSettings.1828986645" name="Enable tool specific settings" superClass="com.arm.tool.c.compiler.option.debug.enableToolSpecificSettings" value="true" valueType="boolean"/>
 								<option id="com.arm.tool.c.compiler.option.flags.746282787" name="Other flags" superClass="com.arm.tool.c.compiler.option.flags"/>
+								<option id="com.arm.tool.c.compiler.option.enum.825589537" superClass="com.arm.tool.c.compiler.option.enum" value="true" valueType="boolean"/>
 								<inputType id="com.arm.tool.c.compiler.input.1771009506" superClass="com.arm.tool.c.compiler.input"/>
 								<inputType id="com.arm.tool.cpp.compiler.input.1672194637" superClass="com.arm.tool.cpp.compiler.input"/>
 							</tool>

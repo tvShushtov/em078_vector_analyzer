@@ -1,0 +1,23 @@
+/*
+ * video.h
+ *
+ *  Created on: 26 апр. 2018 г.
+ *      Author: user
+ */
+
+#ifndef VIDEO_H_
+#define VIDEO_H_
+
+void setcolor(uint8_t r, uint8_t g, uint8_t b);
+void drawpixel(uint16_t x, uint16_t y);
+void drawline(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2);
+double hue2rgb(double p, double q, double tt);
+uint8_t hslToR(double h, double s, double l);
+uint8_t hslToG(double h, double s, double l);
+uint8_t hslToB(double h, double s, double l);
+void drawtext(const char * string, int size, uint16_t x, uint16_t y);
+void clrscr();
+void videoinit(void);
+
+
+#endif /* VIDEO_H_ */

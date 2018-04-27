@@ -1,11 +1,11 @@
 #ifndef VA_SM_H_
 #define VA_SM_H_
 
-#define VASM_ADDR_RUN 0x82
-#define VASM_ADDR_FREQ 0x84
-#define VASM_ADDR_LATENCY 0x86
-#define VASM_ADDR_RAVERAGE 0x88
-#define VASM_ADDR_ACKNOWLEDG 0x8A
+#define VASM_ADDR_RUN 0x82U
+#define VASM_ADDR_FREQ 0x84U
+#define VASM_ADDR_LATENCY 0x86U
+#define VASM_ADDR_RAVERAGE 0x88U
+#define VASM_ADDR_ACKNOWLEDG 0x8AU
 
 void va_sm_set_reg(uint8_t addr, uint32_t data);
 
