@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="SQRTSUM" kind="SQRTSUM" version="1.0" fabric="QSYS">
  <!-- Format version 16.0 211 (Future versions may contain additional information.) -->
- <!-- 2018.04.22.20:30:00 -->
+ <!-- 2018.04.27.22:38:55 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
-  <value>1524414600</value>
+  <value>1524854335</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -180,7 +180,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="fxpt_in_sign">
    <type>java.lang.String</type>
-   <value>1</value>
+   <value>0</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -196,7 +196,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="fxpt_out_fraction">
    <type>int</type>
-   <value>15</value>
+   <value>16</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -332,7 +332,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="SFCompensation">
    <type>boolean</type>
-   <value>false</value>
+   <value>true</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>

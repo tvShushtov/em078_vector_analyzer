@@ -56,7 +56,7 @@ architecture rtl of va_sm is
     signal gen_sm  : type_gen_sm;
     signal sm_busy : std_logic;
 
-    constant MAX_CNT_LAT_BITS : integer := 16;
+    constant MAX_CNT_LAT_BITS : integer := 31;
     signal cnt_lat            : integer range 0 to (2 ** MAX_CNT_LAT_BITS - 1);
 
     signal adc_data_ch1_sig : std_logic_vector(11 downto 0);
@@ -100,7 +100,6 @@ begin
                     gen_sm       <= st_wait_react;
 
                 when st_wait_react =>
-                    nco_clken <= '0';
                     if cnt_lat = to_integer(unsigned(hps_latency(MAX_CNT_LAT_BITS - 1 downto 0))) then
                         cnt_lat       <= 0;
                         va_sm_adc_run <= '1';
@@ -159,6 +158,7 @@ begin
 
                 when st_end =>
                     if hps_ack = '1' then
+								nco_clken <= '0';
                         sm_busy <= '0';
                         ready   <= '0';
                         gen_sm  <= st_idle;

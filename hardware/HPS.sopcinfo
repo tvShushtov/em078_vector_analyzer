@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="HPS" kind="HPS" version="1.0" fabric="QSYS">
  <!-- Format version 16.0 211 (Future versions may contain additional information.) -->
- <!-- 2018.04.23.20:42:10 -->
+ <!-- 2018.04.27.22:39:52 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
-  <value>1524501730</value>
+  <value>1524854391</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>

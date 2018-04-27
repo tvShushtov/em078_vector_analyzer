@@ -20,6 +20,7 @@ architecture rtl of nco_control is
 	constant N : integer :=1073741824; --2**30
 	signal f_sino_pr : signed(13 downto 0);
 	signal freq 	: integer;
+	signal m_buf   : std_logic;
 begin
 	process(clk, reset) is
 	begin
@@ -30,11 +31,14 @@ begin
 			f_sino_up <= (others => '0');
 		elsif rising_edge(clk) then
 			f_sino_pr <= f_sino;
-			
-			if f_sino_pr > f_sino then
-				meandr90ph <= '1';
+			meandr90ph <= m_buf;
+			f_sino_pr <= f_sino;
+			if f_sino_pr < f_sino then
+				m_buf <= '0';
+			elsif f_sino_pr > f_sino then
+				m_buf <= '1';
 			else
-				meandr90ph <= '0';
+				meandr90ph <= m_buf;
 			end if;
 			
 			if sw_dataout = '1' then

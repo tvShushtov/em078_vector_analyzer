@@ -6,7 +6,7 @@
    version="1.0"
    description=""
    tags="INTERNAL_COMPONENT=true"
-   categories="" />
+   categories="System" />
  <parameter name="bonusData"><![CDATA[bonusData 
 {
    element CORDIC_0
@@ -68,9 +68,9 @@
   <parameter name="SFCompensation" value="false" />
   <parameter name="frequency_target" value="100" />
   <parameter name="fxpt_in_fraction" value="0" />
-  <parameter name="fxpt_in_sign" value="1" />
+  <parameter name="fxpt_in_sign" value="0" />
   <parameter name="fxpt_in_width" value="12" />
-  <parameter name="fxpt_out_fraction" value="15" />
+  <parameter name="fxpt_out_fraction" value="16" />
   <parameter name="fxpt_out_width" value="32" />
   <parameter name="gen_enable" value="false" />
   <parameter name="latency_target" value="2" />
@@ -79,7 +79,7 @@
   <parameter name="selected_device_family" value="Cyclone V" />
   <parameter name="selected_device_speedgrade" value="7" />
   <parameter name="specifyLUTs" value="false" />
-  <parameter name="useLUTs" value="false" />
+  <parameter name="useLUTs" value="true" />
  </module>
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
  <interconnectRequirement for="$system" name="qsys_mm.enableEccProtection" value="FALSE" />

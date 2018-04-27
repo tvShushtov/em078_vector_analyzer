@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <deploy
- date="2018.04.22.23:09:02"
+ date="2018.04.27.18:55:26"
  outputDirectory="C:/altera/projects/innovate_2018/em078_vector_analyzer/hardware/_NCO_CONTR/NCO1/">
  <perimeter>
   <parameter
@@ -77,13 +77,13 @@
  </perimeter>
  <entity
    path=""
-   parameterizationKey="NCO1:1.0:AUTO_CLK_CLOCK_DOMAIN=-1,AUTO_CLK_CLOCK_RATE=-1,AUTO_CLK_RESET_DOMAIN=-1,AUTO_DEVICE=5CSEBA6U23I7,AUTO_DEVICE_FAMILY=Cyclone V,AUTO_DEVICE_SPEEDGRADE=7,AUTO_GENERATION_ID=1524424141,AUTO_UNIQUE_ID=(altera_nco_ii:16.0:apr=30,aprf=32,apri=20,aprp=16,arch=small_rom,cordic_arch=parallel,cycles_per_output=1,design_env=NATIVE,dpri=5,fmod_pipe=1,freq_out=5.0E-5,fsamp=50.0,hyper_opt=false,hyper_opt_select=false,mpr=14,numba=1,numch=1,phi_inc=1074,pmod_pipe=1,real_freq_out=5.001E-5,selected_device_family=Cyclone V,trig_cycles_per_output=1,use_dedicated_multipliers=true,want_dither=true,want_freq_mod=false,want_phase_mod=false,want_sin_and_cos=single_output)"
+   parameterizationKey="NCO1:1.0:AUTO_CLK_CLOCK_DOMAIN=-1,AUTO_CLK_CLOCK_RATE=-1,AUTO_CLK_RESET_DOMAIN=-1,AUTO_DEVICE=5CSEBA6U23I7,AUTO_DEVICE_FAMILY=Cyclone V,AUTO_DEVICE_SPEEDGRADE=7,AUTO_GENERATION_ID=1524840925,AUTO_UNIQUE_ID=(altera_nco_ii:16.0:apr=30,aprf=32,apri=20,aprp=16,arch=small_rom,cordic_arch=parallel,cycles_per_output=1,design_env=NATIVE,dpri=5,fmod_pipe=1,freq_out=0.05,fsamp=50.0,hyper_opt=false,hyper_opt_select=false,mpr=14,numba=1,numch=1,phi_inc=1073742,pmod_pipe=1,real_freq_out=0.05,selected_device_family=Cyclone V,trig_cycles_per_output=1,use_dedicated_multipliers=true,want_dither=true,want_freq_mod=false,want_phase_mod=false,want_sin_and_cos=single_output)"
    instancePathKey="NCO1"
    kind="NCO1"
    version="1.0"
    name="NCO1">
   <parameter name="AUTO_CLK_CLOCK_RATE" value="-1" />
-  <parameter name="AUTO_GENERATION_ID" value="1524424141" />
+  <parameter name="AUTO_GENERATION_ID" value="1524840925" />
   <parameter name="AUTO_DEVICE" value="5CSEBA6U23I7" />
   <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
   <parameter name="AUTO_CLK_RESET_DOMAIN" value="-1" />
@@ -201,7 +201,7 @@
  </entity>
  <entity
    path="submodules/"
-   parameterizationKey="altera_nco_ii:16.0:apr=30,aprf=32,apri=20,aprp=16,arch=small_rom,cordic_arch=parallel,cycles_per_output=1,design_env=NATIVE,dpri=5,fmod_pipe=1,freq_out=5.0E-5,fsamp=50.0,hyper_opt=false,hyper_opt_select=false,mpr=14,numba=1,numch=1,phi_inc=1074,pmod_pipe=1,real_freq_out=5.001E-5,selected_device_family=Cyclone V,trig_cycles_per_output=1,use_dedicated_multipliers=true,want_dither=true,want_freq_mod=false,want_phase_mod=false,want_sin_and_cos=single_output"
+   parameterizationKey="altera_nco_ii:16.0:apr=30,aprf=32,apri=20,aprp=16,arch=small_rom,cordic_arch=parallel,cycles_per_output=1,design_env=NATIVE,dpri=5,fmod_pipe=1,freq_out=0.05,fsamp=50.0,hyper_opt=false,hyper_opt_select=false,mpr=14,numba=1,numch=1,phi_inc=1073742,pmod_pipe=1,real_freq_out=0.05,selected_device_family=Cyclone V,trig_cycles_per_output=1,use_dedicated_multipliers=true,want_dither=true,want_freq_mod=false,want_phase_mod=false,want_sin_and_cos=single_output"
    instancePathKey="NCO1:.:nco_ii_0"
    kind="altera_nco_ii"
    version="16.0"
@@ -228,11 +228,11 @@
   <parameter name="want_freq_mod" value="false" />
   <parameter name="use_dedicated_multipliers" value="true" />
   <parameter name="want_sin_and_cos" value="single_output" />
-  <parameter name="phi_inc" value="1074" />
+  <parameter name="phi_inc" value="1073742" />
   <parameter name="fmod_pipe" value="1" />
   <parameter name="arch" value="small_rom" />
-  <parameter name="freq_out" value="5.0E-5" />
-  <parameter name="real_freq_out" value="5.001E-5" />
+  <parameter name="freq_out" value="0.05" />
+  <parameter name="real_freq_out" value="0.05" />
   <generatedFiles>
    <file
        path="C:/altera/projects/innovate_2018/em078_vector_analyzer/hardware/_NCO_CONTR/NCO1/synthesis/submodules/sid_2c_1p.v"

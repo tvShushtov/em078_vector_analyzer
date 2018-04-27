@@ -1,14 +1,14 @@
 
 module ATAN2 (
-	clk,
 	areset,
+	clk,
+	q,
 	x,
-	y,
-	q);	
+	y);	
 
-	input		clk;
 	input		areset;
+	input		clk;
+	output	[17:0]	q;
 	input	[11:0]	x;
 	input	[11:0]	y;
-	output	[17:0]	q;
 endmodule

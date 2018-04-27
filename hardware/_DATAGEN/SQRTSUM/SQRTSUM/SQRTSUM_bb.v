@@ -1,16 +1,16 @@
 
 module SQRTSUM (
-	clk,
 	areset,
-	x,
-	y,
+	clk,
 	q,
-	r);	
+	r,
+	x,
+	y);	
 
-	input		clk;
 	input		areset;
-	input	[11:0]	x;
-	input	[11:0]	y;
+	input		clk;
 	output	[17:0]	q;
 	output	[17:0]	r;
+	input	[11:0]	x;
+	input	[11:0]	y;
 endmodule
