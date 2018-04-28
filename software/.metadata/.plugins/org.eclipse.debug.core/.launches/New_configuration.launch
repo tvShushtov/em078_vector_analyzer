@@ -1,35 +1,39 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <launchConfiguration type="com.arm.debugger.launcher2">
 <mapAttribute key="AverageDurationTracker">
-<mapEntry key="*Fetching Data Model" value="328170"/>
-<mapEntry key="*list global low level symbols" value="3457695"/>
-<mapEntry key="*loading values from target" value="19323236"/>
-<mapEntry key="*updating variables" value="5424266"/>
-<mapEntry key="AddEventObserver" value="929850"/>
-<mapEntry key="Evaluate" value="43712142"/>
-<mapEntry key="Retrieving globals list" value="76238403"/>
-<mapEntry key="break" value="4351434"/>
-<mapEntry key="continue" value="16202036"/>
-<mapEntry key="core" value="97679380"/>
-<mapEntry key="disassemble" value="54493711"/>
-<mapEntry key="finish" value="10157906"/>
-<mapEntry key="get capabilities" value="176091"/>
-<mapEntry key="get execution addresss" value="4828773"/>
-<mapEntry key="get source lines" value="3489360"/>
-<mapEntry key="initialize command help" value="48631014"/>
-<mapEntry key="interrupt" value="18933001"/>
-<mapEntry key="list breakpoints" value="630529"/>
-<mapEntry key="list instruction sets" value="198400"/>
-<mapEntry key="list signals" value="1205298"/>
-<mapEntry key="list watchpoints" value="617334"/>
-<mapEntry key="next" value="105635505"/>
-<mapEntry key="remove" value="12505989"/>
-<mapEntry key="set CWD" value="1766589"/>
-<mapEntry key="set breakpoint properties" value="6630212"/>
-<mapEntry key="source altera_target_check.py" value="369478041"/>
-<mapEntry key="source debug.ds" value="3745257015"/>
-<mapEntry key="step" value="30081857"/>
-<mapEntry key="toggleBreakpoint" value="16027690"/>
+<mapEntry key="*Fetching Data Model" value="374103"/>
+<mapEntry key="*list global low level symbols" value="2462295"/>
+<mapEntry key="*loading memory from target" value="2913880"/>
+<mapEntry key="*loading values from target" value="1047393"/>
+<mapEntry key="*updating variables" value="1608951"/>
+<mapEntry key="AddEventObserver" value="848540"/>
+<mapEntry key="Evaluate" value="18314532"/>
+<mapEntry key="Retrieving globals list" value="31723659"/>
+<mapEntry key="areCachesAvailable" value="1056292"/>
+<mapEntry key="break" value="3821894"/>
+<mapEntry key="continue" value="12238816"/>
+<mapEntry key="core" value="28000761"/>
+<mapEntry key="disassemble" value="37986009"/>
+<mapEntry key="finish" value="25407641"/>
+<mapEntry key="get byte order" value="2560483"/>
+<mapEntry key="get capabilities" value="195338"/>
+<mapEntry key="get execution addresss" value="796199"/>
+<mapEntry key="get source lines" value="1354372"/>
+<mapEntry key="getValidEncodings" value="748255"/>
+<mapEntry key="initialize command help" value="36695546"/>
+<mapEntry key="interrupt" value="17013275"/>
+<mapEntry key="list breakpoints" value="287166"/>
+<mapEntry key="list instruction sets" value="363102"/>
+<mapEntry key="list signals" value="518048"/>
+<mapEntry key="list watchpoints" value="343492"/>
+<mapEntry key="next" value="37490551"/>
+<mapEntry key="remove" value="15671879"/>
+<mapEntry key="set CWD" value="1740842"/>
+<mapEntry key="set breakpoint properties" value="4066249"/>
+<mapEntry key="source altera_target_check.py" value="333585482"/>
+<mapEntry key="source debug.ds" value="3387739038"/>
+<mapEntry key="step" value="33895638"/>
+<mapEntry key="toggleBreakpoint" value="13841909"/>
 </mapAttribute>
 <intAttribute key="DEBUG_TAB..RESOURCES.COUNT" value="0"/>
 <intAttribute key="FILES.CONNECT_TO_GDB_SERVER.RESOURCES.COUNT" value="0"/>
@@ -129,6 +133,14 @@
 <listAttribute key="com.arm.debug.views.common.AddressTracker.debugger.view.DisassemblyView.ranges">
 <listEntry value="100"/>
 </listAttribute>
+<listAttribute key="com.arm.debug.views.common.AddressTracker.debugger.view.MemoryView.addresses">
+<listEntry value=""/>
+<listEntry value="&amp;(yy1)"/>
+</listAttribute>
+<listAttribute key="com.arm.debug.views.common.AddressTracker.debugger.view.MemoryView.ranges">
+<listEntry value=""/>
+<listEntry value="sizeof(yy1)"/>
+</listAttribute>
 <stringAttribute key="config_db_activity_name" value="Debug Cortex-A9_0"/>
 <stringAttribute key="config_db_connection_keys" value="rvi_address target_initialization_script dtsl_config dtsl_tracecapture_option dtsl_config_script eventviewer_tracesource config_file setup TCP_KILL_ON_EXIT TCP_DISABLE_EXTENDED_MODE"/>
 <stringAttribute key="config_db_connection_type" value="Bare Metal Debug"/>
@@ -143,7 +155,12 @@
 <listEntry value="&lt;Next Instruction&gt;"/>
 <listEntry value="100"/>
 </listAttribute>
-<stringAttribute key="debugger.view.VariableTreeView:DebugOutlineColumnState" value="OutlineConfig1&#9;8&#9;0&#9;true&#9;true&#9;150&#9;-1&#9;true&#9;1&#9;false&#9;true&#9;90&#9;-1&#9;true&#9;2&#9;true&#9;true&#9;95&#9;-1&#9;true&#9;3&#9;true&#9;true&#9;43&#9;-1&#9;true&#9;4&#9;true&#9;true&#9;50&#9;-1&#9;true&#9;5&#9;true&#9;true&#9;37&#9;-1&#9;true&#9;6&#9;true&#9;true&#9;62&#9;-1&#9;true&#9;7&#9;true&#9;true&#9;53&#9;-1&#9;true"/>
+<stringAttribute key="debugger.view.MemoryView" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#10;&lt;page&gt;&#10;&#9;&lt;memoryView displayWidthTag=&quot;BYTE_4&quot; mCompressedAddresses=&quot;true&quot; formatTag=&quot;Hexadecimal&quot; showTooltipTag=&quot;true&quot; autoAlign=&quot;false&quot;/&gt;&#10;&lt;/page&gt;&#10;"/>
+<listAttribute key="debugger.view.MemoryView:current">
+<listEntry value=""/>
+<listEntry value=""/>
+</listAttribute>
+<stringAttribute key="debugger.view.VariableTreeView:DebugOutlineColumnState" value="OutlineConfig1&#9;8&#9;0&#9;true&#9;true&#9;150&#9;-1&#9;true&#9;1&#9;false&#9;true&#9;90&#9;-1&#9;true&#9;2&#9;true&#9;true&#9;95&#9;-1&#9;true&#9;3&#9;true&#9;false&#9;60&#9;-1&#9;true&#9;4&#9;true&#9;true&#9;50&#9;-1&#9;true&#9;5&#9;true&#9;true&#9;37&#9;-1&#9;true&#9;6&#9;true&#9;true&#9;62&#9;-1&#9;true&#9;7&#9;true&#9;true&#9;53&#9;-1&#9;true"/>
 <listAttribute key="debugger.view.VariableTreeView:USER_ADDED_FILE_STATICS"/>
 <listAttribute key="debugger.view.VariableTreeView:USER_ADDED_GLOBALS"/>
 <booleanAttribute key="debugger.view.variable.DrawAsHex" value="false"/>

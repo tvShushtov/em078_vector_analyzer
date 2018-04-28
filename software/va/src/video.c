@@ -22,7 +22,7 @@ void setcolor(uint8_t r, uint8_t g, uint8_t b) {
 	green = g;
 	blue = b;
 }
-void drawpixel(int16_t x, int16_t y) {
+void drawpixel(int32_t x, int32_t y) {
 
 	if (x>=0 && y>=0 && x < WIDTH && y < HEIGHT) {
 		buffer[(y * 1024 + x) * 4 + 1] = red;
@@ -30,9 +30,12 @@ void drawpixel(int16_t x, int16_t y) {
 	}
 }
 
-void drawline(int16_t x1, int16_t y1, int16_t x2, int16_t y2) {
+void drawline(int32_t x1, int32_t y1, int32_t x2, int32_t y2) {
 	uint16_t steps;
 	int cc;
+
+	if (x1>=0 && x2 >=0 && y1>=0 && y2>=0 && x1<=WIDTH && x2<=WIDTH && y1<= HEIGHT && y2<=HEIGHT){
+
 	if (abs(x2 - x1) > abs(y2 - y1))
 		steps = abs(x2 - x1);
 	else
@@ -42,7 +45,7 @@ void drawline(int16_t x1, int16_t y1, int16_t x2, int16_t y2) {
 		drawpixel(x1 + floor(1.0 * (x2 - x1) / steps * cc),
 				y1 + floor(1.0 * (y2 - y1) / steps * cc));
 	}
-
+	}
 }
 
 double hue2rgb(double p, double q, double tt) {

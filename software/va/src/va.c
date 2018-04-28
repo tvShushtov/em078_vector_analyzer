@@ -18,6 +18,7 @@
 #include <alt_int_device.h>
 #include <alt_interrupt.h>
 #include <alt_interrupt_common.h>
+#include <alt_timers.h>
 #include <alt_mmu.h>
 #include <alt_printf.h>
 #include <alt_watchdog.h>
@@ -48,20 +49,47 @@
 
 ALT_16550_HANDLE_t uart;
 
+#define GPT_TIMER_ID ALT_GPT_OSC1_TMR0
+#define GPT_TIMER_CLOCK ALT_CLK_OSC1
+
 #define MARGX 40
 #define MARGBOT 40
 #define MARGTOP 20
 
 #define MINX1 MARGX
-#define MAXX1 WIDTH-MARGX
-#define MINY1 HEIGHT-MARGBOT
+#define MAXX1 (WIDTH-MARGX)
+#define MINY1 (HEIGHT-MARGBOT)
 #define MAXY1 MARGTOP
 
 #define HORLINES 3
 #define VERLINES 5
 
+//#define MAXYVAL1 262144
+#define MAXYVAL1 262144
+#define MINYVAL1 0
+#define MAXYVAL2 (51471)
+#define MINYVAL2 (-51471)
+
+//MAXYVAL2 = PI/2.0*32768;
+
 extern volatile uint16_t screen[1024 * 768 * 4 + 4];
 double coeff;
+extern bool is_screen_refresh_allowed;
+// Calculations
+int32_t *data_arr;
+int32_t data_len;
+int32_t data_cnt;
+uint32_t freq_low = 1000;
+uint32_t freq_high = 1000000;
+uint32_t freq_step = 250;
+
+uint32_t freq;
+uint32_t timer_prescaler;
+alt_freq_t timer_clock;
+uint64_t secstart;
+uint64_t secend;
+uint16_t frames;
+uint16_t fps;
 
 //extern volatile uint8_t font[256][64];
 
@@ -108,7 +136,7 @@ void fpga_pb_isr_callback(uint32_t icciar, void *context) {
 	/* Increase blinking speed if requested */
 	if (edges & 0x1) {
 		alt_16550_fifo_write_safe(&uart, "INTERRUPT!\n\r", 12, true);
-		if (coeff<10)
+		if (coeff < 10)
 			coeff += 1.0;
 		else
 			coeff = 1.0;
@@ -116,10 +144,196 @@ void fpga_pb_isr_callback(uint32_t icciar, void *context) {
 
 }
 
+void drawgrid(void) {
+	char string1[255];
+	int i;
+	int x1;
+	int x2;
+	double khz;
+
+	setcolor(220, 220, 200);
+	drawline(MARGX, MARGTOP, WIDTH - MARGX, MARGTOP);
+	drawline(WIDTH - MARGX, MARGTOP, WIDTH - MARGX, HEIGHT - MARGBOT);
+	drawline(WIDTH - MARGX, HEIGHT - MARGBOT, MARGX, HEIGHT - MARGBOT);
+	drawline(MARGX, HEIGHT - MARGBOT, MARGX, MARGTOP);
+
+	setcolor(110, 110, 100);
+	//horizontal grid
+	for (i = 1; i <= HORLINES; i++)
+		drawline(MARGX,
+		MARGTOP + i * (HEIGHT - MARGTOP - MARGBOT) / (HORLINES + 1),
+		WIDTH - MARGX, 20 + i * (HEIGHT - MARGTOP - MARGBOT) / (HORLINES + 1));
+
+	//vertical grid
+	for (i = 1; i <= VERLINES; i++)
+		drawline(MARGX + i * (WIDTH - 2 * MARGX) / (VERLINES + 1), MARGTOP,
+		MARGX + i * (WIDTH - 2 * MARGX) / (VERLINES + 1), HEIGHT - MARGBOT);
+
+	setcolor(100,100,110);
+	drawline(MARGX + 1.0*(freq - freq_low)/(freq_high - freq_low)* (WIDTH - 2 * MARGX), MARGTOP,
+		MARGX +  1.0*(freq - freq_low)/(freq_high - freq_low)* (WIDTH - 2 * MARGX), HEIGHT - MARGBOT);
+
+
+	//X-AXIS LEGEND
+	setcolor(220, 220, 200);
+	memset(string1, 0, 255);
+	for (i = 0; i <= VERLINES + 1; i++) {
+		khz = (freq_low + i * (freq_high - freq_low) / (VERLINES + 1)) / 1000.0;
+		x1 = floor(khz);
+		if (khz < 1000)
+			alt_sprintf(string1, "%3d KHz", x1);
+		else {
+			x2 = (x1 % 1000) / 10;
+			x1 = floor(khz / 1000.0);
+			//sprintf(string1,"%f Mhz",khz/1000);
+			alt_sprintf(string1, "%3d.%0d MHz", x1, x2);
+		}
+		drawtext(string1, strlen(string1),
+				MARGX + i * (WIDTH - 2 * MARGX) / (VERLINES + 1)
+						- strlen(string1) / 2 * 8, HEIGHT - MARGBOT + 8);
+	}
+
+	//LEFT Y-AXIS LEGEND
+	setcolor(255, 0, 0);
+	drawtext("1", 1, MARGX - 2 - 8,
+	MARGTOP + 0 * (HEIGHT - MARGTOP - MARGBOT) / (HORLINES + 1) - 3);
+	drawtext("0.75", 4, MARGX - 2 - 8 * 4,
+	MARGTOP + 1 * (HEIGHT - MARGTOP - MARGBOT) / (HORLINES + 1) - 3);
+	drawtext("0.5", 3, MARGX - 2 - 8 * 3,
+	MARGTOP + 2 * (HEIGHT - MARGTOP - MARGBOT) / (HORLINES + 1) - 3);
+	drawtext("0.25", 4, MARGX - 2 - 8 * 4,
+	MARGTOP + 3 * (HEIGHT - MARGTOP - MARGBOT) / (HORLINES + 1) - 3);
+	drawtext("0", 1, MARGBOT - 2 - 8,
+	MARGTOP + 4 * (HEIGHT - MARGTOP - MARGBOT) / (HORLINES + 1) - 3);
+
+	//RIGHT Y-AXIS LEGEND
+	setcolor(0, 255, 0);
+	alt_sprintf(string1, " 90");
+	string1[3] = 248;
+	drawtext(string1, 4, WIDTH - MARGX + 2,
+	MARGTOP + 0 * (HEIGHT - MARGTOP - MARGBOT) / (HORLINES + 1) - 3);
+
+	alt_sprintf(string1, " 45");
+	string1[3] = 248;
+	drawtext(string1, 4, WIDTH - MARGX + 2,
+	MARGTOP + 1 * (HEIGHT - MARGTOP - MARGBOT) / (HORLINES + 1) - 3);
+
+	alt_sprintf(string1, " 0");
+	string1[2] = 248;
+	drawtext(string1, 3, WIDTH - MARGX + 2,
+	MARGTOP + 2 * (HEIGHT - MARGTOP - MARGBOT) / (HORLINES + 1) - 3);
+
+	alt_sprintf(string1, "-45");
+	string1[3] = 248;
+	drawtext(string1, 4, WIDTH - MARGX + 2,
+	MARGTOP + 3 * (HEIGHT - MARGTOP - MARGBOT) / (HORLINES + 1) - 3);
+
+	alt_sprintf(string1, "-90");
+	string1[3] = 248;
+	drawtext(string1, 4, WIDTH - MARGX + 2,
+	MARGTOP + 4 * (HEIGHT - MARGTOP - MARGBOT) / (HORLINES + 1) - 3);
+}
+
+void drawgraphs(void) {
+	//int32_t i, x1, x2, y1, y2;
+	volatile double xx1;
+	volatile double xx2;
+	volatile double yy1;
+	volatile double yy2;
+	volatile double ytemp;
+	volatile double ytemp2;
+	volatile double ytemp3;
+	int32_t i;
+	// GRAPH 1
+	setcolor(255, 0, 0);
+	i = 0;
+	xx1 = (
+	MINX1 + (MAXX1 - MINX1) * (i) / (data_cnt - 1));
+
+
+	ytemp = (MAXY1 - MINY1);
+	ytemp2 = (data_arr[i] - MINYVAL1);
+	ytemp3 = ytemp*ytemp2;
+	ytemp = ytemp3 / (MAXYVAL1 - MINYVAL1);
+	yy1 = MINY1 + ytemp;
+
+	for (i = 2; i <= data_len; i = i + 2) {
+
+		xx2 = (
+		MINX1 + (MAXX1 - MINX1) * (i) / (data_len - 1));
+
+		ytemp = (MAXY1 - MINY1) * (data_arr[i] - MINYVAL1);
+			ytemp = ytemp / (MAXYVAL1 - MINYVAL1);
+		yy2 = MINY1 + ytemp;
+
+		//if (data_arr[i]!=MINYVAL1)
+		drawline(xx1, yy1, xx2, yy2);
+
+		xx1 = xx2;
+		yy1 = yy2;
+	}
+
+	// GRAPH 2
+	setcolor(0, 255, 0);
+	i = 0;
+	xx1 = (
+	MINX1 + 1.0*(MAXX1 - MINX1) * i / (data_len - 1));
+	ytemp = (MAXY1 - MINY1) * (data_arr[i+1] - MINYVAL2);
+		ytemp = ytemp / (MAXYVAL2 - MINYVAL2);
+		yy1 = MINY1 + ytemp;	// Start printing
+	for (i = 2; i <= data_len; i = i + 2) {
+
+		xx2 = (
+		MINX1 +  1.0*(MAXX1 - MINX1) * (i) / (data_len - 1));
+		ytemp = (MAXY1 - MINY1) * (data_arr[i+1] - MINYVAL2);
+			ytemp = ytemp / (MAXYVAL2 - MINYVAL2);
+			yy2 = MINY1 + ytemp;
+
+		//if (data_arr[i+1]!=MINYVAL2)
+		drawline(xx1, yy1, xx2, yy2);
+
+		xx1 = xx2;
+		yy1 = yy2;
+	}
+
+}
+
+
+void timer_isr_callback(uint32_t icciar, void *context) {
+
+	char fpsstring[5];
+
+	alt_gpt_int_clear_pending(GPT_TIMER_ID);
+
+	//if (is_screen_refresh_allowed)
+	{
+	clrscr();
+	drawgrid();
+	drawgraphs();
+
+	memset(fpsstring, 0, 5);
+	alt_sprintf(fpsstring, "%dFPS", fps);
+	drawtext(fpsstring, strlen(fpsstring), 2, 2);
+
+	swapbuffers();
+
+	secend = alt_globaltmr_get64();
+	frames++;
+
+	if ((secend - secstart) > (timer_clock / timer_prescaler)) {
+		fps = frames;
+		frames = 0;
+		secstart = secend;
+	}
+	}
+}
+
+
 void init(void) {
 	ALT_STATUS_CODE ALT_RESULT = ALT_E_SUCCESS;
 	ALT_STATUS_CODE ALT_RESULT2 = ALT_E_SUCCESS;
 	//ALT_STATUS_CODE status;
+	uint32_t gpt_freq;
 
 	ALT_RESULT = alt_globaltmr_init();
 	ALT_RESULT2 = alt_bridge_init(ALT_BRIDGE_F2S, NULL, NULL);
@@ -154,6 +368,19 @@ void init(void) {
 	/* Enable the button interrupts */
 	pio_set_intmask(ALT_LWFPGASLVS_OFST + BUTTON_PIO_BASE, 0x1);
 
+	alt_gpt_mode_set(GPT_TIMER_ID, ALT_GPT_RESTART_MODE_PERIODIC);
+	alt_int_dist_target_set(ALT_INT_INTERRUPT_TIMER_OSC1_0_IRQ, 0x3);
+	alt_int_dist_trigger_set(ALT_INT_INTERRUPT_TIMER_OSC1_0_IRQ,
+			ALT_INT_TRIGGER_AUTODETECT);
+	alt_int_dist_enable(ALT_INT_INTERRUPT_TIMER_OSC1_0_IRQ);
+	alt_int_isr_register(ALT_INT_INTERRUPT_TIMER_OSC1_0_IRQ, timer_isr_callback,
+			NULL);
+	alt_gpt_int_enable(GPT_TIMER_ID);
+
+	alt_clk_freq_get(GPT_TIMER_CLOCK, &gpt_freq);
+	alt_gpt_tmr_stop(GPT_TIMER_ID);
+	alt_gpt_counter_set(GPT_TIMER_ID, gpt_freq / 15);
+
 	alt_int_cpu_enable();
 	alt_int_global_enable();
 
@@ -175,13 +402,14 @@ void init(void) {
 	if (ALT_RESULT2 == ALT_E_SUCCESS)
 		ALT_RESULT = alt_16550_fifo_write_safe(&uart, "F2S Bridge init!!\n\r",
 				19, true);
+
 }
 
-void setup_fpga_leds() {
+void setup_fpga_leds(void) {
 	alt_write_word(fpga_leds, 0x1);
 }
 
-void handle_fpga_leds() {
+void handle_fpga_leds(void) {
 	uint32_t leds_mask = alt_read_word(fpga_leds);
 	if (leds_mask != (0x01 << (LED_PIO_DATA_WIDTH - 1))) {
 		leds_mask <<= 1;
@@ -193,47 +421,10 @@ void handle_fpga_leds() {
 
 int main(void) {
 
-	// Calculations
-	int32_t *data_arr;
-	int32_t data_len;
-	int32_t data_cnt;
-	uint32_t freq_low = 1000;
-	uint32_t freq_high = 1000000;
-	uint32_t freq_step = 100;
-
 	// ???
 
 	double hue = 0;
 	FATFS *fs;
-
-	int16_t x1 = 0;
-	int16_t y1 = 0;
-	int16_t x2 = 0;
-	int16_t y2 = 0;
-	//int16_t x3 = 0;
-	//int16_t y3 = 0;
-	//int16_t radius = 100;
-	//int16_t centerx = 1024 / 2;
-	//int16_t centery = 768 / 2;
-	char fpsstring[5];
-
-	char string1[255];
-	//int sinlut[360];
-	//int coslut[360];
-	int i = 0;
-	int angle = 0;
-	double MAXYVAL1, MINYVAL1;
-	double MAXYVAL2, MINYVAL2;
-	double khz;
-	double coeff;
-	uint32_t freq;
-	uint64_t secstart;
-	uint64_t secend;
-	uint16_t frames;
-	uint16_t fps;
-	uint32_t timer_prescaler;
-	alt_freq_t timer_clock;
-
 	init();
 
 	fs = malloc(sizeof(FATFS));
@@ -244,19 +435,10 @@ int main(void) {
 
 	//alt_write_word(ALT_LWFPGASLVS_OFST+LED_PIO_BASE,0xAA);
 
-//	for (i = 0; i < 360; i++) {
-//		sinlut[i] = floor(radius * sin(PI * i / 180.0));
-//		coslut[i] = floor(radius * cos(PI * i / 180.0));
-//	}
-
 	timer_prescaler = alt_globaltmr_prescaler_get() + 1;
 	alt_clk_freq_get(ALT_CLK_MPU_PERIPH, &timer_clock);
-
 	alt_16550_fifo_write_safe(&uart, "Ready to go!\n\r", 14, true);
 
-
-	i = 0;
-	angle = 0;
 	frames = 0;
 	fps = 0;
 
@@ -265,234 +447,50 @@ int main(void) {
 	setup_fpga_leds();
 	va_sm_init();
 
+	data_len = ((freq_high - freq_low) / freq_step);
+	data_len = 2 * (data_len + 1);
+	data_arr = (int32_t*) malloc(data_len * sizeof(int32_t));
+	memset(data_arr,0,data_len*sizeof(int32_t));
+
+
+
+
+
+	alt_gpt_tmr_start(GPT_TIMER_ID);
+
+
 	for (;;) {
 		//main loop
-
 		// -----------------------------------------------------------------------
 		// Start calculations
 
-		//angle = (angle + speed +360) % 360;
-		data_len = ((freq_high - freq_low) / freq_step);
-		data_len = 2 * (data_len + 1);
 		data_cnt = 0;
-
-		data_arr = (int32_t*) malloc(data_len * sizeof(int32_t));
-
 		for (freq = freq_low; freq <= freq_high; freq = freq + freq_step) {
+
+
 			va_nco_meas(data_arr + data_cnt, freq, 640000);
 			data_cnt = data_cnt + 2;
+
 		}
 		data_cnt--;
-		// End calculations
 
-		// Delay
-		// for (int j = 0; j < 950000; j++) {}
 
-		// -----------------------------------------------------------------------
-
-//		for (i = 0; i <= data_cnt; i = i + 2) {
-//			data_arr[i] = floor(
-//					200
-//							* cos( angle*1.0/360.0* 8*PI)* sin(
-//									(i * 0.5 - 0.0) / (0.5 * data_cnt - 0) * 4
-//											* PI + angle * 1.0 / 360 * 2 * PI)) + 305*sin ( (i * 0.5 - 0.0) / (0.5 * data_cnt - 0) * 8
-//													* PI + angle * 1.0 / 360 * 12*PI  ) ;
-//			data_arr[i + 1] = floor(
-//					150 * cos((i * 0.5 - 0.0) / (0.5 * data_cnt - 0) * 4 * PI)
-//							+ 50);
-//		}
-
-		//do something
-		//delay_us(25);
-
-//		MAXYVAL1 = data_arr[0];
-//		MINYVAL1 = data_arr[0];
-//		MAXYVAL2 = data_arr[1];
-//		MINYVAL2 = data_arr[1];
-//
-//		for (i = 2; i < data_cnt; i = i + 2) {
-//			if (data_arr[i] > MAXYVAL1)
-//				MAXYVAL1 = data_arr[i];
-//			else if (data_arr[i] < MINYVAL1)
-//				MINYVAL1 = data_arr[i];
-//
-//			if (data_arr[i + 1] > MAXYVAL2)
-//				MAXYVAL2 = data_arr[i + 1];
-//			else if (data_arr[i + 1] < MINYVAL2)
-//				MINYVAL2 = data_arr[i + 1];
-//
-//		}
-
-		MINYVAL1 = 0;
-		MAXYVAL1 = 262143/coeff ; // 2^18 - 1
-
-		MINYVAL1 = -PI/2*65536;
-		MAXYVAL2 = PI/2*65536;
-
-//		MINYVAL1 = -262144;
-//		MAXYVAL1 = 262143;
-//
-//		MINYVAL2 = -262144;
-//		MAXYVAL2 = 262143;
-		clrscr();
-
-		setcolor(220, 220, 200);
-		// main border
-		drawline(MARGX, MARGTOP, WIDTH - MARGX, MARGTOP);
-		drawline(WIDTH - MARGX, MARGTOP, WIDTH - MARGX, HEIGHT - MARGBOT);
-		drawline(WIDTH - MARGX, HEIGHT - MARGBOT, MARGX, HEIGHT - MARGBOT);
-		drawline(MARGX, HEIGHT - MARGBOT, MARGX, MARGTOP);
-
-		setcolor(110, 110, 100);
-		//horizontal grid
-		for (i = 1; i <= HORLINES; i++)
-			drawline(MARGX,
-			MARGTOP + i * (HEIGHT - MARGTOP - MARGBOT) / (HORLINES + 1),
-			WIDTH - MARGX,
-					20 + i * (HEIGHT - MARGTOP - MARGBOT) / (HORLINES + 1));
-
-		//vertical grid
-		for (i = 1; i <= VERLINES; i++)
-			drawline(MARGX + i * (WIDTH - 2 * MARGX) / (VERLINES + 1), MARGTOP,
-			MARGX + i * (WIDTH - 2 * MARGX) / (VERLINES + 1), HEIGHT - MARGBOT);
-
-		//X-AXIS LEGEND
-		setcolor(220, 220, 200);
-		memset(string1, 0, 255);
-		for (i = 0; i <= VERLINES + 1; i++) {
-			khz = (freq_low + i * (freq_high - freq_low) / (VERLINES + 1))
-					/ 1000.0;
-			x1 = floor(khz);
-			if (khz < 1000)
-				alt_sprintf(string1, "%3d KHz", x1);
-			else {
-				x2 = (x1%1000)/10;
-				x1 = floor(khz / 1000.0);
-				//sprintf(string1,"%f Mhz",khz/1000);
-				alt_sprintf(string1, "%3d.%0d MHz", x1, x2);
-			}
-			drawtext(string1, strlen(string1),
-					MARGX + i * (WIDTH - 2 * MARGX) / (VERLINES + 1)
-							- strlen(string1) / 2 * 8, HEIGHT - MARGBOT + 8);
-		}
-
-		//LEFT Y-AXIS LEGEND
-		setcolor(255, 0, 0);
-		drawtext("1", 1, MARGX - 2 - 8,
-		MARGTOP + 0 * (HEIGHT - MARGTOP - MARGBOT) / (HORLINES + 1) - 3);
-		drawtext("0.75", 4, MARGX - 2 - 8 * 4,
-		MARGTOP + 1 * (HEIGHT - MARGTOP - MARGBOT) / (HORLINES + 1) - 3);
-		drawtext("0.5", 3, MARGX - 2 - 8 * 3,
-		MARGTOP + 2 * (HEIGHT - MARGTOP - MARGBOT) / (HORLINES + 1) - 3);
-		drawtext("0.25", 4, MARGX - 2 - 8 * 4,
-		MARGTOP + 3 * (HEIGHT - MARGTOP - MARGBOT) / (HORLINES + 1) - 3);
-		drawtext("0", 1, MARGBOT - 2 - 8,
-		MARGTOP + 4 * (HEIGHT - MARGTOP - MARGBOT) / (HORLINES + 1) - 3);
-
-		//RIGHT Y-AXIS LEGEND
-		setcolor(0, 255, 0);
-		alt_sprintf(string1, " 90");
-		string1[3] = 248;
-		drawtext(string1, 4, WIDTH - MARGX + 2,
-		MARGTOP + 0 * (HEIGHT - MARGTOP - MARGBOT) / (HORLINES + 1) - 3);
-
-		alt_sprintf(string1, " 45");
-		string1[3] = 248;
-		drawtext(string1, 4, WIDTH - MARGX + 2,
-		MARGTOP + 1 * (HEIGHT - MARGTOP - MARGBOT) / (HORLINES + 1) - 3);
-
-		alt_sprintf(string1, " 0");
-		string1[2] = 248;
-		drawtext(string1, 3, WIDTH - MARGX + 2,
-		MARGTOP + 2 * (HEIGHT - MARGTOP - MARGBOT) / (HORLINES + 1) - 3);
-
-		alt_sprintf(string1, "-45");
-		string1[3] = 248;
-		drawtext(string1, 4, WIDTH - MARGX + 2,
-		MARGTOP + 3 * (HEIGHT - MARGTOP - MARGBOT) / (HORLINES + 1) - 3);
-
-		alt_sprintf(string1, "-90");
-		string1[3] = 248;
-		drawtext(string1, 4, WIDTH - MARGX + 2,
-		MARGTOP + 4 * (HEIGHT - MARGTOP - MARGBOT) / (HORLINES + 1) - 3);
-
-		// GRAPH 1
-		setcolor(255, 0, 0);
-		i = 0;
-		x1 = floor(
-		MINX1 + (MAXX1 - MINX1) * (i) / (data_cnt - 1));
-		y1 = floor(
-				MINY1
-						- (MINY1 - MAXY1) * (data_arr[i] - MINYVAL1)
-								/ (MAXYVAL1 - MINYVAL1));
-		for (i = 2; i <= data_cnt; i = i + 2) {
-
-			x2 = floor(
-			MINX1 + (MAXX1 - MINX1) * (i) / (data_cnt - 1));
-			y2 = floor(
-					MINY1
-							- (MINY1 - MAXY1) * (data_arr[i] - MINYVAL1)
-									/ (MAXYVAL1 - MINYVAL1));
-			drawline(x1, y1, x2, y2);
-
-			x1 = x2;
-			y1 = y2;
-		}
-
-		// GRAPH 2
-		setcolor(0, 255, 0);
-		i = 0;
-		x1 = floor(
-		MINX1 + (MAXX1 - MINX1) * i / (data_cnt - 1));
-		y1 = floor(
-				MINY1
-						- (MINY1 - MAXY1) * (data_arr[i + 1] - MINYVAL2)
-								/ (MAXYVAL2 - MINYVAL2));
-		// Start printing
-		for (i = 2; i <= data_cnt; i = i + 2) {
-
-			x2 = floor(
-			MINX1 + (MAXX1 - MINX1) * (i) / (data_cnt - 1));
-			y2 = floor(
-					MINY1
-							- (MINY1 - MAXY1) * (data_arr[i + 1] - MINYVAL2)
-									/ (MAXYVAL2 - MINYVAL2));
-			drawline(x1, y1, x2, y2);
-
-			x1 = x2;
-			y1 = y2;
-		}
-
-		free(data_arr);
-		// End printing
+		//	free(data_arr);
 
 		// Indication
 		handle_fpga_leds();
 
 		setcolor(hslToR(hue, 0.6, 0.5), hslToG(hue, 0.6, 0.5),
 				hslToB(hue, 0.6, 0.5));
-		memset(fpsstring, 0, 5);
-		alt_sprintf(fpsstring, "%dFPS", fps);
-		drawtext(fpsstring, strlen(fpsstring), 2, 2);
-		swapbuffers();
 
-		secend = alt_globaltmr_get64();
-		frames++;
-
-		if ((secend - secstart) > (timer_clock / timer_prescaler)) {
-			fps = frames;
-			frames = 0;
-			secstart = secend;
-		}
 	}
 
 	// virtually never
-	/*alt_16550_fifo_write_safe(&uart, "Program end. Why?\n\r", 3,
-	 true);
-	 //	ALT_RESULT = alt_int_global_uninit	();
+	/*
+	 alt_int_global_uninit	();
 	 alt_bridge_uninit(ALT_BRIDGE_F2S, NULL, NULL);
 	 alt_bridge_uninit(ALT_BRIDGE_LWH2F, NULL, NULL);
 	 alt_16550_uninit(&uart);
+	 */
 
-	 return ALT_RESULT;*/
 }
