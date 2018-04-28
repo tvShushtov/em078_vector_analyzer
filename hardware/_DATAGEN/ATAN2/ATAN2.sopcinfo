@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="ATAN2" kind="ATAN2" version="1.0" fabric="QSYS">
  <!-- Format version 16.0 211 (Future versions may contain additional information.) -->
- <!-- 2018.04.27.22:35:25 -->
+ <!-- 2018.04.28.13:57:38 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
-  <value>1524854125</value>
+  <value>1524909458</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -180,7 +180,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="fxpt_in_sign">
    <type>java.lang.String</type>
-   <value>0</value>
+   <value>1</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -196,7 +196,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="fxpt_out_fraction">
    <type>int</type>
-   <value>16</value>
+   <value>15</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>

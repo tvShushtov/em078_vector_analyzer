@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="SQRTSUM" kind="system" version="16.0" fabric="QSYS">
  <!-- Format version 16.0 211 (Future versions may contain additional information.) -->
- <!-- 2018.04.27.22:39:04 -->
+ <!-- 2018.04.28.13:56:32 -->
  <!-- A collection of modules and connections -->
  <parameter name="clockCrossingAdapter">
   <type>com.altera.sopcmodel.ensemble.EClockAdapter</type>
@@ -53,7 +53,7 @@
  </parameter>
  <parameter name="generationId">
   <type>int</type>
-  <value>1524854335</value>
+  <value>1524909381</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>true</visible>
@@ -232,7 +232,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="fxpt_in_sign">
    <type>java.lang.String</type>
-   <value>0</value>
+   <value>1</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -312,7 +312,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="fxpt_out_width_derived">
    <type>int</type>
-   <value>18</value>
+   <value>19</value>
    <derived>true</derived>
    <enabled>false</enabled>
    <visible>true</visible>
@@ -344,7 +344,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="fxpt_out_2_fraction_derived">
    <type>int</type>
-   <value>5</value>
+   <value>6</value>
    <derived>true</derived>
    <enabled>false</enabled>
    <visible>true</visible>
@@ -713,7 +713,7 @@ parameters are a RESULT of the module parameters. -->
    <port>
     <name>q</name>
     <direction>Output</direction>
-    <width>18</width>
+    <width>19</width>
     <role>q</role>
    </port>
   </interface>
@@ -800,5 +800,5 @@ parameters are a RESULT of the module parameters. -->
   <version>16.0</version>
  </plugin>
  <reportVersion>16.0 211</reportVersion>
- <uniqueIdentifier>E0D55E2C0103000001630866A9F4</uniqueIdentifier>
+ <uniqueIdentifier>74DADA05214C000001630BAE9746</uniqueIdentifier>
 </EnsembleReport>

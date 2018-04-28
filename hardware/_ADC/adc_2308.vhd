@@ -43,7 +43,7 @@ architecture rtl of adc_2308 is
 	signal strob_freq : std_logic;
 
 	-- PROC_GEN
-	type type_sm is (st_idle, st_fclk, st_rclk, st_data1, st_data2, st_end);
+	type type_sm is (st_idle, st_conv, st_fclk, st_rclk, st_data1, st_data2, st_end);
 	signal sm : type_sm;
 
 	type type_dataout_sig is array (0 to (NUM_CANNEL - 1)) of std_logic_vector(11 downto 0);
@@ -79,6 +79,11 @@ begin
 					else
 						adc_dataout <= "110010000000"; -- CH1 unipolar
 					end if;
+					if run = '1' then
+						sm <= st_conv;
+					end if;
+					
+				when st_conv =>	
 					if counter1 = 80 then --1.6mks conversion time
 						busy <= '1';
 						sm <= st_rclk;
@@ -88,6 +93,7 @@ begin
 					else
 						counter1 <= counter1 + 1;
 					end if;
+					
 				when st_rclk =>
 					adc_clk <= '1';
 					adc_sdi <= adc_dataout(11-cnt_bits);
@@ -112,16 +118,17 @@ begin
 					else
 						counter1 <= counter1 + 1;
 					end if;
+					
 				when st_data1 =>
 					adc_clk <= '0';
-					if cnt_ch_in = 1 then 
+					if cnt_ch_in = 0 then 
 						dataout1 <= adc_datain;
-						cnt_ch_in <= 0;
+						cnt_ch_in <= 1;
 					else
 						dataout2 <= adc_datain;
-						cnt_ch_in <= 1;
+						ready <= '1';
+						cnt_ch_in <= 0;
 					end if;
-					ready <= '1';
 					counter1 <= 0;
 					cnt_bits <= 0;
 					sm <= st_idle;

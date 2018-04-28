@@ -12,6 +12,8 @@ entity va_sm is
         clk             : in  std_logic;
         reset           : in  std_logic;
 
+        sw              : in  std_logic_vector(3 downto 0);
+
         hps_data        : in  std_logic_vector(31 downto 0);
         busy            : out std_logic;
 
@@ -42,6 +44,10 @@ architecture rtl of va_sm is
     constant HPS_ADDR_AVERAGE    : std_logic_vector(5 downto 0) := "000100";
     constant HPS_ADDR_ACKNOWLEDG : std_logic_vector(5 downto 0) := "000101";
 
+    constant INIT_HPS_FREQ    : std_logic_vector(31 downto 0) := x"00083127"; --25kGz
+    constant INIT_HPS_LATENSY : std_logic_vector(31 downto 0) := x"0000FFFF";
+    constant INIT_HPS_AVERAG  : std_logic_vector(31 downto 0) := x"00000000";
+
     signal hps_freq          : std_logic_vector(31 downto 0);
     signal hps_latency       : std_logic_vector(31 downto 0);
     signal hps_averag        : std_logic_vector(31 downto 0);
@@ -52,19 +58,30 @@ architecture rtl of va_sm is
     signal hps_ack           : std_logic;
     signal hps_data_cnt      : std_logic_vector(7 downto 0);
 
-    type type_gen_sm is (st_idle, st_nco_run, st_wait_react, st_adc_datain, st_calc, st_data_out_1, st_data_out_2, st_data_out_3, st_data_out_4, st_end);
+    type type_gen_sm is (st_idle, st_nco_run, st_wait_react, st_adc_datain, st_calc_1, st_calc_2, st_calc_3, st_data_out_1, st_data_out_2, st_data_out_3, st_data_out_4, st_end);
     signal gen_sm  : type_gen_sm;
     signal sm_busy : std_logic;
 
-    constant MAX_CNT_LAT_BITS : integer := 31;
+    constant MAX_CNT_LAT_BITS : integer := 27;
     signal cnt_lat            : integer range 0 to (2 ** MAX_CNT_LAT_BITS - 1);
 
     signal adc_data_ch1_sig : std_logic_vector(11 downto 0);
     signal adc_data_ch2_sig : std_logic_vector(11 downto 0);
 
-    constant MAX_CNT_CALC : integer := 15;
+    constant MAX_CNT_CALC : integer := 15; -- ?
     signal cnt_calc       : integer range 0 to MAX_CNT_CALC;
 
+    constant MAX_CNT_AVER_BITS : integer := 8;
+    signal cnt_aver            : integer range 0 to (2 ** MAX_CNT_AVER_BITS - 1);
+    signal cnt_aver_lim        : integer range 0 to (2 ** MAX_CNT_AVER_BITS - 1);
+    signal data_aver_ch1       : unsigned(adc_data_ch1'HIGH + MAX_CNT_AVER_BITS downto 0);
+    signal data_aver_ch2       : unsigned(adc_data_ch2'HIGH + MAX_CNT_AVER_BITS downto 0);
+    signal data_aver_ch1_reg   : signed(calc_out_ch1'HIGH + 1 downto 0);
+    signal data_aver_ch2_reg   : signed(calc_out_ch1'HIGH + 1 downto 0);
+    signal data_ch1_mod        : signed(calc_out_ch1'HIGH + 1 downto 0);
+    signal data_ch2_mod        : signed(calc_out_ch1'HIGH + 1 downto 0);
+
+    constant DELTA : signed(calc_out_ch1'HIGH + 1 downto 0) := 13x"094D"; -- ( 4096 * (5/4.3) ) / 5
 begin
     busy <= sm_busy;
 
@@ -79,13 +96,31 @@ begin
             sm_busy       <= '0';
             cnt_lat       <= 0;
             cnt_calc      <= 0;
+            cnt_aver      <= 0;
 
         elsif rising_edge(clk) then
             case gen_sm is
                 when st_idle =>
                     if hps_run = '1' then
                         sm_busy <= '1';
+                        case hps_averag(3 downto 0) is ---!!!
+                            when "1000" => cnt_aver_lim <= 255;
+                            when "0111" => cnt_aver_lim <= 127;
+                            when "0110" => cnt_aver_lim <= 63;
+                            when "0101" => cnt_aver_lim <= 31;
+                            when "0100" => cnt_aver_lim <= 15;
+                            when "0011" => cnt_aver_lim <= 7;
+                            when "0010" => cnt_aver_lim <= 3;
+                            when "0001" => cnt_aver_lim <= 1;
+                            when "0000" => cnt_aver_lim <= 0;
+                            when others => cnt_aver_lim <= 0;
+                        end case;
+                        gen_sm <= st_nco_run;
+
+                    elsif sw = "1111" then
+                        sm_busy <= '1';
                         gen_sm  <= st_nco_run;
+
                     else
                         sm_busy     <= '0';
                         dac_data_sw <= '0';
@@ -104,22 +139,46 @@ begin
                         cnt_lat       <= 0;
                         va_sm_adc_run <= '1';
                         gen_sm        <= st_adc_datain;
+                        data_aver_ch1 <= (others => '0');
+                        data_aver_ch2 <= (others => '0');
                     else
                         cnt_lat <= cnt_lat + 1;
                     end if;
 
                 when st_adc_datain =>
-                    va_sm_adc_run <= '0';
                     if adc_run = '1' then
-                        adc_data_ch1_sig <= adc_data_ch1;
-                        adc_data_ch2_sig <= adc_data_ch2;
-                        dac_data_sw      <= '0';
-                        gen_sm           <= st_calc;
+                        if cnt_aver = cnt_aver_lim then
+                            cnt_aver      <= 0;
+                            va_sm_adc_run <= '0';
+                            dac_data_sw   <= '0';
+                            gen_sm        <= st_calc_1;
+                        else
+                            cnt_aver <= cnt_aver + 1;
+                        end if;
+                        data_aver_ch1 <= data_aver_ch1 + unsigned(adc_data_ch1);
+                        data_aver_ch2 <= data_aver_ch2 + unsigned(adc_data_ch2);
                     end if;
 
-                when st_calc =>
-                    calc_out_ch1 <= adc_data_ch1_sig;
-                    calc_out_ch2 <= adc_data_ch2_sig;
+                when st_calc_1 =>
+                    if cnt_aver = to_integer(unsigned(hps_averag(3 downto 0))) then
+                        cnt_aver          <= 0;
+                        data_aver_ch1_reg <= signed(data_aver_ch1(data_aver_ch1_reg'HIGH downto 0));
+                        data_aver_ch2_reg <= signed(data_aver_ch2(data_aver_ch2_reg'HIGH downto 0));
+                        gen_sm            <= st_calc_2;
+                    else
+                        data_aver_ch1 <= "0" & data_aver_ch1(data_aver_ch1'HIGH downto 1);
+                        data_aver_ch2 <= "0" & data_aver_ch2(data_aver_ch2'HIGH downto 1);
+                        cnt_aver      <= cnt_aver + 1;
+                    end if;
+
+                when st_calc_2 =>
+                    data_ch1_mod <= DELTA - data_aver_ch1_reg;
+                    data_ch2_mod <= DELTA - data_aver_ch2_reg;
+                    gen_sm       <= st_calc_3;
+
+                when st_calc_3 =>
+                    calc_out_ch1 <= std_logic_vector(data_ch1_mod(calc_out_ch1'HIGH downto 0));
+                    calc_out_ch2 <= std_logic_vector(data_ch2_mod(calc_out_ch1'HIGH downto 0));
                     gen_sm       <= st_data_out_1;
 
                 when st_data_out_1 =>
@@ -158,10 +217,10 @@ begin
 
                 when st_end =>
                     if hps_ack = '1' then
-								nco_clken <= '0';
-                        sm_busy <= '0';
-                        ready   <= '0';
-                        gen_sm  <= st_idle;
+                        nco_clken <= '0';
+                        sm_busy   <= '0';
+                        ready     <= '0';
+                        gen_sm    <= st_idle;
                     end if;
 
                 when others => gen_sm <= st_idle;
@@ -176,6 +235,9 @@ begin
             hps_run           <= '0';
             hps_ack           <= '0';
             highbit_data_prev <= '0';
+            hps_freq          <= INIT_HPS_FREQ;
+            hps_latency       <= INIT_HPS_LATENSY;
+            hps_averag        <= INIT_HPS_AVERAG;
 
         elsif rising_edge(clk) then
             highbit_data_prev <= hps_data(hps_data'HIGH);

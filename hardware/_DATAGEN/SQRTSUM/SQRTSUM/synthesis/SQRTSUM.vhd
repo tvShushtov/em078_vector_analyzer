@@ -10,7 +10,7 @@ entity SQRTSUM is
 	port (
 		areset : in  std_logic                     := '0';             -- areset.reset
 		clk    : in  std_logic                     := '0';             --    clk.clk
-		q      : out std_logic_vector(17 downto 0);                    --      q.q
+		q      : out std_logic_vector(18 downto 0);                    --      q.q
 		r      : out std_logic_vector(17 downto 0);                    --      r.r
 		x      : in  std_logic_vector(11 downto 0) := (others => '0'); --      x.x
 		y      : in  std_logic_vector(11 downto 0) := (others => '0')  --      y.y
@@ -24,7 +24,7 @@ architecture rtl of SQRTSUM is
 			areset : in  std_logic                     := 'X';             -- reset
 			x      : in  std_logic_vector(11 downto 0) := (others => 'X'); -- x
 			y      : in  std_logic_vector(11 downto 0) := (others => 'X'); -- y
-			q      : out std_logic_vector(17 downto 0);                    -- q
+			q      : out std_logic_vector(18 downto 0);                    -- q
 			r      : out std_logic_vector(17 downto 0)                     -- r
 		);
 	end component SQRTSUM_CORDIC_0;

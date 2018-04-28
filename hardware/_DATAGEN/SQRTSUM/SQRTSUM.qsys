@@ -71,7 +71,7 @@
   <parameter name="SFCompensation" value="true" />
   <parameter name="frequency_target" value="100" />
   <parameter name="fxpt_in_fraction" value="0" />
-  <parameter name="fxpt_in_sign" value="0" />
+  <parameter name="fxpt_in_sign" value="1" />
   <parameter name="fxpt_in_width" value="12" />
   <parameter name="fxpt_out_fraction" value="16" />
   <parameter name="fxpt_out_width" value="32" />

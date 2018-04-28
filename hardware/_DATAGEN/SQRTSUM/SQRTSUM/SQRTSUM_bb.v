@@ -9,7 +9,7 @@ module SQRTSUM (
 
 	input		areset;
 	input		clk;
-	output	[17:0]	q;
+	output	[18:0]	q;
 	output	[17:0]	r;
 	input	[11:0]	x;
 	input	[11:0]	y;

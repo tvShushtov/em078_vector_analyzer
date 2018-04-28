@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <deploy
- date="2018.04.27.22:39:04"
- outputDirectory="C:/altera/projects/innovate_2018/em078_vector_analyzer/hardware/_DATAGEN/SQRTSUM/SQRTSUM/">
+ date="2018.04.28.13:56:32"
+ outputDirectory="D:/PShuklin/projectAltera/projectsLesson/em078_vector_analyzer/em078_vector_analyzer_v6/hardware/_datagen/sqrtsum/SQRTSUM/">
  <perimeter>
   <parameter
      name="AUTO_GENERATION_ID"
@@ -65,7 +65,7 @@
   <interface name="q" kind="conduit" start="0">
    <property name="associatedClock" value="clk" />
    <property name="associatedReset" value="" />
-   <port name="q" direction="output" role="q" width="18" />
+   <port name="q" direction="output" role="q" width="19" />
   </interface>
   <interface name="r" kind="conduit" start="0">
    <property name="associatedClock" value="clk" />
@@ -85,13 +85,13 @@
  </perimeter>
  <entity
    path=""
-   parameterizationKey="SQRTSUM:1.0:AUTO_CLK_CLOCK_DOMAIN=-1,AUTO_CLK_CLOCK_RATE=-1,AUTO_CLK_RESET_DOMAIN=-1,AUTO_DEVICE=5CSEBA6U23I7,AUTO_DEVICE_FAMILY=Cyclone V,AUTO_DEVICE_SPEEDGRADE=7,AUTO_GENERATION_ID=1524854335,AUTO_UNIQUE_ID=(altera_CORDIC:16.0:ALL_function=VECTRANSLATE,FUNCTION_FAMILY=ALL,LUTSize=6,RES_DSP_param=0,RES_LUT_param=0,RES_MBIT_param=0,RES_MBLOCK_param=0,SFCompensation=true,derivedfunction=VECTRANSLATE,force_elaborate=0,frequency_feedback=0,frequency_target=100,fxpt_in_2_fraction_derived=0,fxpt_in_2_sign_derived=1,fxpt_in_2_width_derived=32,fxpt_in_fraction=0,fxpt_in_fraction_derived=0,fxpt_in_sign=0,fxpt_in_sign_derived=1,fxpt_in_width=12,fxpt_in_width_derived=32,fxpt_out_2_fraction_derived=5,fxpt_out_2_sign_derived=0,fxpt_out_2_width_derived=18,fxpt_out_fraction=16,fxpt_out_fraction_derived=0,fxpt_out_sign=0,fxpt_out_sign_derived=1,fxpt_out_width=32,fxpt_out_width_derived=18,gen_enable=false,latency_feedback=0,latency_target=2,performance_goal=frequency,report_resources_to_xml=false,selected_device_family=Cyclone V,selected_device_speedgrade=7,specifyLUTs=false,useLUTs=false,validation_failed=false)"
+   parameterizationKey="SQRTSUM:1.0:AUTO_CLK_CLOCK_DOMAIN=-1,AUTO_CLK_CLOCK_RATE=-1,AUTO_CLK_RESET_DOMAIN=-1,AUTO_DEVICE=5CSEBA6U23I7,AUTO_DEVICE_FAMILY=Cyclone V,AUTO_DEVICE_SPEEDGRADE=7,AUTO_GENERATION_ID=1524909381,AUTO_UNIQUE_ID=(altera_CORDIC:16.0:ALL_function=VECTRANSLATE,FUNCTION_FAMILY=ALL,LUTSize=6,RES_DSP_param=0,RES_LUT_param=0,RES_MBIT_param=0,RES_MBLOCK_param=0,SFCompensation=true,derivedfunction=VECTRANSLATE,force_elaborate=0,frequency_feedback=0,frequency_target=100,fxpt_in_2_fraction_derived=0,fxpt_in_2_sign_derived=1,fxpt_in_2_width_derived=32,fxpt_in_fraction=0,fxpt_in_fraction_derived=0,fxpt_in_sign=1,fxpt_in_sign_derived=1,fxpt_in_width=12,fxpt_in_width_derived=32,fxpt_out_2_fraction_derived=6,fxpt_out_2_sign_derived=0,fxpt_out_2_width_derived=18,fxpt_out_fraction=16,fxpt_out_fraction_derived=0,fxpt_out_sign=0,fxpt_out_sign_derived=1,fxpt_out_width=32,fxpt_out_width_derived=19,gen_enable=false,latency_feedback=0,latency_target=2,performance_goal=frequency,report_resources_to_xml=false,selected_device_family=Cyclone V,selected_device_speedgrade=7,specifyLUTs=false,useLUTs=false,validation_failed=false)"
    instancePathKey="SQRTSUM"
    kind="SQRTSUM"
    version="1.0"
    name="SQRTSUM">
   <parameter name="AUTO_CLK_CLOCK_RATE" value="-1" />
-  <parameter name="AUTO_GENERATION_ID" value="1524854335" />
+  <parameter name="AUTO_GENERATION_ID" value="1524909381" />
   <parameter name="AUTO_DEVICE" value="5CSEBA6U23I7" />
   <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
   <parameter name="AUTO_CLK_RESET_DOMAIN" value="-1" />
@@ -100,26 +100,26 @@
   <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
   <generatedFiles>
    <file
-       path="C:/altera/projects/innovate_2018/em078_vector_analyzer/hardware/_DATAGEN/SQRTSUM/SQRTSUM/synthesis/SQRTSUM.vhd"
+       path="D:/PShuklin/projectAltera/projectsLesson/em078_vector_analyzer/em078_vector_analyzer_v6/hardware/_datagen/sqrtsum/SQRTSUM/synthesis/SQRTSUM.vhd"
        type="VHDL" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="C:/altera/projects/innovate_2018/em078_vector_analyzer/hardware/_DATAGEN/SQRTSUM/SQRTSUM/synthesis/submodules/dspba_library_package.vhd"
+       path="D:/PShuklin/projectAltera/projectsLesson/em078_vector_analyzer/em078_vector_analyzer_v6/hardware/_datagen/sqrtsum/SQRTSUM/synthesis/submodules/dspba_library_package.vhd"
        type="VHDL"
        attributes="" />
    <file
-       path="C:/altera/projects/innovate_2018/em078_vector_analyzer/hardware/_DATAGEN/SQRTSUM/SQRTSUM/synthesis/submodules/dspba_library.vhd"
+       path="D:/PShuklin/projectAltera/projectsLesson/em078_vector_analyzer/em078_vector_analyzer_v6/hardware/_datagen/sqrtsum/SQRTSUM/synthesis/submodules/dspba_library.vhd"
        type="VHDL"
        attributes="" />
    <file
-       path="C:/altera/projects/innovate_2018/em078_vector_analyzer/hardware/_DATAGEN/SQRTSUM/SQRTSUM/synthesis/submodules/SQRTSUM_CORDIC_0.vhd"
+       path="D:/PShuklin/projectAltera/projectsLesson/em078_vector_analyzer/em078_vector_analyzer_v6/hardware/_datagen/sqrtsum/SQRTSUM/synthesis/submodules/SQRTSUM_CORDIC_0.vhd"
        type="VHDL"
        attributes="" />
   </childGeneratedFiles>
   <sourceFiles>
    <file
-       path="C:/altera/projects/innovate_2018/em078_vector_analyzer/hardware/_DATAGEN/SQRTSUM/SQRTSUM.qsys" />
+       path="D:/PShuklin/projectAltera/projectsLesson/em078_vector_analyzer/em078_vector_analyzer_v6/hardware/_datagen/sqrtsum/SQRTSUM.qsys" />
   </sourceFiles>
   <childSourceFiles>
    <file
@@ -141,10 +141,10 @@
    <message level="Debug">Transform: ResetAdaptation</message>
    <message level="Debug" culprit="SQRTSUM"><![CDATA["<b>SQRTSUM</b>" reuses <b>altera_CORDIC</b> "<b>submodules/SQRTSUM_CORDIC_0</b>"]]></message>
    <message level="Debug" culprit="SQRTSUM">queue size: 0 starting:altera_CORDIC "submodules/SQRTSUM_CORDIC_0"</message>
-   <message level="Info" culprit="CORDIC_0">C:/altera/16.0/quartus/dspba/backend/windows64/cmdPolyEval -target CycloneV -frequency 100 -name SQRTSUM_CORDIC_0 -noChanValid -faithfulRounding -printMachineReadable -lang VHDL -speedgrade 7 FXPVecTranslate 12 0 0 16 1</message>
-   <message level="Info" culprit="CORDIC_0">Latency on Cyclone V is 10 cycles</message>
+   <message level="Info" culprit="CORDIC_0">C:/altera/16.0/quartus/dspba/backend/windows64/cmdPolyEval -target CycloneV -frequency 100 -name SQRTSUM_CORDIC_0 -noChanValid -faithfulRounding -printMachineReadable -lang VHDL -speedgrade 7 FXPVecTranslate 12 0 1 16 1</message>
+   <message level="Info" culprit="CORDIC_0">Latency on Cyclone V is 11 cycles</message>
    <message level="Info" culprit="CORDIC_0">DSP Blocks Used: 0</message>
-   <message level="Info" culprit="CORDIC_0">LUTs Used: 2187</message>
+   <message level="Info" culprit="CORDIC_0">LUTs Used: 2375</message>
    <message level="Info" culprit="CORDIC_0">Memory Bits Used: 0</message>
    <message level="Info" culprit="CORDIC_0">Memory Blocks Used: 0</message>
    <message level="Info" culprit="CORDIC_0"><![CDATA["<b>SQRTSUM</b>" instantiated <b>altera_CORDIC</b> "<b>CORDIC_0</b>"]]></message>
@@ -152,7 +152,7 @@
  </entity>
  <entity
    path="submodules/"
-   parameterizationKey="altera_CORDIC:16.0:ALL_function=VECTRANSLATE,FUNCTION_FAMILY=ALL,LUTSize=6,RES_DSP_param=0,RES_LUT_param=0,RES_MBIT_param=0,RES_MBLOCK_param=0,SFCompensation=true,derivedfunction=VECTRANSLATE,force_elaborate=0,frequency_feedback=0,frequency_target=100,fxpt_in_2_fraction_derived=0,fxpt_in_2_sign_derived=1,fxpt_in_2_width_derived=32,fxpt_in_fraction=0,fxpt_in_fraction_derived=0,fxpt_in_sign=0,fxpt_in_sign_derived=1,fxpt_in_width=12,fxpt_in_width_derived=32,fxpt_out_2_fraction_derived=5,fxpt_out_2_sign_derived=0,fxpt_out_2_width_derived=18,fxpt_out_fraction=16,fxpt_out_fraction_derived=0,fxpt_out_sign=0,fxpt_out_sign_derived=1,fxpt_out_width=32,fxpt_out_width_derived=18,gen_enable=false,latency_feedback=0,latency_target=2,performance_goal=frequency,report_resources_to_xml=false,selected_device_family=Cyclone V,selected_device_speedgrade=7,specifyLUTs=false,useLUTs=false,validation_failed=false"
+   parameterizationKey="altera_CORDIC:16.0:ALL_function=VECTRANSLATE,FUNCTION_FAMILY=ALL,LUTSize=6,RES_DSP_param=0,RES_LUT_param=0,RES_MBIT_param=0,RES_MBLOCK_param=0,SFCompensation=true,derivedfunction=VECTRANSLATE,force_elaborate=0,frequency_feedback=0,frequency_target=100,fxpt_in_2_fraction_derived=0,fxpt_in_2_sign_derived=1,fxpt_in_2_width_derived=32,fxpt_in_fraction=0,fxpt_in_fraction_derived=0,fxpt_in_sign=1,fxpt_in_sign_derived=1,fxpt_in_width=12,fxpt_in_width_derived=32,fxpt_out_2_fraction_derived=6,fxpt_out_2_sign_derived=0,fxpt_out_2_width_derived=18,fxpt_out_fraction=16,fxpt_out_fraction_derived=0,fxpt_out_sign=0,fxpt_out_sign_derived=1,fxpt_out_width=32,fxpt_out_width_derived=19,gen_enable=false,latency_feedback=0,latency_target=2,performance_goal=frequency,report_resources_to_xml=false,selected_device_family=Cyclone V,selected_device_speedgrade=7,specifyLUTs=false,useLUTs=false,validation_failed=false"
    instancePathKey="SQRTSUM:.:CORDIC_0"
    kind="altera_CORDIC"
    version="16.0"
@@ -173,15 +173,15 @@
   <parameter name="force_elaborate" value="0" />
   <parameter name="latency_target" value="2" />
   <parameter name="LUTSize" value="6" />
-  <parameter name="fxpt_out_width_derived" value="18" />
+  <parameter name="fxpt_out_width_derived" value="19" />
   <parameter name="fxpt_out_fraction_derived" value="0" />
   <parameter name="frequency_target" value="100" />
   <parameter name="fxpt_out_sign" value="0" />
   <parameter name="SFCompensation" value="true" />
   <parameter name="fxpt_in_fraction_derived" value="0" />
   <parameter name="fxpt_in_width" value="12" />
-  <parameter name="fxpt_in_sign" value="0" />
-  <parameter name="fxpt_out_2_fraction_derived" value="5" />
+  <parameter name="fxpt_in_sign" value="1" />
+  <parameter name="fxpt_out_2_fraction_derived" value="6" />
   <parameter name="selected_device_speedgrade" value="7" />
   <parameter name="derivedfunction" value="VECTRANSLATE" />
   <parameter name="fxpt_out_2_width_derived" value="18" />
@@ -195,15 +195,15 @@
   <parameter name="frequency_feedback" value="0" />
   <generatedFiles>
    <file
-       path="C:/altera/projects/innovate_2018/em078_vector_analyzer/hardware/_DATAGEN/SQRTSUM/SQRTSUM/synthesis/submodules/dspba_library_package.vhd"
+       path="D:/PShuklin/projectAltera/projectsLesson/em078_vector_analyzer/em078_vector_analyzer_v6/hardware/_datagen/sqrtsum/SQRTSUM/synthesis/submodules/dspba_library_package.vhd"
        type="VHDL"
        attributes="" />
    <file
-       path="C:/altera/projects/innovate_2018/em078_vector_analyzer/hardware/_DATAGEN/SQRTSUM/SQRTSUM/synthesis/submodules/dspba_library.vhd"
+       path="D:/PShuklin/projectAltera/projectsLesson/em078_vector_analyzer/em078_vector_analyzer_v6/hardware/_datagen/sqrtsum/SQRTSUM/synthesis/submodules/dspba_library.vhd"
        type="VHDL"
        attributes="" />
    <file
-       path="C:/altera/projects/innovate_2018/em078_vector_analyzer/hardware/_DATAGEN/SQRTSUM/SQRTSUM/synthesis/submodules/SQRTSUM_CORDIC_0.vhd"
+       path="D:/PShuklin/projectAltera/projectsLesson/em078_vector_analyzer/em078_vector_analyzer_v6/hardware/_datagen/sqrtsum/SQRTSUM/synthesis/submodules/SQRTSUM_CORDIC_0.vhd"
        type="VHDL"
        attributes="" />
   </generatedFiles>
@@ -216,10 +216,10 @@
   <instantiator instantiator="SQRTSUM" as="CORDIC_0" />
   <messages>
    <message level="Debug" culprit="SQRTSUM">queue size: 0 starting:altera_CORDIC "submodules/SQRTSUM_CORDIC_0"</message>
-   <message level="Info" culprit="CORDIC_0">C:/altera/16.0/quartus/dspba/backend/windows64/cmdPolyEval -target CycloneV -frequency 100 -name SQRTSUM_CORDIC_0 -noChanValid -faithfulRounding -printMachineReadable -lang VHDL -speedgrade 7 FXPVecTranslate 12 0 0 16 1</message>
-   <message level="Info" culprit="CORDIC_0">Latency on Cyclone V is 10 cycles</message>
+   <message level="Info" culprit="CORDIC_0">C:/altera/16.0/quartus/dspba/backend/windows64/cmdPolyEval -target CycloneV -frequency 100 -name SQRTSUM_CORDIC_0 -noChanValid -faithfulRounding -printMachineReadable -lang VHDL -speedgrade 7 FXPVecTranslate 12 0 1 16 1</message>
+   <message level="Info" culprit="CORDIC_0">Latency on Cyclone V is 11 cycles</message>
    <message level="Info" culprit="CORDIC_0">DSP Blocks Used: 0</message>
-   <message level="Info" culprit="CORDIC_0">LUTs Used: 2187</message>
+   <message level="Info" culprit="CORDIC_0">LUTs Used: 2375</message>
    <message level="Info" culprit="CORDIC_0">Memory Bits Used: 0</message>
    <message level="Info" culprit="CORDIC_0">Memory Blocks Used: 0</message>
    <message level="Info" culprit="CORDIC_0"><![CDATA["<b>SQRTSUM</b>" instantiated <b>altera_CORDIC</b> "<b>CORDIC_0</b>"]]></message>

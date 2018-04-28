@@ -9,7 +9,7 @@
   <pin name="areset" direction="input" scope="external" />
   <pin name="x[11..0]" direction="input" scope="external" />
   <pin name="y[11..0]" direction="input" scope="external" />
-  <pin name="q[17..0]" direction="output" scope="external" />
+  <pin name="q[18..0]" direction="output" scope="external" />
   <pin name="r[17..0]" direction="output" scope="external" />
  </global>
 </pinplan>
