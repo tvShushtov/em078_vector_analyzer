@@ -18,8 +18,8 @@
 #define HEIGHT 768
 
 void setcolor(uint8_t r, uint8_t g, uint8_t b);
-void drawpixel(int16_t x, int16_t y);
-void drawline(int16_t x1, int16_t y1, int16_t x2, int16_t y2);
+void drawpixel(int32_t x, int32_t y);
+void drawline(int32_t x1, int32_t y1, int32_t x2, int32_t y2);
 double hue2rgb(double p, double q, double tt);
 uint8_t hslToR(double h, double s, double l);
 uint8_t hslToG(double h, double s, double l);

@@ -1,3 +1,5 @@
+#pragma O0
+
 #include <hwlib.h>
 #include <socal.h>
 #include <hps.h>
@@ -7,6 +9,8 @@
 
 uint64_t NCO_BITS = 2 << (30 - 1);
 uint64_t NCO_CLK = 5e7;
+
+bool is_screen_refresh_allowed;
 
 #define va_sm (void*)((uint32_t)ALT_LWFPGASLVS_ADDR + (uint32_t)VA_GEN_SM_BASE)
 #define va_data_ready (void*)((uint32_t)ALT_LWFPGASLVS_ADDR + (uint32_t)VA_DATA_READY_BASE)
@@ -55,11 +59,16 @@ uint32_t va_nco_freq_calc(uint32_t nco_freq) {
 }
 
 void va_nco_meas(int32_t arr[], uint32_t nco_ph, uint32_t latency) {
+	is_screen_refresh_allowed = false;
 	va_sm_set_reg(VASM_ADDR_FREQ, va_nco_freq_calc(nco_ph));
 	va_sm_set_reg(VASM_ADDR_LATENCY, latency);
+	va_sm_set_reg(VASM_ADDR_RAVERAGE, 0);
 	va_sm_run();
 	arr[0] = va_wait_va_data();
 	va_sm_ack();
-	arr[1] = va_wait_va_data();
+	arr[1] = -va_wait_va_data();
+//	arr[0]= 30;
+	//arr[1]= -100;
+	is_screen_refresh_allowed = true;
 }
 
