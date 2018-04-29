@@ -3,7 +3,7 @@
 - **[Project description on the site InnovateFPGA](http://www.innovatefpga.com/cgi-bin/innovate/teams.pl?Id=EM078)**
 
 ## Video Presentation
-<iframe width="560" height="315" src="https://www.youtube.com/embed/BvW69keXv7Y?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+[![EM078 Vector Network Analyzer using SoC FPGA](https://preview.ibb.co/ne5cKH/Untitled_122.jpg)](https://www.youtube.com/embed/BvW69keXv7Y?rel=0 "EM078 Vector Network Analyzer using SoC FPGA")
 
 ## Description
 Vector network analyzers (VNA) designed to measure the characteristics of the signal transmission through the testing device or device under test (DUT), as well as the characteristics of the signal reflection from its ports. Such characteristics called S-parameters. Each of these parameters contains the frequency and phase responses of the DUT in the appropriate direction. The main task of VNA’s is to measure the characteristics of passive and active devices, such as antennas, attenuators, filters, etc. Basic view of devices is shown on figure 1.
