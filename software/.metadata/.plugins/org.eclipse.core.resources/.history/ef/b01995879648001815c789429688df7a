@@ -1,7 +1,0 @@
-src/alt_pt.d: ../src/alt_pt.c \
- C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include/alt_mmu.h \
- C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include/hwlib.h
-
-C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include/alt_mmu.h:
-
-C:\altera\16.0\embedded\ip\altera\hps\altera_hps\hwlib\include/hwlib.h:

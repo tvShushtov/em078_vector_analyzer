@@ -1,3 +1,6 @@
+.metadata
+RemoteSystemsTempFiles
+
 ### SPL_BSP
 /spl_bsp/*
 !/spl_bsp/settings.bsp

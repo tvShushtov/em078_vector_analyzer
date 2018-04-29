@@ -1,4 +1,0 @@
-ConnectionManager.savedConnections=<?xml version\="1.0" encoding\="UTF-8"?>\n<connections>\n\t<connection current\="yes" mode\="debug" type\="com.arm.debugger.launcher2">New_configuration</connection>\n</connections>\n
-PreferredTargetHasBeenSet=true
-com.arm.debugger.ux.scripts.favorites.new=script.file.tag\=C\:\\altera\\16.0\\embedded\\ds-5\\sw\\debugger\\configdb\\Scripts\\altera_target_check.py\nscript.verbose.tag\=false\nscript.file.tag\=C\:\\GitInnovate\\em078_vector_analyzer\\software\\va\\debug.ds\nscript.verbose.tag\=false\n
-eclipse.preferences.version=1
