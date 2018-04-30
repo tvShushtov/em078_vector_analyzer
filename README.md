@@ -2,19 +2,16 @@
 - **The project for the contest [InnovateFPGA](http://www.innovatefpga.com)**
 - **[Project description on the site InnovateFPGA](http://www.innovatefpga.com/cgi-bin/innovate/teams.pl?Id=EM078)**
 
-## Video Presentation
-[![EM078 Vector Network Analyzer using SoC FPGA](https://preview.ibb.co/ne5cKH/Untitled_122.jpg)](https://youtu.be/BvW69keXv7Y "EM078 Vector Network Analyzer using SoC FPGA")
+<p align="center"><img width="700" height="466" src="http://www.innovatefpga.com/attachment/member/2017/EM078-BCBCB04A69C2C3F4/image/project_700.png"></p>
 
 ## Description
-Vector network analyzers (VNA) designed to measure the characteristics of the signal transmission through the testing device or device under test (DUT), as well as the characteristics of the signal reflection from its ports. Such characteristics called S-parameters. Each of these parameters contains the frequency and phase responses of the DUT in the appropriate direction. The main task of VNA’s is to measure the characteristics of passive and active devices, such as antennas, attenuators, filters, etc. Basic view of devices is shown on figure 1.
+Vector network analyzers (VNA) are widely used for parameter measurements of active and passive electronic devices and also some properties of materials. VNA is a device, which enable the RF performance, and some other devices to be characterized in terms of network scattering parameters, or S-parameters. Each S-parameter has an amplitude-frequency and phase-frequency characteristics, which are very useful for estimation of device quality. VNA is based on reflectometer: output signal and its reflection from other outputs should be splitted, then some signal processing operations and displaying the result for users. Signal processing is consist of different non-trivial mathematical operations: convolution, the Fourier transform, math operations in complex numbers etc. Another important problem is achievement well-tuning sync between source and sink. Such requirements push us to use SoC FPGA as an optimal platform for realization of handmade VNA.
 
+## Video Presentation
+<p align="center"><a href="https://youtu.be/BvW69keXv7Y" title="EM078 Vector Network Analyzer using SoC FPGA"><img src="https://preview.ibb.co/ne5cKH/Untitled_122.jpg" alt="EM078 Vector Network Analyzer using SoC FPGA"></a></p>
 
-<p align="center"><img width="640" height="496" src="http://www.innovatefpga.com/attachment/member/2017/EM078-BCBCB04A69C2C3F4/image/s-parameters_scheme_all_Fil2.png"></p>
-<p align="center"><i>Figure 1</i></p>
+## 
+The program for DE10-NANO consists of FPGA and HPS parts. FPGA part is responsible for interface with ADC and DAC chips, performing data preprocessing and the calculation of the amplitude and phase of the signal. HPS part sets the settings of VNA state machine (frequency, time-out, averaging), initiates every test cycle and prepares the obtained information for visualization on the monitor. The structure of the program shown in the figure:
 
-### Block Diagram
+<p align="center"><img width="700" height="466" src="http://www.innovatefpga.com/attachment/member/2017/EM078-BCBCB04A69C2C3F4/image/block2.jpg"></p>
 
-The diagram of the prototype of the network vector analyzer shown in the figure 2. The prototype based on the DE10-NANO development board with a connected high speed AD/DA daughter card. Circulator and lock-in amplifier was designed by our team and manufactured on a separate printed circuit board (electric circuit represented in the figures 3 and 4)
-
-<p align="center"><img width="640" height="330" src="https://preview.ibb.co/fEAcKH/image.png"></p>
-<p align="center"><i>Figure 2</i></p>
